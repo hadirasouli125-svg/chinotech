@@ -637,7 +637,12 @@ const SUPABASE_KEY =
 const supabaseClient =
 supabase.createClient(
 SUPABASE_URL,
-SUPABASE_KEY
+SUPABASE_KEY,
+{
+db:{
+schema:"Chinotech"
+}
+}
 );
 
 
@@ -663,7 +668,7 @@ async function loadProducts(){
 const {data,error}=
 
 await supabaseClient
-.from("Chinotech.products")
+.from("products")
 .select("*");
 
 
