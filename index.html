@@ -1,1413 +1,893 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ChinoTech | لوازم خودروهای چینی</title>
+<title>ChinoTech | قطعات خودروهای چینی</title>
 
-<meta name="description" content="ChinoTech - فروش لوازم و قطعات خودروهای چینی">
+<meta name="description" content="فروش لوازم و قطعات خودروهای چینی">
+<meta name="google-site-verification" content="eGWljtG2KRw-mIE7GBUxljZwmTTms4g3dQRgkuWncyY">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
 
-:root{
-  --gold:#f5b800;
-  --gold2:#ffd45a;
-  --black:#080808;
-  --dark:#111;
-  --gray:#777;
-  --light:#f5f6f8;
-  --white:#fff;
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
-html{scroll-behavior:smooth}
+:root{
+--gold:#f5b800;
+--gold2:#ffd45a;
+--dark:#080808;
+--card:#151515;
+--text:#222;
+--gray:#777;
+}
 
 body{
-  font-family:Tahoma,Arial,sans-serif;
-  background:var(--light);
-  color:#171717;
-  line-height:1.8;
+font-family:Tahoma,Arial,sans-serif;
+background:#f4f5f7;
+color:var(--text);
+line-height:1.8;
 }
 
 a{
-  text-decoration:none;
-  color:inherit;
+text-decoration:none;
+color:inherit;
 }
 
 .container{
-  width:min(1180px,92%);
-  margin:auto;
+width:min(1200px,92%);
+margin:auto;
 }
+
 
 /* HEADER */
 
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(8,8,8,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+background:#080808;
+position:sticky;
+top:0;
+z-index:999;
+border-bottom:1px solid #222;
 }
 
 .nav{
-  height:78px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+height:80px;
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
 .logo{
-  font-size:29px;
-  font-weight:900;
-  color:var(--gold);
-  letter-spacing:.5px;
+font-size:30px;
+font-weight:900;
+color:var(--gold);
 }
 
 .logo span{
-  color:white;
+color:white;
 }
 
-nav{
-  display:flex;
-  align-items:center;
-  gap:28px;
+.menu{
+display:flex;
+gap:25px;
 }
 
-nav a{
-  color:#ddd;
-  font-size:14px;
-  transition:.25s;
+.menu a{
+color:#ddd;
+font-size:14px;
 }
 
-nav a:hover{
-  color:var(--gold);
+.menu a:hover{
+color:var(--gold);
 }
 
-.nav-btn{
-  background:var(--gold);
-  color:#111;
-  padding:9px 18px;
-  border-radius:9px;
-  font-weight:bold;
+.call-btn{
+background:var(--gold);
+padding:10px 20px;
+border-radius:10px;
+font-weight:bold;
+color:#111;
 }
+
 
 /* HERO */
 
 .hero{
-  position:relative;
-  min-height:610px;
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  color:white;
-  background:
-    radial-gradient(circle at 80% 30%,rgba(245,184,0,.18),transparent 30%),
-    linear-gradient(135deg,#050505,#171717 55%,#090909);
+min-height:600px;
+display:flex;
+align-items:center;
+background:
+radial-gradient(circle at top right,#76550055,transparent 35%),
+linear-gradient(135deg,#050505,#191919);
+color:white;
 }
 
-.hero:before{
-  content:"";
-  position:absolute;
-  width:450px;
-  height:450px;
-  border:1px solid rgba(245,184,0,.12);
-  border-radius:50%;
-  left:-160px;
-  bottom:-220px;
-}
-
-.hero-content{
-  position:relative;
-  max-width:720px;
-  padding:80px 0;
+.hero-box{
+max-width:750px;
+padding:70px 0;
 }
 
 .badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:rgba(245,184,0,.12);
-  border:1px solid rgba(245,184,0,.35);
-  color:var(--gold2);
-  padding:7px 16px;
-  border-radius:50px;
-  font-size:13px;
-  margin-bottom:22px;
+display:inline-block;
+padding:8px 18px;
+border-radius:30px;
+background:#f5b80022;
+border:1px solid #f5b80055;
+color:var(--gold2);
+margin-bottom:20px;
 }
 
 .hero h1{
-  font-size:clamp(40px,7vw,70px);
-  line-height:1.2;
-  margin-bottom:20px;
-  font-weight:900;
+font-size:60px;
+line-height:1.2;
+margin-bottom:20px;
 }
 
 .hero h1 span{
-  color:var(--gold);
+color:var(--gold);
 }
 
 .hero p{
-  color:#c7c7c7;
-  font-size:18px;
-  max-width:620px;
-  margin-bottom:30px;
-}
-
-.buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+color:#ccc;
+font-size:18px;
+margin-bottom:30px;
 }
 
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:13px 25px;
-  border-radius:11px;
-  font-weight:bold;
-  transition:.25s;
+display:inline-block;
+padding:13px 28px;
+border-radius:12px;
+font-weight:bold;
+margin-left:10px;
 }
 
-.btn-primary{
-  background:var(--gold);
-  color:#111;
+.btn-main{
+background:var(--gold);
+color:#111;
 }
 
-.btn-primary:hover{
-  transform:translateY(-3px);
-  background:var(--gold2);
+.btn-line{
+border:1px solid #555;
+color:white;
 }
 
-.btn-outline{
-  border:1px solid #555;
-  color:white;
-}
-
-.btn-outline:hover{
-  border-color:var(--gold);
-  color:var(--gold);
-}
 
 /* STATS */
 
 .stats{
-  margin-top:-45px;
-  position:relative;
-  z-index:5;
+margin-top:-40px;
+position:relative;
 }
 
 .stats-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
 }
 
 .stat{
-  background:white;
-  border-radius:16px;
-  padding:22px;
-  text-align:center;
-  box-shadow:0 10px 35px rgba(0,0,0,.09);
+background:white;
+padding:25px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 10px 30px #0001;
 }
 
 .stat strong{
-  display:block;
-  font-size:25px;
-  color:#111;
+font-size:26px;
+display:block;
 }
 
-.stat span{
-  color:var(--gray);
-  font-size:13px;
-}
 
 /* SECTION */
 
 section{
-  padding:80px 0;
+padding:80px 0;
 }
 
-.section-title{
-  text-align:center;
-  margin-bottom:42px;
+.title{
+text-align:center;
+margin-bottom:40px;
 }
 
-.section-title .small{
-  color:var(--gold);
-  font-size:13px;
-  font-weight:bold;
+.title small{
+color:#b88700;
+font-weight:bold;
 }
 
-.section-title h2{
-  font-size:34px;
-  margin:5px 0;
+.title h2{
+font-size:35px;
 }
 
-.section-title p{
-  color:var(--gray);
-  font-size:14px;
+
+/* SEARCH */
+
+.search-box{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px #0001;
+margin-bottom:30px;
 }
+
+.search-box input{
+width:100%;
+padding:15px;
+border:1px solid #ddd;
+border-radius:12px;
+font-family:inherit;
+font-size:15px;
+}
+
+
+/* FILTER */
+
+.filters{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.filters button{
+padding:10px 20px;
+border-radius:30px;
+border:1px solid #ddd;
+background:white;
+cursor:pointer;
+}
+
+.filters button.active,
+.filters button:hover{
+background:var(--gold);
+border-color:var(--gold);
+}
+
 
 /* PRODUCTS */
 
-.products-tools{
-  margin-bottom:30px;
-}
-
-.product-search{
-  width:100%;
-  max-width:650px;
-  margin:0 auto 20px;
-  display:block;
-  padding:15px 20px;
-  border:1px solid #ddd;
-  border-radius:13px;
-  background:white;
-  font-family:inherit;
-  font-size:14px;
-  outline:none;
-  transition:.2s;
-}
-
-.product-search:focus{
-  border-color:var(--gold);
-  box-shadow:0 0 0 3px rgba(245,184,0,.12);
-}
-
-.brand-filter{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.brand-filter button{
-  border:1px solid #ddd;
-  background:white;
-  color:#555;
-  padding:9px 17px;
-  border-radius:30px;
-  font-family:inherit;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.brand-filter button:hover,
-.brand-filter button.active{
-  background:var(--gold);
-  border-color:var(--gold);
-  color:#111;
-}
-
 .products{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
 }
 
 .product{
-  background:white;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid #eee;
-  box-shadow:0 7px 25px rgba(0,0,0,.06);
-  transition:.3s;
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px #0001;
+transition:.3s;
 }
 
 .product:hover{
-  transform:translateY(-7px);
-  box-shadow:0 15px 35px rgba(0,0,0,.12);
+transform:translateY(-8px);
 }
 
-.product-image{
-  height:210px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:
-    radial-gradient(circle,rgba(245,184,0,.14),transparent 55%),
-    linear-gradient(135deg,#161616,#303030);
-  color:var(--gold);
-  font-size:65px;
+.product-img{
+height:220px;
+background:
+linear-gradient(135deg,#111,#333);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:70px;
 }
 
-.product-info{
-  padding:22px;
+.product-body{
+padding:22px;
 }
 
-.product-tag{
-  display:inline-block;
-  font-size:11px;
-  color:#9a7300;
-  background:#fff7dc;
-  padding:4px 9px;
-  border-radius:20px;
-  margin-bottom:8px;
+.tag{
+display:inline-block;
+background:#fff3c4;
+color:#946d00;
+padding:4px 12px;
+border-radius:20px;
+font-size:12px;
 }
 
-.product-info h3{
-  font-size:20px;
-  margin-bottom:6px;
+.product h3{
+margin:10px 0;
+font-size:21px;
 }
 
-.product-info p{
-  color:var(--gray);
-  font-size:13px;
-  margin-bottom:17px;
+.product p{
+color:#777;
+font-size:14px;
 }
 
 .product-btn{
-  display:block;
-  text-align:center;
-  background:#111;
-  color:white;
-  padding:10px;
-  border-radius:9px;
-  font-size:13px;
-  transition:.2s;
+display:block;
+background:#111;
+color:white;
+text-align:center;
+padding:10px;
+border-radius:10px;
+margin-top:15px;
 }
 
 .product-btn:hover{
-  background:var(--gold);
-  color:#111;
+background:var(--gold);
+color:#111;
 }
-
-.products-status{
-  text-align:center;
-  color:#777;
-  padding:20px;
-  font-size:14px;
-}
-
-.products-error{
-  background:#fff1f1;
-  color:#b42318;
-  border:1px solid #ffd0d0;
-  border-radius:12px;
-  padding:15px;
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.no-products{
-  grid-column:1/-1;
-  background:white;
-  border-radius:16px;
-  padding:35px;
-  text-align:center;
-  color:#777;
-}
-
-/* BRANDS */
-
-.brands{
-  background:#111;
-  color:white;
-}
-
-.brand-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:13px;
-}
-
-.brand{
-  border:1px solid #292929;
-  border-radius:12px;
-  padding:18px 10px;
-  text-align:center;
-  color:#ddd;
-  transition:.2s;
-  cursor:pointer;
-}
-
-.brand:hover{
-  border-color:var(--gold);
-  color:var(--gold);
-}
-
-/* ABOUT */
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:35px;
-  align-items:center;
-}
-
-.about-card{
-  background:white;
-  padding:35px;
-  border-radius:20px;
-  box-shadow:0 7px 30px rgba(0,0,0,.06);
-}
-
-.about-card h2{
-  font-size:32px;
-  margin-bottom:15px;
-}
-
-.about-card p{
-  color:#666;
-  font-size:15px;
-}
-
-.features{
-  display:grid;
-  gap:15px;
-}
-
-.feature{
-  background:white;
-  border-radius:14px;
-  padding:20px;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-.feature-icon{
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff6d6;
-  font-size:22px;
-}
-
-.feature h3{
-  font-size:15px;
-}
-
-.feature p{
-  color:#777;
-  font-size:12px;
-}
-
-/* CONTACT */
-
-.contact{
-  background:#f0f1f3;
-}
-
-.contact-box{
-  background:#111;
-  color:white;
-  border-radius:24px;
-  padding:45px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.contact-box:after{
-  content:"";
-  position:absolute;
-  width:280px;
-  height:280px;
-  border:1px solid rgba(245,184,0,.15);
-  border-radius:50%;
-  left:-100px;
-  bottom:-180px;
-}
-
-.contact-box h2{
-  font-size:31px;
-  margin-bottom:8px;
-}
-
-.contact-box>p{
-  color:#aaa;
-  margin-bottom:28px;
-}
-
-.contact-items{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  position:relative;
-  z-index:2;
-}
-
-.contact-item{
-  background:#1d1d1d;
-  border:1px solid #303030;
-  padding:12px 20px;
-  border-radius:10px;
-  color:#ddd;
-  font-size:13px;
-  transition:.2s;
-}
-
-.contact-item:hover{
-  border-color:var(--gold);
-  color:var(--gold);
-}
-
-/* FOOTER */
-
-footer{
-  background:#050505;
-  color:#777;
-  padding:30px 0;
-  text-align:center;
-}
-
-.footer-logo{
-  color:var(--gold);
-  font-size:25px;
-  font-weight:bold;
-  margin-bottom:8px;
-}
-
-.social{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin:18px 0;
-}
-
-.social a{
-  width:42px;
-  height:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid #292929;
-  border-radius:50%;
-  color:#bbb;
-  transition:.2s;
-}
-
-.social a:hover{
-  color:var(--gold);
-  border-color:var(--gold);
-}
-
-/* MOBILE */
-
-@media(max-width:850px){
-
-  nav{
-    display:none;
-  }
-
-  .nav-btn{
-    display:none;
-  }
-
-  .hero{
-    min-height:570px;
-  }
-
-  .hero-content{
-    text-align:center;
-  }
-
-  .hero p{
-    margin-left:auto;
-    margin-right:auto;
-  }
-
-  .buttons{
-    justify-content:center;
-  }
-
-  .stats-grid{
-    grid-template-columns:1fr;
-  }
-
-  .products{
-    grid-template-columns:1fr;
-  }
-
-  .brand-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .about-grid{
-    grid-template-columns:1fr;
-  }
-
-  .contact-box{
-    padding:32px 20px;
-  }
-
-  .product-search{
-    font-size:13px;
-  }
-}
+  
 </style>
-
-<meta name="google-site-verification" content="eGWljtG2KRw-mIE7GBUxljZwmTTms4g3dQRgkuWncyY" />
-
 </head>
 
 <body>
 
 <header>
-  <div class="container nav">
 
-    <div class="logo">
-      Chino<span>Tech</span>
-    </div>
+<div class="container nav">
 
-    <nav>
-      <a href="#home">خانه</a>
-      <a href="#products">محصولات</a>
-      <a href="#brands">برندها</a>
-      <a href="#about">درباره ما</a>
-      <a href="#contact">تماس با ما</a>
-    </nav>
+<div class="logo">
+Chino<span>Tech</span>
+</div>
 
-    <a class="nav-btn" href="tel:09102284286">
-      تماس با ما
-    </a>
+<div class="menu">
 
-  </div>
-</header>
-
-<section class="hero" id="home">
-
-  <div class="container">
-
-    <div class="hero-content">
-
-      <div class="badge">
-        🚗 فروش تخصصی لوازم خودروهای چینی
-      </div>
-
-      <h1>
-        قطعه مناسب خودروت را
-        <span>پیدا کن</span>
-      </h1>
-
-      <p>
-        چینوتک؛ فروش لوازم و قطعات خودروهای چینی
-        با کیفیت مناسب و قیمت رقابتی.
-      </p>
-
-      <div class="buttons">
-
-        <a class="btn btn-primary" href="#products">
-          مشاهده محصولات
-        </a>
-
-        <a class="btn btn-outline"
-           href="https://wa.me/989389886161"
-           target="_blank">
-          واتساپ
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<div class="stats">
-
-  <div class="container stats-grid">
-
-    <div class="stat">
-      <strong id="productCount">0</strong>
-      <span>قطعه موجود در فروشگاه</span>
-    </div>
-
-    <div class="stat">
-      <strong>4 شماره</strong>
-      <span>راه ارتباطی با فروشگاه</span>
-    </div>
-
-    <div class="stat">
-      <strong>تهران</strong>
-      <span>بلوار فردوس شرق</span>
-    </div>
-
-  </div>
+<a href="#home">خانه</a>
+<a href="#products">محصولات</a>
+<a href="#brands">برندها</a>
+<a href="#contact">تماس</a>
 
 </div>
 
+<a class="call-btn" href="tel:09102284286">
+تماس با ما
+</a>
+
+</div>
+
+</header>
+
+
+<section class="hero" id="home">
+
+<div class="container">
+
+<div class="hero-box">
+
+<div class="badge">
+🚗 قطعات تخصصی خودروهای چینی
+</div>
+
+
+<h1>
+قطعه مناسب خودروت را
+<span>پیدا کن</span>
+</h1>
+
+
+<p>
+چینوتک، تامین کننده لوازم و قطعات خودروهای چینی
+با جستجوی سریع و خرید آسان.
+</p>
+
+
+<a class="btn btn-main" href="#products">
+مشاهده محصولات
+</a>
+
+
+<a class="btn btn-line"
+href="https://wa.me/989389886161"
+target="_blank">
+واتساپ
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<div class="stats">
+
+<div class="container stats-grid">
+
+
+<div class="stat">
+<strong id="count">
+0
+</strong>
+قطعه موجود
+</div>
+
+
+<div class="stat">
+<strong>
+5+
+</strong>
+برند خودرو
+</div>
+
+
+<div class="stat">
+<strong>
+تهران
+</strong>
+فروشگاه
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
 <section id="products">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-title">
 
-      <div class="small">
-        CHINOTECH PRODUCTS
-      </div>
+<div class="title">
 
-      <h2>
-        محصولات و قطعات
-      </h2>
+<small>
+CHINOTECH PRODUCTS
+</small>
 
-      <p>
-        خودرو یا قطعه موردنظر خود را جستجو کنید.
-      </p>
+<h2>
+قطعات خودرو
+</h2>
 
-    </div>
+</div>
 
-    <div class="products-tools">
 
-      <input
-        id="productSearch"
-        class="product-search"
-        type="search"
-        placeholder="جستجوی نام قطعه یا خودرو..."
-        autocomplete="off"
-      >
 
-      <div class="brand-filter">
+<div class="search-box">
 
-        <button class="active" data-brand="all">
-          همه
-        </button>
+<input
+id="search"
+placeholder="جستجوی قطعه یا مدل خودرو..."
+>
 
-        <button data-brand="JAC">
-          JAC
-        </button>
 
-        <button data-brand="CHERY">
-          CHERY
-        </button>
+<div class="filters">
 
-        <button data-brand="MVM">
-          MVM
-        </button>
+<button class="active" data-brand="all">
+همه
+</button>
 
-        <button data-brand="KMC">
-          KMC
-        </button>
 
-        <button data-brand="BAIC">
-          BAIC
-        </button>
+<button data-brand="JAC">
+JAC
+</button>
 
-      </div>
 
-    </div>
+<button data-brand="CHERY">
+CHERY
+</button>
 
-    <div id="productsError"></div>
 
-    <div id="productsStatus" class="products-status">
-      در حال دریافت محصولات...
-    </div>
+<button data-brand="MVM">
+MVM
+</button>
 
-    <div
-      class="products"
-      id="productsList">
-    </div>
 
-  </div>
+<button data-brand="KMC">
+KMC
+</button>
 
-</section>
 
-<section class="brands" id="brands">
+<button data-brand="BAIC">
+BAIC
+</button>
 
-  <div class="container">
 
-    <div class="section-title">
+</div>
 
-      <div class="small">
-        BRANDS
-      </div>
+</div>
 
-      <h2>
-        برندهای خودرو
-      </h2>
 
-      <p>
-        قطعات خودروهای چینی
-      </p>
 
-    </div>
+<div id="error"></div>
 
-    <div class="brand-grid">
 
-      <div class="brand" data-brand-jump="JAC">
-        JAC
-      </div>
+<div class="products"
+id="list">
 
-      <div class="brand" data-brand-jump="CHERY">
-        CHERY
-      </div>
+</div>
 
-      <div class="brand" data-brand-jump="MVM">
-        MVM
-      </div>
 
-      <div class="brand" data-brand-jump="KMC">
-        KMC
-      </div>
-
-      <div class="brand" data-brand-jump="BAIC">
-        BAIC
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
-<section id="about">
 
-  <div class="container about-grid">
 
-    <div class="about-card">
 
-      <div
-        class="small"
-        style="color:#c89500;font-weight:bold">
-        ABOUT CHINOTECH
-      </div>
+<section id="brands"
+style="background:#111;color:white">
 
-      <h2>
-        چرا چینوتک؟
-      </h2>
 
-      <p>
-        چینوتک با هدف تأمین لوازم و قطعات خودروهای چینی
-        فعالیت می‌کند و تلاش دارد خرید قطعه را برای مشتریان
-        ساده، سریع و مطمئن کند.
-      </p>
+<div class="container">
 
-    </div>
 
-    <div class="features">
+<div class="title">
 
-      <div class="feature">
+<small>
+BRANDS
+</small>
 
-        <div class="feature-icon">
-          ✓
-        </div>
+<h2>
+برندهای خودرو
+</h2>
 
-        <div>
-          <h3>
-            استعلام سریع قیمت
-          </h3>
+</div>
 
-          <p>
-            برای قیمت و موجودی با ما تماس بگیرید.
-          </p>
-        </div>
 
-      </div>
+<div class="filters"
+style="justify-content:center">
 
-      <div class="feature">
 
-        <div class="feature-icon">
-          ⚙️
-        </div>
+<button>
+JAC
+</button>
 
-        <div>
-          <h3>
-            تخصص در خودروهای چینی
-          </h3>
+<button>
+CHERY
+</button>
 
-          <p>
-            تمرکز اصلی ما روی قطعات خودروهای چینی است.
-          </p>
-        </div>
+<button>
+MVM
+</button>
 
-      </div>
+<button>
+KMC
+</button>
 
-      <div class="feature">
+<button>
+BAIC
+</button>
 
-        <div class="feature-icon">
-          📍
-        </div>
 
-        <div>
-          <h3>
-            فروشگاه در تهران
-          </h3>
+</div>
 
-          <p>
-            بلوار فردوس شرق، خیابان ابراهیمی شمالی
-          </p>
-        </div>
 
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
-<section class="contact" id="contact">
 
-  <div class="container">
 
-    <div class="contact-box">
 
-      <h2>
-        با چینوتک در ارتباط باشید
-      </h2>
+<section id="contact">
 
-      <p>
-        برای استعلام قیمت و موجودی قطعات با ما تماس بگیرید.
-      </p>
 
-      <div class="contact-items">
+<div class="container">
 
-        <a class="contact-item" href="tel:09102284286">
-          📞 09102284286
-        </a>
 
-        <a class="contact-item" href="tel:09389886161">
-          📞 09389886161
-        </a>
+<div class="search-box"
+style="text-align:center;background:#111;color:white">
 
-        <a class="contact-item" href="tel:09359886163">
-          📞 09359886163
-        </a>
 
-        <a class="contact-item" href="tel:09219886163">
-          📞 09219886163
-        </a>
+<h2>
+ارتباط با چینوتک
+</h2>
 
-        <a
-          class="contact-item"
-          href="https://wa.me/989389886161"
-          target="_blank">
-          🟢 واتساپ
-        </a>
 
-        <a
-          class="contact-item"
-          href="https://t.me/chinotech1"
-          target="_blank">
-          💬 تلگرام
-        </a>
+<p>
+برای استعلام قیمت تماس بگیرید
+</p>
 
-        <a
-          class="contact-item"
-          href="https://instagram.com/chinotech.tehran"
-          target="_blank">
-          📸 اینستاگرام
-        </a>
 
-      </div>
+<br>
 
-      <div
-        style="margin-top:28px;color:#aaa;font-size:13px">
 
-        📍 تهران، بلوار فردوس شرق، خیابان ابراهیمی شمالی،
-        کوچه ششم، پلاک ۵
+<a class="btn btn-main"
+href="tel:09102284286">
+09102284286
+</a>
 
-      </div>
 
-    </div>
+<a class="btn btn-main"
+href="https://wa.me/989389886161">
+واتساپ
+</a>
 
-  </div>
+
+</div>
+
+
+</div>
+
 
 </section>
 
-<footer>
 
-  <div class="container">
 
-    <div class="footer-logo">
-      ChinoTech
-    </div>
 
-    <div class="social">
+<footer
+style="
+background:#050505;
+color:#aaa;
+padding:30px;
+text-align:center;
+">
 
-      <a
-        href="https://instagram.com/chinotech.tehran"
-        target="_blank">
-        IG
-      </a>
 
-      <a
-        href="https://t.me/chinotech1"
-        target="_blank">
-        TG
-      </a>
+ChinoTech © 2026
 
-      <a
-        href="https://wa.me/989389886161"
-        target="_blank">
-        WA
-      </a>
-
-      <a href="tel:09102284286">
-        ☎
-      </a>
-
-    </div>
-
-    <p>
-      © 2026 ChinoTech - تمامی حقوق محفوظ است.
-    </p>
-
-  </div>
 
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
 const SUPABASE_URL =
-  "https://viyqzrruxundtsgtfjsj.supabase.co";
+"https://viyqzrruxundtsgtfjsj.supabase.co";
+
 
 const SUPABASE_KEY =
-  "sb_publishable_v0eLyw6i703J8p2gPeBUOA_iKepeDIY";
+"sb_publishable_v0eLyw6i703J8p2gPeBUOA_iKepeDIY";
+
 
 const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-const productsList =
-  document.getElementById("productsList");
-
-const productsStatus =
-  document.getElementById("productsStatus");
-
-const productsError =
-  document.getElementById("productsError");
-
-const productCount =
-  document.getElementById("productCount");
-
-const productSearch =
-  document.getElementById("productSearch");
-
-let allProducts = [];
-let selectedBrand = "all";
-
-function getValue(product, names){
-
-  for(const name of names){
-
-    if(
-      product[name] !== undefined &&
-      product[name] !== null &&
-      String(product[name]).trim() !== ""
-    ){
-      return String(product[name]);
-    }
-
-  }
-
-  return "";
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY,
+{
+db:{
+schema:"Chinotech"
 }
-
-function escapeHTML(value){
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
 }
+);
 
-function normalize(value){
 
-  return String(value || "")
-    .toLowerCase()
-    .replace(/ي/g,"ی")
-    .replace(/ك/g,"ک")
-    .trim();
-}
 
-function productMatchesBrand(product, brand){
+let products=[];
 
-  if(brand === "all"){
-    return true;
-  }
+let activeBrand="all";
 
-  const brandValue = getValue(product,[
-    "brand",
-    "car_brand",
-    "car",
-    "vehicle",
-    "model",
-    "category",
-    "name"
-  ]);
 
-  return normalize(brandValue).includes(
-    normalize(brand)
-  );
-}
+const list =
+document.getElementById("list");
 
-function productMatchesSearch(product, search){
+const search =
+document.getElementById("search");
 
-  if(!search){
-    return true;
-  }
+const count =
+document.getElementById("count");
 
-  const values = Object.values(product);
 
-  return values.some(value =>
-    normalize(value).includes(normalize(search))
-  );
-}
-
-function renderProducts(){
-
-  const search =
-    productSearch.value.trim();
-
-  const filtered =
-    allProducts.filter(product =>
-      productMatchesBrand(product,selectedBrand) &&
-      productMatchesSearch(product,search)
-    );
-
-  productCount.textContent =
-    allProducts.length;
-
-  productsStatus.textContent =
-    filtered.length
-      ? `${filtered.length} قطعه`
-      : "";
-
-  if(!filtered.length){
-
-    productsList.innerHTML = `
-      <div class="no-products">
-        محصولی با این مشخصات پیدا نشد.
-      </div>
-    `;
-
-    return;
-  }
-
-  productsList.innerHTML =
-    filtered.map(product => {
-
-      const name =
-        getValue(product,[
-          "name",
-          "title",
-          "product_name",
-          "part_name"
-        ]) || "قطعه خودرو";
-
-      const brand =
-        getValue(product,[
-          "brand",
-          "car_brand",
-          "car",
-          "vehicle"
-        ]) || "خودرو چینی";
-
-      const description =
-        getValue(product,[
-          "description",
-          "details",
-          "short_description"
-        ]) || "لوازم و قطعات خودروهای چینی";
-
-      const price =
-        getValue(product,[
-          "price",
-          "price_toman",
-          "amount"
-        ]);
-
-      const phone =
-        getValue(product,[
-          "phone",
-          "mobile"
-        ]) || "09102284286";
-
-      const image =
-        getValue(product,[
-          "image_url",
-          "image",
-          "photo",
-          "imageUrl"
-        ]);
-
-      const imageHTML =
-        image
-          ? `<img
-               src="${escapeHTML(image)}"
-               alt="${escapeHTML(name)}"
-               style="width:100%;height:100%;object-fit:cover;"
-             >`
-          : "⚙️";
-
-      const priceHTML =
-        price
-          ? `<div style="margin-bottom:12px;font-weight:bold;color:#9a7300;">
-               ${escapeHTML(price)} تومان
-             </div>`
-          : "";
-
-      return `
-        <div class="product">
-
-          <div class="product-image">
-            ${imageHTML}
-          </div>
-
-          <div class="product-info">
-
-            <span class="product-tag">
-              ${escapeHTML(brand)}
-            </span>
-
-            <h3>
-              ${escapeHTML(name)}
-            </h3>
-
-            <p>
-              ${escapeHTML(description)}
-            </p>
-
-            ${priceHTML}
-
-            <a
-              class="product-btn"
-              href="tel:${escapeHTML(phone)}">
-              استعلام قیمت
-            </a>
-
-          </div>
-
-        </div>
-      `;
-
-    }).join("");
-}
 
 async function loadProducts(){
 
-  productsStatus.textContent =
-    "در حال دریافت محصولات...";
 
-  productsError.innerHTML = "";
+const {data,error}=
 
-  try{
+await supabaseClient
+.from("products")
+.select("*");
 
-    const { data, error } =
-      await supabaseClient
-        .from("products")
-        .select("*");
 
-    if(error){
-      throw error;
-    }
 
-    allProducts =
-      Array.isArray(data)
-        ? data
-        : [];
+if(error){
 
-    renderProducts();
+document.getElementById("error").innerHTML=
+`
+<div style="
+background:#ffe5e5;
+color:#b00000;
+padding:15px;
+border-radius:12px;
+margin-bottom:20px;
+">
+خطا در دریافت محصولات:
+${error.message}
+</div>
+`;
 
-  }catch(error){
+return;
 
-    console.error(
-      "Supabase products error:",
-      error
-    );
-
-    productsStatus.textContent = "";
-
-    productsError.innerHTML = `
-      <div class="products-error">
-        خطا در دریافت محصولات.
-        لطفاً اتصال فروشگاه به پایگاه داده را بررسی کنید.
-      </div>
-    `;
-
-    productsList.innerHTML = "";
-
-    productCount.textContent = "0";
-  }
 }
 
-productSearch.addEventListener(
-  "input",
-  renderProducts
+
+
+products=data || [];
+
+count.innerText=products.length;
+
+render();
+
+
+
+}
+
+
+
+function render(){
+
+
+let text=
+search.value.toLowerCase();
+
+
+
+let result =
+products.filter(p=>{
+
+
+let all =
+JSON.stringify(p)
+.toLowerCase();
+
+
+
+let okText =
+all.includes(text);
+
+
+
+let okBrand =
+activeBrand==="all" ||
+all.includes(activeBrand.toLowerCase());
+
+
+return okText && okBrand;
+
+
+});
+
+
+
+if(result.length===0){
+
+list.innerHTML=
+`
+<div style="
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+grid-column:1/-1;
+">
+محصولی پیدا نشد
+</div>
+`;
+
+return;
+
+}
+
+
+
+list.innerHTML =
+result.map(p=>{
+
+
+let name =
+p.name ||
+p.title ||
+"قطعه خودرو";
+
+
+let brand =
+p.brand ||
+p.car ||
+"چینی";
+
+
+
+let desc =
+p.description ||
+"قطعه اصلی خودرو";
+
+
+
+return `
+
+<div class="product">
+
+
+<div class="product-img">
+⚙️
+</div>
+
+
+<div class="product-body">
+
+
+<span class="tag">
+${brand}
+</span>
+
+
+<h3>
+${name}
+</h3>
+
+
+<p>
+${desc}
+</p>
+
+
+
+<a class="product-btn"
+href="tel:09102284286">
+استعلام قیمت
+</a>
+
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+}).join("");
+
+
+
+}
+
+
+
+search.addEventListener(
+"input",
+render
 );
 
-document
-  .querySelectorAll(".brand-filter button")
-  .forEach(button => {
 
-    button.addEventListener("click",() => {
-
-      document
-        .querySelectorAll(".brand-filter button")
-        .forEach(btn =>
-          btn.classList.remove("active")
-        );
-
-      button.classList.add("active");
-
-      selectedBrand =
-        button.dataset.brand;
-
-      renderProducts();
-
-      document
-        .getElementById("products")
-        .scrollIntoView({
-          behavior:"smooth"
-        });
-
-    });
-
-  });
 
 document
-  .querySelectorAll("[data-brand-jump]")
-  .forEach(brand => {
+.querySelectorAll(".filters button")
+.forEach(btn=>{
 
-    brand.addEventListener("click",() => {
 
-      const value =
-        brand.dataset.brandJump;
+btn.addEventListener(
+"click",
+()=>{
 
-      selectedBrand = value;
 
-      document
-        .querySelectorAll(".brand-filter button")
-        .forEach(btn => {
+document
+.querySelectorAll(".filters button")
+.forEach(x=>
+x.classList.remove("active")
+);
 
-          btn.classList.toggle(
-            "active",
-            btn.dataset.brand === value
-          );
 
-        });
+btn.classList.add("active");
 
-      renderProducts();
 
-      document
-        .getElementById("products")
-        .scrollIntoView({
-          behavior:"smooth"
-        });
+activeBrand =
+btn.dataset.brand || "all";
 
-    });
 
-  });
+render();
+
+
+}
+
+);
+
+
+});
+
+
 
 loadProducts();
+
+
 </script>
 
+
 </body>
+
 </html>
