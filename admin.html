@@ -1,1 +1,2061 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>ChinoTech | مدیریت فروشگاه</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --gold:#f5b800;
+  --gold2:#ffd45a;
+  --dark:#090909;
+  --dark2:#151515;
+  --card:#fff;
+  --bg:#f4f5f7;
+  --text:#171717;
+  --muted:#777;
+  --danger:#d93636;
+  --success:#198754;
+}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.admin-header{
+  background:var(--dark);
+  color:#fff;
+  padding:18px 0;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+
+.header-inner{
+  width:min(1200px,94%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:900;
+  color:var(--gold);
+}
+
+.logo span{
+  color:#fff;
+}
+
+.header-title{
+  color:#ccc;
+  font-size:14px;
+}
+
+.container{
+  width:min(1200px,94%);
+  margin:30px auto;
+}
+
+.dashboard{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:25px;
+}
+
+.stat-card{
+  background:#fff;
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 5px 22px rgba(0,0,0,.06);
+  border:1px solid #eee;
+}
+
+.stat-card .label{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.stat-card .value{
+  font-size:28px;
+  font-weight:900;
+}
+
+.stat-card .icon{
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.panel{
+  background:#fff;
+  border-radius:20px;
+  padding:25px;
+  margin-bottom:22px;
+  box-shadow:0 5px 25px rgba(0,0,0,.06);
+}
+
+.panel-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:22px;
+}
+
+.panel-title h2{
+  font-size:21px;
+}
+
+.panel-title p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+
+.tab{
+  border:1px solid #ddd;
+  background:#fff;
+  padding:10px 18px;
+  border-radius:10px;
+  font-size:13px;
+  transition:.2s;
+}
+
+.tab:hover,
+.tab.active{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:#111;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.form-group.full{
+  grid-column:1/-1;
+}
+
+.form-group label{
+  font-size:12px;
+  font-weight:bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:12px;
+  outline:none;
+  background:#fff;
+  font-size:13px;
+}
+
+.form-group textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(245,184,0,.1);
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 20px;
+  font-weight:bold;
+  font-size:13px;
+  transition:.2s;
+}
+
+.btn-primary{
+  background:var(--gold);
+  color:#111;
+}
+
+.btn-primary:hover{
+  background:var(--gold2);
+  transform:translateY(-1px);
+}
+
+.btn-dark{
+  background:#111;
+  color:#fff;
+}
+
+.btn-danger{
+  background:var(--danger);
+  color:#fff;
+}
+
+.btn-success{
+  background:var(--success);
+  color:#fff;
+}
+
+.btn-small{
+  padding:7px 11px;
+  font-size:11px;
+}
+
+.form-actions{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.table-wrapper{
+  width:100%;
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:700px;
+}
+
+th,
+td{
+  padding:13px 10px;
+  border-bottom:1px solid #eee;
+  text-align:right;
+  font-size:12px;
+}
+
+th{
+  background:#fafafa;
+  color:#555;
+}
+
+.product-image{
+  width:50px;
+  height:50px;
+  border-radius:8px;
+  object-fit:cover;
+  background:#eee;
+}
+
+.empty{
+  text-align:center;
+  color:#777;
+  padding:30px;
+}
+
+.message{
+  display:none;
+  padding:13px 15px;
+  border-radius:10px;
+  margin-bottom:18px;
+  font-size:13px;
+}
+
+.message.show{
+  display:block;
+}
+
+.message.success{
+  background:#e8f7ef;
+  color:#157347;
+}
+
+.message.error{
+  background:#fdecec;
+  color:#b42323;
+}
+
+.loading{
+  text-align:center;
+  padding:30px;
+  color:#777;
+}
+
+@media(max-width:900px){
+
+  .dashboard{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:650px){
+
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .dashboard{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .panel{
+    padding:18px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="admin-header">
+  <div class="header-inner">
+
+    <div class="logo">
+      Chino<span>Tech</span>
+    </div>
+
+    <div class="header-title">
+      پنل مدیریت فروشگاه
+    </div>
+
+  </div>
+</header>
+
+<main class="container">
+
+  <div id="message" class="message"></div>
+
+  <section class="dashboard">
+
+    <div class="stat-card">
+      <div class="icon">📦</div>
+      <div class="label">تعداد قطعات</div>
+      <div class="value" id="statProducts">0</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="icon">🚗</div>
+      <div class="label">برندها</div>
+      <div class="value" id="statBrands">0</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="icon">🚘</div>
+      <div class="label">مدل‌ها</div>
+      <div class="value" id="statModels">0</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="icon">💰</div>
+      <div class="label">وضعیت فروشگاه</div>
+      <div class="value" style="font-size:18px;">
+        فعال
+      </div>
+    </div>
+
+  </section>
+
+  <section class="panel">
+
+    <div class="tabs">
+
+      <button
+        class="tab active"
+        type="button"
+        data-tab="products"
+      >
+        📦 قطعات
+      </button>
+
+      <button
+        class="tab"
+        type="button"
+        data-tab="brands"
+      >
+        🚗 برندها
+      </button>
+
+      <button
+        class="tab"
+        type="button"
+        data-tab="models"
+      >
+        🚘 مدل‌ها
+      </button>
+
+    </div>
+
+    <div id="productsTab">
+
+      <div class="panel-title">
+
+        <div>
+          <h2>مدیریت قطعات</h2>
+          <p>
+            افزودن و مدیریت قطعات فروشگاه
+          </p>
+        </div>
+
+      </div>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>نام قطعه</label>
+          <input
+            id="productName"
+            type="text"
+            placeholder="مثلاً خنک‌کن گیربکس"
+          >
+        </div>
+
+        <div class="form-group">
+          <label>برند خودرو</label>
+          <select id="productBrand">
+            <option value="">
+              انتخاب برند
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>مدل خودرو</label>
+          <select id="productModel">
+            <option value="">
+              ابتدا برند را انتخاب کنید
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>قیمت</label>
+          <input
+            id="productPrice"
+            type="number"
+            placeholder="مثلاً 2500000"
+          >
+        </div>
+
+        <div class="form-group">
+          <label>موجودی</label>
+          <input
+            id="productStock"
+            type="number"
+            value="0"
+            min="0"
+          >
+        </div>
+
+        <div class="form-group">
+          <label>آدرس عکس قطعه</label>
+          <input
+            id="productImage"
+            type="url"
+            placeholder="https://..."
+          >
+        </div>
+
+        <div class="form-group full">
+          <label>توضیحات</label>
+          <textarea
+            id="productDescription"
+            placeholder="توضیحات مربوط به قطعه..."
+          ></textarea>
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          class="btn btn-primary"
+          id="addProductBtn"
+          type="button"
+        >
+          ➕ افزودن قطعه
+        </button>
+
+        <button
+          class="btn btn-dark"
+          id="clearProductBtn"
+          type="button"
+        >
+          پاک کردن فرم
+        </button>
+
+      </div>
+
+    </div>
+
+    <div
+      id="brandsTab"
+      style="display:none;"
+    >
+
+      <div class="panel-title">
+
+        <div>
+          <h2>مدیریت برندها</h2>
+          <p>
+            برند خودرو و لوگوی آن را اضافه کنید
+          </p>
+        </div>
+
+      </div>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>نام برند</label>
+          <input
+            id="brandName"
+            type="text"
+            placeholder="مثلاً JAC"
+          >
+        </div>
+
+        <div class="form-group">
+          <label>آدرس لوگو</label>
+          <input
+            id="brandLogo"
+            type="url"
+            placeholder="https://..."
+          >
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          class="btn btn-primary"
+          id="addBrandBtn"
+          type="button"
+        >
+          ➕ افزودن برند
+        </button>
+
+      </div>
+
+    </div>
+
+    <div
+      id="modelsTab"
+      style="display:none;"
+    >
+
+      <div class="panel-title">
+
+        <div>
+          <h2>مدیریت مدل‌ها</h2>
+          <p>
+            برای هر برند می‌توانی مدل‌های مختلف اضافه کنی
+          </p>
+        </div>
+
+      </div>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>برند</label>
+          <select id="modelBrand">
+            <option value="">
+              انتخاب برند
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>نام مدل</label>
+          <input
+            id="modelName"
+            type="text"
+            placeholder="مثلاً S5"
+          >
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          class="btn btn-primary"
+          id="addModelBtn"
+          type="button"
+        >
+          ➕ افزودن مدل
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+  
+<section class="panel">
+
+  <div class="panel-title">
+
+    <div>
+      <h2>لیست قطعات</h2>
+      <p>
+        قطعات ثبت‌شده در فروشگاه
+      </p>
+    </div>
+
+    <button
+      class="btn btn-dark"
+      type="button"
+      id="refreshProductsBtn"
+    >
+      🔄 بروزرسانی
+    </button>
+
+  </div>
+
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>عکس</th>
+          <th>قطعه</th>
+          <th>برند</th>
+          <th>مدل</th>
+          <th>قیمت</th>
+          <th>موجودی</th>
+          <th>عملیات</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="productsTable">
+
+        <tr>
+          <td
+            colspan="7"
+            class="empty"
+          >
+            در حال دریافت اطلاعات...
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+<section class="panel">
+
+  <div class="panel-title">
+
+    <div>
+      <h2>لیست برندها</h2>
+      <p>
+        برندهای ثبت‌شده
+      </p>
+    </div>
+
+    <button
+      class="btn btn-dark"
+      type="button"
+      id="refreshBrandsBtn"
+    >
+      🔄 بروزرسانی
+    </button>
+
+  </div>
+
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>لوگو</th>
+          <th>برند</th>
+          <th>تعداد مدل</th>
+          <th>عملیات</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="brandsTable">
+
+        <tr>
+          <td
+            colspan="4"
+            class="empty"
+          >
+            در حال دریافت اطلاعات...
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+<section class="panel">
+
+  <div class="panel-title">
+
+    <div>
+      <h2>لیست مدل‌ها</h2>
+      <p>
+        مدل‌های ثبت‌شده برای برندها
+      </p>
+    </div>
+
+    <button
+      class="btn btn-dark"
+      type="button"
+      id="refreshModelsBtn"
+    >
+      🔄 بروزرسانی
+    </button>
+
+  </div>
+
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>مدل</th>
+          <th>برند</th>
+          <th>عملیات</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="modelsTable">
+
+        <tr>
+          <td
+            colspan="3"
+            class="empty"
+          >
+            در حال دریافت اطلاعات...
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+"https://viyqzrruxundtsgtfjsj.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_v0eLyw6i703J8p2gPeBUOA_iKepeDIY";
+
+const supabaseClient =
+supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+let brandsData = [];
+let modelsData = [];
+let productsData = [];
+
+
+const messageBox =
+document.getElementById("message");
+
+
+function showMessage(
+  text,
+  type="success"
+){
+
+  messageBox.textContent =
+    text;
+
+  messageBox.className =
+    "message show " + type;
+
+  setTimeout(() => {
+
+    messageBox.className =
+      "message";
+
+  },4000);
+
+}
+
+
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+
+function formatPrice(value){
+
+  if(
+    value === null ||
+    value === undefined ||
+    value === ""
+  ){
+
+    return "-";
+
+  }
+
+  return Number(value)
+    .toLocaleString("fa-IR")
+    + " تومان";
+
+}
+
+
+
+async function loadBrands(){
+
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("brands")
+    .select("*")
+    .order("name");
+
+  if(error){
+
+    showMessage(
+      "خطا در دریافت برندها: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+  brandsData =
+    data || [];
+
+
+  document.getElementById(
+    "statBrands"
+  ).textContent =
+    brandsData.length;
+
+
+  const productBrand =
+    document.getElementById(
+      "productBrand"
+    );
+
+  const modelBrand =
+    document.getElementById(
+      "modelBrand"
+    );
+
+
+  productBrand.innerHTML =
+    `<option value="">
+      انتخاب برند
+    </option>`;
+
+
+  modelBrand.innerHTML =
+    `<option value="">
+      انتخاب برند
+    </option>`;
+
+
+  brandsData.forEach(brand => {
+
+    const option1 =
+      document.createElement("option");
+
+    option1.value =
+      brand.id;
+
+    option1.textContent =
+      brand.name;
+
+    productBrand.appendChild(
+      option1
+    );
+
+
+    const option2 =
+      document.createElement("option");
+
+    option2.value =
+      brand.id;
+
+    option2.textContent =
+      brand.name;
+
+    modelBrand.appendChild(
+      option2
+    );
+
+  });
+
+
+  renderBrandsTable();
+
+}
+
+
+
+async function loadModels(){
+
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("models")
+    .select("*")
+    .order("name");
+
+
+  if(error){
+
+    showMessage(
+      "خطا در دریافت مدل‌ها: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  modelsData =
+    data || [];
+
+
+  document.getElementById(
+    "statModels"
+  ).textContent =
+    modelsData.length;
+
+
+  renderModelsTable();
+
+}
+
+
+
+async function loadProducts(){
+
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("products")
+    .select("*")
+    .order(
+      "id",
+      {
+        ascending:false
+      }
+    );
+
+
+  if(error){
+
+    showMessage(
+      "خطا در دریافت قطعات: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  productsData =
+    data || [];
+
+
+  document.getElementById(
+    "statProducts"
+  ).textContent =
+    productsData.length;
+
+
+  renderProductsTable();
+
+}
+
+
+
+function getBrandName(
+  brandId
+){
+
+  const brand =
+    brandsData.find(
+      item =>
+        String(item.id) ===
+        String(brandId)
+    );
+
+  return brand
+    ? brand.name
+    : "-";
+
+}
+
+
+
+function getModelName(
+  modelId
+){
+
+  const model =
+    modelsData.find(
+      item =>
+        String(item.id) ===
+        String(modelId)
+    );
+
+  return model
+    ? model.name
+    : "-";
+
+}
+
+
+
+function renderProductsTable(){
+
+  const table =
+    document.getElementById(
+      "productsTable"
+    );
+
+
+  if(!productsData.length){
+
+    table.innerHTML = `
+      <tr>
+        <td
+          colspan="7"
+          class="empty"
+        >
+          هنوز قطعه‌ای ثبت نشده است.
+        </td>
+      </tr>
+    `;
+
+    return;
+
+  }
+
+
+  table.innerHTML =
+    productsData.map(product => {
+
+      const image =
+        product.image_url
+          ? `
+            <img
+              class="product-image"
+              src="${escapeHTML(product.image_url)}"
+              alt=""
+            >
+          `
+          : "⚙️";
+
+
+      return `
+
+        <tr>
+
+          <td>
+            ${image}
+          </td>
+
+          <td>
+            ${escapeHTML(product.name)}
+          </td>
+
+          <td>
+            ${escapeHTML(
+              getBrandName(
+                product.brand_id
+              )
+            )}
+          </td>
+
+          <td>
+            ${escapeHTML(
+              getModelName(
+                product.model_id
+              )
+            )}
+          </td>
+
+          <td>
+            ${formatPrice(
+              product.price
+            )}
+          </td>
+
+          <td>
+            ${escapeHTML(
+              product.stock ?? 0
+            )}
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-danger btn-small"
+              type="button"
+              onclick="deleteProduct(${product.id})"
+            >
+              حذف
+            </button>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }).join("");
+
+}
+
+
+
+function renderBrandsTable(){
+
+  const table =
+    document.getElementById(
+      "brandsTable"
+    );
+
+
+  if(!brandsData.length){
+
+    table.innerHTML = `
+      <tr>
+        <td
+          colspan="4"
+          class="empty"
+        >
+          هنوز برندی ثبت نشده است.
+        </td>
+      </tr>
+    `;
+
+    return;
+
+  }
+
+
+  table.innerHTML =
+    brandsData.map(brand => {
+
+      const modelsCount =
+        modelsData.filter(
+          model =>
+            String(model.brand_id) ===
+            String(brand.id)
+        ).length;
+
+
+      const logo =
+        brand.logo_url
+          ? `
+            <img
+              class="product-image"
+              src="${escapeHTML(brand.logo_url)}"
+              alt=""
+            >
+          `
+          : "🚗";
+
+
+      return `
+
+        <tr>
+
+          <td>
+            ${logo}
+          </td>
+
+          <td>
+            ${escapeHTML(
+              brand.name
+            )}
+          </td>
+
+          <td>
+            ${modelsCount}
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-danger btn-small"
+              type="button"
+              onclick="deleteBrand(${brand.id})"
+            >
+              حذف
+            </button>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }).join("");
+
+}
+
+
+
+function renderModelsTable(){
+
+  const table =
+    document.getElementById(
+      "modelsTable"
+    );
+
+
+  if(!modelsData.length){
+
+    table.innerHTML = `
+      <tr>
+        <td
+          colspan="3"
+          class="empty"
+        >
+          هنوز مدلی ثبت نشده است.
+        </td>
+      </tr>
+    `;
+
+    return;
+
+  }
+
+
+  table.innerHTML =
+    modelsData.map(model => {
+
+      return `
+
+        <tr>
+
+          <td>
+            ${escapeHTML(
+              model.name
+            )}
+          </td>
+
+          <td>
+            ${escapeHTML(
+              getBrandName(
+                model.brand_id
+              )
+            )}
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-danger btn-small"
+              type="button"
+              onclick="deleteModel(${model.id})"
+            >
+              حذف
+            </button>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }).join("");
+
+}
+
+
+</script>
+<script>
+
+async function addBrand(){
+
+  const name =
+    document.getElementById(
+      "brandName"
+    ).value.trim();
+
+  const logo_url =
+    document.getElementById(
+      "brandLogo"
+    ).value.trim();
+
+
+  if(!name){
+
+    showMessage(
+      "نام برند را وارد کن.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("brands")
+    .insert([
+      {
+        name:name,
+        logo_url:logo_url || null
+      }
+    ]);
+
+
+  if(error){
+
+    showMessage(
+      "خطا در افزودن برند: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "brandName"
+  ).value = "";
+
+  document.getElementById(
+    "brandLogo"
+  ).value = "";
+
+
+  showMessage(
+    "برند با موفقیت اضافه شد."
+  );
+
+
+  await loadBrands();
+
+}
+
+
+
+async function addModel(){
+
+  const brand_id =
+    document.getElementById(
+      "modelBrand"
+    ).value;
+
+  const name =
+    document.getElementById(
+      "modelName"
+    ).value.trim();
+
+
+  if(!brand_id){
+
+    showMessage(
+      "ابتدا برند را انتخاب کن.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(!name){
+
+    showMessage(
+      "نام مدل را وارد کن.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("models")
+    .insert([
+      {
+        brand_id:brand_id,
+        name:name
+      }
+    ]);
+
+
+  if(error){
+
+    showMessage(
+      "خطا در افزودن مدل: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "modelName"
+  ).value = "";
+
+
+  showMessage(
+    "مدل با موفقیت اضافه شد."
+  );
+
+
+  await loadModels();
+
+}
+
+
+
+async function addProduct(){
+
+  const name =
+    document.getElementById(
+      "productName"
+    ).value.trim();
+
+  const brand_id =
+    document.getElementById(
+      "productBrand"
+    ).value;
+
+  const model_id =
+    document.getElementById(
+      "productModel"
+    ).value;
+
+  const price =
+    document.getElementById(
+      "productPrice"
+    ).value;
+
+  const stock =
+    document.getElementById(
+      "productStock"
+    ).value;
+
+  const image_url =
+    document.getElementById(
+      "productImage"
+    ).value.trim();
+
+  const description =
+    document.getElementById(
+      "productDescription"
+    ).value.trim();
+
+
+  if(!name){
+
+    showMessage(
+      "نام قطعه را وارد کن.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("products")
+    .insert([
+      {
+        name:name,
+        brand_id:
+          brand_id || null,
+        model_id:
+          model_id || null,
+        price:
+          price
+            ? Number(price)
+            : null,
+        stock:
+          stock
+            ? Number(stock)
+            : 0,
+        image_url:
+          image_url || null,
+        description:
+          description || null
+      }
+    ]);
+
+
+  if(error){
+
+    showMessage(
+      "خطا در افزودن قطعه: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  clearProductForm();
+
+
+  showMessage(
+    "قطعه با موفقیت اضافه شد."
+  );
+
+
+  await loadProducts();
+
+}
+
+
+
+function clearProductForm(){
+
+  document.getElementById(
+    "productName"
+  ).value = "";
+
+  document.getElementById(
+    "productBrand"
+  ).value = "";
+
+  document.getElementById(
+    "productModel"
+  ).innerHTML = `
+    <option value="">
+      ابتدا برند را انتخاب کنید
+    </option>
+  `;
+
+  document.getElementById(
+    "productPrice"
+  ).value = "";
+
+  document.getElementById(
+    "productStock"
+  ).value = "0";
+
+  document.getElementById(
+    "productImage"
+  ).value = "";
+
+  document.getElementById(
+    "productDescription"
+  ).value = "";
+
+}
+
+
+
+async function deleteProduct(id){
+
+  if(
+    !confirm(
+      "آیا از حذف این قطعه مطمئنی؟"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("products")
+    .delete()
+    .eq("id",id);
+
+
+  if(error){
+
+    showMessage(
+      "خطا در حذف قطعه: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  showMessage(
+    "قطعه حذف شد."
+  );
+
+
+  await loadProducts();
+
+}
+
+
+
+async function deleteModel(id){
+
+  if(
+    !confirm(
+      "آیا از حذف این مدل مطمئنی؟"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("models")
+    .delete()
+    .eq("id",id);
+
+
+  if(error){
+
+    showMessage(
+      "خطا در حذف مدل: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  showMessage(
+    "مدل حذف شد."
+  );
+
+
+  await loadModels();
+
+}
+
+
+
+async function deleteBrand(id){
+
+  if(
+    !confirm(
+      "آیا از حذف این برند مطمئنی؟"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("brands")
+    .delete()
+    .eq("id",id);
+
+
+  if(error){
+
+    showMessage(
+      "خطا در حذف برند: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  showMessage(
+    "برند حذف شد."
+  );
+
+
+  await loadBrands();
+
+  await loadModels();
+
+}
+
+
+
+document
+  .getElementById("addBrandBtn")
+  .addEventListener(
+    "click",
+    addBrand
+  );
+
+
+document
+  .getElementById("addModelBtn")
+  .addEventListener(
+    "click",
+    addModel
+  );
+
+
+document
+  .getElementById("addProductBtn")
+  .addEventListener(
+    "click",
+    addProduct
+  );
+
+
+document
+  .getElementById("clearProductBtn")
+  .addEventListener(
+    "click",
+    clearProductForm
+  );
+
+
+document
+  .getElementById("refreshProductsBtn")
+  .addEventListener(
+    "click",
+    loadProducts
+  );
+
+
+document
+  .getElementById("refreshBrandsBtn")
+  .addEventListener(
+    "click",
+    async () => {
+
+      await loadBrands();
+      await loadModels();
+
+    }
+  );
+
+
+document
+  .getElementById("refreshModelsBtn")
+  .addEventListener(
+    "click",
+    loadModels
+  );
+
+
+
+document
+  .getElementById("productBrand")
+  .addEventListener(
+    "change",
+    async function(){
+
+      const brandId =
+        this.value;
+
+      const modelSelect =
+        document.getElementById(
+          "productModel"
+        );
+
+
+      modelSelect.innerHTML = `
+        <option value="">
+          انتخاب مدل
+        </option>
+      `;
+
+
+      if(!brandId){
+
+        return;
+
+      }
+
+
+      const models =
+        modelsData.filter(
+          model =>
+            String(model.brand_id) ===
+            String(brandId)
+        );
+
+
+      models.forEach(model => {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+        option.value =
+          model.id;
+
+        option.textContent =
+          model.name;
+
+        modelSelect.appendChild(
+          option
+        );
+
+      });
+
+    }
+  );
+
+
+
+document
+  .querySelectorAll(".tab")
+  .forEach(tab => {
+
+    tab.addEventListener(
+      "click",
+      function(){
+
+        document
+          .querySelectorAll(".tab")
+          .forEach(item =>
+            item.classList.remove(
+              "active"
+            )
+          );
+
+
+        this.classList.add(
+          "active"
+        );
+
+
+        document
+          .getElementById(
+            "productsTab"
+          )
+          .style.display =
+          "none";
+
+
+        document
+          .getElementById(
+            "brandsTab"
+          )
+          .style.display =
+          "none";
+
+
+        document
+          .getElementById(
+            "modelsTab"
+          )
+          .style.display =
+          "none";
+
+
+        const tabName =
+          this.dataset.tab;
+
+
+        if(tabName === "products"){
+
+          document
+            .getElementById(
+              "productsTab"
+            )
+            .style.display =
+            "block";
+
+        }
+
+
+        if(tabName === "brands"){
+
+          document
+            .getElementById(
+              "brandsTab"
+            )
+            .style.display =
+            "block";
+
+        }
+
+
+        if(tabName === "models"){
+
+          document
+            .getElementById(
+              "modelsTab"
+            )
+            .style.display =
+            "block";
+
+        }
+
+      }
+    );
+
+  });
+
+
+
+async function startAdmin(){
+
+  try{
+
+    await loadBrands();
+
+    await loadModels();
+
+    await loadProducts();
+
+  }
+  catch(error){
+
+    console.error(
+      error
+    );
+
+    showMessage(
+      "خطا در راه‌اندازی پنل.",
+      "error"
+    );
+
+  }
+
+}
+
+
+startAdmin();
+
+</script>
+
+</body>
+</html>
+
+
+
+  
