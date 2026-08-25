@@ -1522,44 +1522,28 @@ async function addModel(){
 
 }
 
-
-
 async function addProduct(){
 
   const name =
-    document.getElementById(
-      "productName"
-    ).value.trim();
+    document.getElementById("productName").value.trim();
 
   const brand_id =
-    document.getElementById(
-      "productBrand"
-    ).value;
+    document.getElementById("productBrand").value || null;
 
   const model_id =
-    document.getElementById(
-      "productModel"
-    ).value;
+    document.getElementById("productModel").value || null;
 
   const price =
-    document.getElementById(
-      "productPrice"
-    ).value;
+    document.getElementById("productPrice").value;
 
   const stock =
-    document.getElementById(
-      "productStock"
-    ).value;
+    document.getElementById("productStock").value;
 
   const image_url =
-    document.getElementById(
-      "productImage"
-    ).value.trim();
+    document.getElementById("productImage").value.trim();
 
   const description =
-    document.getElementById(
-      "productDescription"
-    ).value.trim();
+    document.getElementById("productDescription").value.trim();
 
 
   if(!name){
@@ -1572,6 +1556,71 @@ async function addProduct(){
     return;
 
   }
+
+
+  const productData = {
+
+    Name: name,
+
+    Price:
+      price
+        ? Number(price)
+        : null,
+
+    stock:
+      stock
+        ? Number(stock)
+        : 0,
+
+    Discrepion:
+      description || null,
+
+    "Brand id":
+      brand_id,
+
+    "Model id":
+      model_id,
+
+    "Image url":
+      image_url || null
+
+  };
+
+
+  const {
+    error
+  } =
+  await supabaseClient
+    .from("products")
+    .insert([productData]);
+
+
+  if(error){
+
+    console.error(error);
+
+    showMessage(
+      "خطا در افزودن قطعه: " +
+      error.message,
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  clearProductForm();
+
+
+  showMessage(
+    "قطعه با موفقیت اضافه شد."
+  );
+
+
+  await loadProducts();
+
+}
 
 
   const {
