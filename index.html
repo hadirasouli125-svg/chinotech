@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ChinoTech | لوازم خودروهای چینی</title>
 <meta name="description" content="ChinoTech - فروش لوازم و قطعات خودروهای چینی">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -74,9 +77,7 @@ nav a{
   transition:.25s;
 }
 
-nav a:hover{
-  color:var(--gold);
-}
+nav a:hover{color:var(--gold)}
 
 .nav-btn{
   background:var(--gold);
@@ -221,7 +222,7 @@ section{padding:80px 0}
 
 .section-title{
   text-align:center;
-  margin-bottom:42px;
+  margin-bottom:30px;
 }
 
 .section-title .small{
@@ -238,6 +239,36 @@ section{padding:80px 0}
 .section-title p{
   color:var(--gray);
   font-size:14px;
+}
+
+/* PRODUCT SEARCH */
+
+.product-tools{
+  background:white;
+  padding:20px;
+  border-radius:18px;
+  margin-bottom:28px;
+  box-shadow:0 7px 25px rgba(0,0,0,.06);
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:12px;
+}
+
+.product-tools input,
+.product-tools select{
+  width:100%;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:13px 15px;
+  font-family:inherit;
+  font-size:13px;
+  background:#fff;
+  outline:none;
+}
+
+.product-tools input:focus,
+.product-tools select:focus{
+  border-color:var(--gold);
 }
 
 /* PRODUCTS */
@@ -272,6 +303,13 @@ section{padding:80px 0}
     linear-gradient(135deg,#161616,#303030);
   color:var(--gold);
   font-size:65px;
+  overflow:hidden;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 .product-info{padding:22px}
@@ -294,8 +332,29 @@ section{padding:80px 0}
 .product-info p{
   color:var(--gray);
   font-size:13px;
-  margin-bottom:17px;
+  margin-bottom:12px;
 }
+
+.product-model{
+  font-size:12px;
+  color:#555;
+  margin-bottom:6px;
+}
+
+.product-price{
+  font-size:18px;
+  font-weight:bold;
+  color:#111;
+  margin:10px 0;
+}
+
+.product-stock{
+  font-size:12px;
+  margin-bottom:15px;
+}
+
+.stock-ok{color:#16833b}
+.stock-none{color:#c62828}
 
 .product-btn{
   display:block;
@@ -311,6 +370,17 @@ section{padding:80px 0}
 .product-btn:hover{
   background:var(--gold);
   color:#111;
+}
+
+.loading,
+.no-products,
+.error-message{
+  grid-column:1/-1;
+  text-align:center;
+  padding:45px 20px;
+  background:white;
+  border-radius:18px;
+  color:#777;
 }
 
 /* BRANDS */
@@ -533,6 +603,10 @@ footer{
     grid-template-columns:1fr;
   }
 
+  .product-tools{
+    grid-template-columns:1fr;
+  }
+
   .brand-grid{
     grid-template-columns:repeat(2,1fr);
   }
@@ -597,7 +671,9 @@ footer{
           مشاهده محصولات
         </a>
 
-        <a class="btn btn-outline" href="https://wa.me/989389886161" target="_blank">
+        <a class="btn btn-outline"
+           href="https://wa.me/989389886161"
+           target="_blank">
           واتساپ
         </a>
 
@@ -611,8 +687,8 @@ footer{
   <div class="container stats-grid">
 
     <div class="stat">
-      <strong>ChinoTech</strong>
-      <span>قطعات خودروهای چینی</span>
+      <strong id="productCount">...</strong>
+      <span>قطعه موجود در فروشگاه</span>
     </div>
 
     <div class="stat">
@@ -629,54 +705,43 @@ footer{
 </div>
 
 <section id="products">
+
   <div class="container">
 
     <div class="section-title">
       <div class="small">CHINOTECH PRODUCTS</div>
-      <h2>دسته‌بندی محصولات</h2>
-      <p>برای مشاهده و استعلام قیمت با ما تماس بگیرید.</p>
+      <h2>محصولات چینوتک</h2>
+      <p>قطعه موردنظر خود را جستجو کنید.</p>
     </div>
 
-    <div class="products">
+    <div class="product-tools">
 
-      <div class="product">
-        <div class="product-image">🚘</div>
-        <div class="product-info">
-          <span class="product-tag">JAC</span>
-          <h3>قطعات جک</h3>
-          <p>لوازم و قطعات خودروهای جک</p>
-          <a class="product-btn" href="tel:09102284286">
-            استعلام قیمت
-          </a>
-        </div>
-      </div>
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="🔎 جستجوی نام قطعه..."
+        autocomplete="off">
 
-      <div class="product">
-        <div class="product-image">🔧</div>
-        <div class="product-info">
-          <span class="product-tag">CHERY</span>
-          <h3>قطعات چری</h3>
-          <p>لوازم و قطعات خودروهای چری</p>
-          <a class="product-btn" href="tel:09389886161">
-            استعلام قیمت
-          </a>
-        </div>
-      </div>
+      <select id="categoryFilter">
+        <option value="">همه دسته‌بندی‌ها</option>
+      </select>
 
-      <div class="product">
-        <div class="product-image">⚙️</div>
-        <div class="product-info">
-          <span class="product-tag">MVM</span>
-          <h3>قطعات ام‌وی‌ام</h3>
-          <p>لوازم مصرفی و قطعات خودروهای MVM</p>
-          <a class="product-btn" href="tel:09359886163">
-            استعلام قیمت
-          </a>
-        </div>
+      <select id="carFilter">
+        <option value="">همه خودروها</option>
+      </select>
+
+    </div>
+
+    <div id="productsContainer" class="products">
+
+      <div class="loading">
+        در حال دریافت محصولات...
       </div>
 
     </div>
+
   </div>
+
 </section>
 
 <section class="brands" id="brands">
@@ -842,6 +907,353 @@ footer{
   </div>
 
 </footer>
+
+<script>
+
+/* SUPABASE */
+
+const SUPABASE_URL =
+  "https://viyqzrruxundtsgtfjsj.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_v0eLyw6i703J8p2gPeBUOA_iKepeDIY";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+/* DATA */
+
+let allProducts = [];
+
+const productsContainer =
+  document.getElementById("productsContainer");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const categoryFilter =
+  document.getElementById("categoryFilter");
+
+const carFilter =
+  document.getElementById("carFilter");
+
+const productCount =
+  document.getElementById("productCount");
+
+/* LOAD PRODUCTS */
+
+async function loadProducts(){
+
+  productsContainer.innerHTML =
+    '<div class="loading">در حال دریافت محصولات...</div>';
+
+  try{
+
+    const {data,error} =
+      await supabaseClient
+        .from("products")
+        .select("*")
+        .order("id",{ascending:false});
+
+    if(error) throw error;
+
+    allProducts = data || [];
+
+    productCount.textContent =
+      allProducts.length;
+
+    buildFilters();
+
+    renderProducts(allProducts);
+
+  }catch(error){
+
+    console.error(error);
+
+    productCount.textContent = "0";
+
+    productsContainer.innerHTML = `
+      <div class="error-message">
+        <strong>خطا در دریافت محصولات</strong>
+        <br>
+        اتصال به فروشگاه برقرار نشد.
+      </div>
+    `;
+
+  }
+
+}
+
+/* FILTERS */
+
+function buildFilters(){
+
+  const categories =
+    [...new Set(
+      allProducts
+        .map(p => p.category)
+        .filter(Boolean)
+    )];
+
+  const cars =
+    [...new Set(
+      allProducts
+        .map(p => p.car_model)
+        .filter(Boolean)
+    )];
+
+  categoryFilter.innerHTML =
+    '<option value="">همه دسته‌بندی‌ها</option>';
+
+  carFilter.innerHTML =
+    '<option value="">همه خودروها</option>';
+
+  categories.forEach(item => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = item;
+    option.textContent = item;
+
+    categoryFilter.appendChild(option);
+
+  });
+
+  cars.forEach(item => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = item;
+    option.textContent = item;
+
+    carFilter.appendChild(option);
+
+  });
+
+}
+
+/* RENDER */
+
+function renderProducts(products){
+
+  if(!products.length){
+
+    productsContainer.innerHTML =
+      '<div class="no-products">محصولی پیدا نشد.</div>';
+
+    return;
+  }
+
+  productsContainer.innerHTML =
+    products.map(product => {
+
+      const image =
+        product.image
+        ? `<img src="${escapeAttribute(product.image)}"
+                 alt="${escapeAttribute(product.name || "محصول")}"
+                 loading="lazy">`
+        : "🔧";
+
+      const price =
+        product.price !== null &&
+        product.price !== undefined &&
+        product.price !== ""
+        ? formatPrice(product.price)
+        : "تماس بگیرید";
+
+      const stock =
+        Number(product.stock || 0);
+
+      const stockHtml =
+        stock > 0
+        ? `<div class="product-stock stock-ok">
+             موجودی: ${stock}
+           </div>`
+        : `<div class="product-stock stock-none">
+             ناموجود
+           </div>`;
+
+      return `
+        <div class="product">
+
+          <div class="product-image">
+            ${image}
+          </div>
+
+          <div class="product-info">
+
+            ${
+              product.category
+              ? `<span class="product-tag">
+                   ${escapeHtml(product.category)}
+                 </span>`
+              : ""
+            }
+
+            <h3>
+              ${escapeHtml(product.name || "بدون نام")}
+            </h3>
+
+            ${
+              product.car_model
+              ? `<div class="product-model">
+                   🚗 مدل خودرو:
+                   ${escapeHtml(product.car_model)}
+                 </div>`
+              : ""
+            }
+
+            ${
+              product.description
+              ? `<p>
+                   ${escapeHtml(product.description)}
+                 </p>`
+              : ""
+            }
+
+            <div class="product-price">
+              ${price}
+            </div>
+
+            ${stockHtml}
+
+            <a
+              class="product-btn"
+              href="tel:09102284286">
+              استعلام قیمت
+            </a>
+
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+/* SEARCH */
+
+function filterProducts(){
+
+  const search =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+  const category =
+    categoryFilter.value;
+
+  const car =
+    carFilter.value;
+
+  const filtered =
+    allProducts.filter(product => {
+
+      const name =
+        String(product.name || "")
+          .toLowerCase();
+
+      const description =
+        String(product.description || "")
+          .toLowerCase();
+
+      const model =
+        String(product.car_model || "")
+          .toLowerCase();
+
+      const categoryText =
+        String(product.category || "")
+          .toLowerCase();
+
+      const matchesSearch =
+        !search ||
+        name.includes(search) ||
+        description.includes(search) ||
+        model.includes(search) ||
+        categoryText.includes(search);
+
+      const matchesCategory =
+        !category ||
+        product.category === category;
+
+      const matchesCar =
+        !car ||
+        product.car_model === car;
+
+      return (
+        matchesSearch &&
+        matchesCategory &&
+        matchesCar
+      );
+
+    });
+
+  renderProducts(filtered);
+
+}
+
+searchInput.addEventListener(
+  "input",
+  filterProducts
+);
+
+categoryFilter.addEventListener(
+  "change",
+  filterProducts
+);
+
+carFilter.addEventListener(
+  "change",
+  filterProducts
+);
+
+/* HELPERS */
+
+function formatPrice(value){
+
+  const number = Number(value);
+
+  if(!Number.isFinite(number)){
+    return "تماس بگیرید";
+  }
+
+  return new Intl.NumberFormat("fa-IR")
+    .format(number) + " تومان";
+
+}
+
+function escapeHtml(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+function escapeAttribute(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;");
+
+}
+
+/* START */
+
+loadProducts();
+
+</script>
 
 </body>
 </html>
