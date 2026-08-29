@@ -1,1979 +1,1346 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ChinoTech | لوازم خودروهای چینی</title>
-
-<meta name="description" content="ChinoTech - فروش لوازم و قطعات خودروهای چینی">
-
-<meta name="google-site-verification"
-content="eGWljtG2KRw-mIE7GBUxljZwmTTms4g3dQRgkuWncyY">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box
-}
-
-:root{
---gold:#f5b800;
---gold2:#ffd45a;
---black:#080808;
---dark:#111;
---gray:#777;
---light:#f5f6f8;
---white:#fff;
-}
-
-html{
-scroll-behavior:smooth
-}
-
-body{
-font-family:Tahoma,Arial,sans-serif;
-background:var(--light);
-color:#171717;
-line-height:1.8;
-}
-
-a{
-text-decoration:none;
-color:inherit
-}
-
-button,
-input{
-font-family:inherit
-}
-
-.container{
-width:min(1180px,92%);
-margin:auto;
-}
-
-
-/* HEADER */
-
-header{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(8,8,8,.96);
-backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.nav{
-height:78px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-
-.logo{
-font-size:29px;
-font-weight:900;
-color:var(--gold);
-letter-spacing:.5px;
-}
-
-.logo span{
-color:white
-}
-
-nav{
-display:flex;
-align-items:center;
-gap:28px;
-}
-
-nav a{
-color:#ddd;
-font-size:14px;
-transition:.25s;
-}
-
-nav a:hover{
-color:var(--gold);
-}
-
-.nav-btn{
-background:var(--gold);
-color:#111;
-padding:9px 18px;
-border-radius:9px;
-font-weight:bold;
-}
-
-
-/* HERO */
-
-.hero{
-position:relative;
-min-height:610px;
-display:flex;
-align-items:center;
-overflow:hidden;
-color:white;
-
-background:
-radial-gradient(
-circle at 80% 30%,
-rgba(245,184,0,.18),
-transparent 30%
-),
-linear-gradient(
-135deg,
-#050505,
-#171717 55%,
-#090909
-);
-}
-
-.hero:before{
-content:"";
-position:absolute;
-width:450px;
-height:450px;
-border:1px solid rgba(245,184,0,.12);
-border-radius:50%;
-left:-160px;
-bottom:-220px;
-}
-
-.hero-content{
-position:relative;
-max-width:720px;
-padding:80px 0;
-}
-
-.badge{
-display:inline-flex;
-align-items:center;
-gap:8px;
-background:rgba(245,184,0,.12);
-border:1px solid rgba(245,184,0,.35);
-color:var(--gold2);
-padding:7px 16px;
-border-radius:50px;
-font-size:13px;
-margin-bottom:22px;
-}
-
-.hero h1{
-font-size:clamp(40px,7vw,70px);
-line-height:1.2;
-margin-bottom:20px;
-font-weight:900;
-}
-
-.hero h1 span{
-color:var(--gold)
-}
-
-.hero p{
-color:#c7c7c7;
-font-size:18px;
-max-width:620px;
-margin-bottom:30px;
-}
-
-.buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:13px 25px;
-border-radius:11px;
-font-weight:bold;
-transition:.25s;
-}
-
-.btn-primary{
-background:var(--gold);
-color:#111;
-}
-
-.btn-primary:hover{
-transform:translateY(-3px);
-background:var(--gold2);
-}
-
-.btn-outline{
-border:1px solid #555;
-color:white;
-}
-
-.btn-outline:hover{
-border-color:var(--gold);
-color:var(--gold);
-}
-
-
-/* STATS */
-
-.stats{
-margin-top:-45px;
-position:relative;
-z-index:5;
-}
-
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-}
-
-.stat{
-background:white;
-border-radius:16px;
-padding:22px;
-text-align:center;
-box-shadow:0 10px 35px rgba(0,0,0,.09);
-}
-
-.stat strong{
-display:block;
-font-size:25px;
-color:#111;
-}
-
-.stat span{
-color:var(--gray);
-font-size:13px;
-}
-
-
-/* SECTION */
-
-section{
-padding:80px 0;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:42px;
-}
-
-.section-title .small{
-color:var(--gold);
-font-size:13px;
-font-weight:bold;
-}
-
-.section-title h2{
-font-size:34px;
-margin:5px 0;
-}
-
-.section-title p{
-color:var(--gray);
-font-size:14px;
-}
-
-
-/* SEARCH */
-
-.search-wrapper{
-margin-bottom:32px;
-}
-
-.search-box{
-position:relative;
-max-width:700px;
-margin:0 auto;
-}
-
-.search-box input{
-width:100%;
-height:58px;
-background:white;
-border:1px solid #e4e4e4;
-border-radius:16px;
-padding:0 55px 0 20px;
-font-size:14px;
-outline:none;
-box-shadow:0 7px 25px rgba(0,0,0,.06);
-transition:.25s;
-}
-
-.search-box input:focus{
-border-color:var(--gold);
-box-shadow:
-0 0 0 3px rgba(245,184,0,.12),
-0 7px 25px rgba(0,0,0,.06);
-}
-
-.search-icon{
-position:absolute;
-right:18px;
-top:50%;
-transform:translateY(-50%);
-font-size:22px;
-color:#777;
-pointer-events:none;
-}
-
-
-/* BRAND FILTERS */
-
-.brand-filters{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-flex-wrap:wrap;
-margin-top:18px;
-}
-
-.brand-filter{
-background:white;
-border:1px solid #e3e3e3;
-border-radius:12px;
-padding:9px 18px;
-cursor:pointer;
-transition:.2s;
-color:#333;
-font-size:13px;
-}
-
-.brand-filter:hover,
-.brand-filter.active{
-background:var(--gold);
-border-color:var(--gold);
-color:#111;
-}
-
-
-/* PRODUCTS */
-
-.products{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:22px;
-}
-
-.product{
-background:white;
-border-radius:18px;
-overflow:hidden;
-border:1px solid #eee;
-box-shadow:0 7px 25px rgba(0,0,0,.06);
-transition:.3s;
-}
-
-.product:hover{
-transform:translateY(-7px);
-box-shadow:0 15px 35px rgba(0,0,0,.12);
-}
-
-.product-image{
-height:210px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:
-radial-gradient(
-circle,
-rgba(245,184,0,.14),
-transparent 55%
-),
-linear-gradient(
-135deg,
-#161616,
-#303030
-);
-color:var(--gold);
-font-size:65px;
-overflow:hidden;
-}
-
-.product-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-}
-
-.product-info{
-padding:22px;
-}
-
-.product-tag{
-display:inline-block;
-font-size:11px;
-color:#9a7300;
-background:#fff7dc;
-padding:4px 9px;
-border-radius:20px;
-margin-bottom:8px;
-}
-
-.product-info h3{
-font-size:20px;
-margin-bottom:6px;
-}
-
-.product-info p{
-color:var(--gray);
-font-size:13px;
-margin-bottom:17px;
-}
-
-.product-price{
-font-size:18px;
-font-weight:bold;
-color:#111;
-margin-bottom:12px;
-}
-
-.product-stock{
-font-size:12px;
-color:#6d6d6d;
-margin-bottom:12px;
-}
-
-.product-btn{
-display:block;
-text-align:center;
-background:#111;
-color:white;
-padding:10px;
-border-radius:9px;
-font-size:13px;
-transition:.2s;
-}
-
-.product-btn:hover{
-background:var(--gold);
-color:#111;
-}
-
-.loading{
-grid-column:1/-1;
-background:white;
-padding:35px;
-border-radius:18px;
-text-align:center;
-color:#777;
-}
-
-.no-products{
-grid-column:1/-1;
-background:white;
-padding:35px;
-border-radius:18px;
-text-align:center;
-color:#777;
-}
-
-
-/* BRANDS */
-
-.brands{
-background:#111;
-color:white;
-}
-
-.brand-grid{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:13px;
-}
-
-.brand{
-border:1px solid #292929;
-border-radius:14px;
-padding:18px 10px;
-text-align:center;
-color:#ddd;
-transition:.25s;
-cursor:pointer;
-}
-
-.brand:hover,
-.brand.active{
-border-color:var(--gold);
-color:var(--gold);
-transform:translateY(-3px);
-}
-
-.brand-logo{
-height:55px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:8px;
-}
-
-.brand-logo img{
-max-width:90px;
-max-height:48px;
-object-fit:contain;
-}
-
-.brand-logo-fallback{
-font-size:24px;
-font-weight:900;
-color:var(--gold);
-}
-
-
-/* MODELS */
-
-.models-section{
-background:#0d0d0d;
-padding-top:0;
-}
-
-.models-title{
-text-align:center;
-color:white;
-margin-bottom:20px;
-}
-
-.models-title span{
-color:var(--gold);
-}
-
-.models{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.model{
-border:1px solid #292929;
-background:#151515;
-color:#ddd;
-padding:9px 18px;
-border-radius:10px;
-cursor:pointer;
-transition:.2s;
-}
-
-.model:hover,
-.model.active{
-border-color:var(--gold);
-background:var(--gold);
-color:#111;
-}
-
-
-/* ABOUT */
-
-.about-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:35px;
-align-items:center;
-}
-
-.about-card{
-background:white;
-padding:35px;
-border-radius:20px;
-box-shadow:0 7px 30px rgba(0,0,0,.06);
-}
-
-.about-card h2{
-font-size:32px;
-margin-bottom:15px;
-}
-
-.about-card p{
-color:#666;
-font-size:15px;
-}
-
-.features{
-display:grid;
-gap:15px;
-}
-
-.feature{
-background:white;
-border-radius:14px;
-padding:20px;
-display:flex;
-align-items:center;
-gap:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-.feature-icon{
-width:48px;
-height:48px;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#fff6d6;
-font-size:22px;
-flex-shrink:0;
-}
-
-.feature h3{
-font-size:15px
-}
-
-.feature p{
-color:#777;
-font-size:12px;
-}
-
-
-/* CONTACT */
-
-.contact{
-background:#f0f1f3;
-}
-
-.contact-box{
-background:#111;
-color:white;
-border-radius:24px;
-padding:45px;
-text-align:center;
-position:relative;
-overflow:hidden;
-}
-
-.contact-box:after{
-content:"";
-position:absolute;
-width:280px;
-height:280px;
-border:1px solid rgba(245,184,0,.15);
-border-radius:50%;
-left:-100px;
-bottom:-180px;
-}
-
-.contact-box h2{
-font-size:31px;
-margin-bottom:8px;
-}
-
-.contact-box>p{
-color:#aaa;
-margin-bottom:28px;
-}
-
-.contact-items{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-position:relative;
-z-index:2;
-}
-
-.contact-item{
-background:#1d1d1d;
-border:1px solid #303030;
-padding:12px 20px;
-border-radius:10px;
-color:#ddd;
-font-size:13px;
-transition:.2s;
-}
-
-.contact-item:hover{
-border-color:var(--gold);
-color:var(--gold);
-}
-
-
-/* FOOTER */
-
-footer{
-background:#050505;
-color:#777;
-padding:30px 0;
-text-align:center;
-}
-
-.footer-logo{
-color:var(--gold);
-font-size:25px;
-font-weight:bold;
-margin-bottom:8px;
-}
-
-.social{
-display:flex;
-justify-content:center;
-gap:10px;
-margin:18px 0;
-}
-
-.social a{
-width:42px;
-height:42px;
-display:flex;
-align-items:center;
-justify-content:center;
-border:1px solid #292929;
-border-radius:50%;
-color:#bbb;
-transition:.2s;
-}
-
-.social a:hover{
-color:var(--gold);
-border-color:var(--gold);
-}
-
-
-/* MOBILE */
-
-@media(max-width:850px){
-
-nav{
-display:none
-}
-
-.nav-btn{
-display:none
-}
-
-.hero{
-min-height:570px;
-}
-
-.hero-content{
-text-align:center;
-}
-
-.hero p{
-margin-left:auto;
-margin-right:auto;
-}
-
-.buttons{
-justify-content:center;
-}
-
-.stats-grid{
-grid-template-columns:1fr;
-}
-
-.products{
-grid-template-columns:1fr;
-}
-
-.brand-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.about-grid{
-grid-template-columns:1fr;
-}
-
-.contact-box{
-padding:32px 20px;
-}
-
-.search-box input{
-height:54px;
-}
-
-}
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ChinoTech | لوازم خودروهای چینی</title>
+  <meta
+    name="description"
+    content="ChinoTech - فروش لوازم و قطعات خودروهای چینی"
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #1f2937;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* HEADER */
+    header {
+      background: #111827;
+      color: white;
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 12px rgba(0,0,0,.12);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #ef4444;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      border: none;
+      background: transparent;
+      color: #d1d5db;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    nav button:hover,
+    nav button.active {
+      background: #ef4444;
+      color: white;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #111827, #374151);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #d1d5db;
+      margin-bottom: 28px;
+      font-size: 17px;
+    }
+
+    .search-box {
+      max-width: 650px;
+      margin: auto;
+      display: flex;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 16px;
+      font-size: 15px;
+      color: #111827;
+    }
+
+    .search-box button {
+      width: 60px;
+      border: none;
+      background: #ef4444;
+      color: white;
+      font-size: 20px;
+    }
+
+    /* FILTERS */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #6b7280;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .tab {
+      border: 1px solid #d1d5db;
+      background: white;
+      color: #374151;
+      padding: 11px 22px;
+      border-radius: 10px;
+      transition: .2s;
+    }
+
+    .tab:hover {
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+
+    .tab.active {
+      background: #ef4444;
+      border-color: #ef4444;
+      color: white;
+    }
+
+    /* BRAND / MODEL */
+    .selector-area {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.06);
+    }
+
+    .selector-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .brand-list,
+    .model-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .brand-btn,
+    .model-btn {
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      padding: 10px 15px;
+      border-radius: 9px;
+      color: #374151;
+    }
+
+    .brand-btn:hover,
+    .model-btn:hover,
+    .brand-btn.selected,
+    .model-btn.selected {
+      background: #111827;
+      color: white;
+      border-color: #111827;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,.12);
+    }
+
+    .product-image {
+      height: 190px;
+      background: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 45px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .product-brand {
+      font-size: 12px;
+      color: #ef4444;
+      margin-bottom: 7px;
+    }
+
+    .product-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .product-model {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    .product-price {
+      font-size: 17px;
+      font-weight: bold;
+      color: #111827;
+    }
+
+    .no-products {
+      text-align: center;
+      background: white;
+      padding: 40px 20px;
+      border-radius: 15px;
+      color: #6b7280;
+      grid-column: 1 / -1;
+    }
+
+    /* ABOUT */
+    .about {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      line-height: 2;
+      box-shadow: 0 3px 15px rgba(0,0,0,.05);
+    }
+
+    /* CONTACT */
+    .contact-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .contact-item {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 3px 15px rgba(0,0,0,.05);
+    }
+
+    .contact-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .contact-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .contact-item p {
+      color: #6b7280;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 30px;
+      background: #111827;
+      color: #d1d5db;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    .socials {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .socials a {
+      color: white;
+      text-decoration: none;
+      background: #374151;
+      padding: 9px 14px;
+      border-radius: 8px;
+    }
+
+    .socials a:hover {
+      background: #ef4444;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 40px 15px;
+      }
+
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 220px;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      nav button {
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <div class="container nav">
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
 
-    <div class="logo">
-      Chino<span>Tech</span>
-    </div>
-
-    <nav>
-      <a href="#home">خانه</a>
-      <a href="#products">محصولات</a>
-      <a href="#brands">برندها</a>
-      <a href="#about">درباره ما</a>
-      <a href="#contact">تماس با ما</a>
-    </nav>
-
-    <a class="nav-btn" href="tel:09102284286">
-      تماس با ما
-    </a>
-
-  </div>
-</header>
-
-
-<section class="hero" id="home">
-
-  <div class="container">
-
-    <div class="hero-content">
-
-      <div class="badge">
-        🚗 فروش تخصصی لوازم خودروهای چینی
+      <div class="logo">
+        Chino<span>Tech</span>
       </div>
 
-      <h1>
-        قطعه مناسب خودروت را
-        <span>پیدا کن</span>
-      </h1>
-
-      <p>
-        چینوتک؛ فروش لوازم و قطعات خودروهای چینی
-        با کیفیت مناسب و قیمت رقابتی.
-      </p>
-
-      <div class="buttons">
-
-        <a class="btn btn-primary" href="#products">
-          مشاهده محصولات
-        </a>
-
-        <a
-          class="btn btn-outline"
-          href="https://wa.me/989389886161"
-          target="_blank"
-        >
-          واتساپ
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<div class="stats">
-
-  <div class="container stats-grid">
-
-    <div class="stat">
-      <strong id="productCount">0</strong>
-      <span>قطعه موجود</span>
-    </div>
-
-    <div class="stat">
-      <strong id="brandCount">0</strong>
-      <span>برند خودرو</span>
-    </div>
-
-    <div class="stat">
-      <strong>تهران</strong>
-      <span>بلوار فردوس شرق</span>
-    </div>
-
-  </div>
-
-</div>
-
-
-<section id="products">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <div class="small">
-        CHINOTECH PRODUCTS
-      </div>
-
-      <h2>
-        محصولات
-      </h2>
-
-      <p>
-        قطعه یا مدل خودرو را جستجو کنید.
-      </p>
-
-    </div>
-
-
-    <div class="search-wrapper">
-
-      <div class="search-box">
-
-        <span class="search-icon">
-          🔍
-        </span>
-
-        <input
-          type="search"
-          id="searchInput"
-          placeholder="جستجوی قطعه، برند یا مدل خودرو..."
-          autocomplete="off"
-        >
-
-      </div>
-
-
-      <div
-        class="brand-filters"
-        id="brandFilters"
-      >
-
-        <button
-          class="brand-filter active"
-          data-brand="all"
-          type="button"
-        >
-          همه
+      <nav>
+        <button class="nav-btn active" data-section="home">
+          خانه
         </button>
 
-      </div>
+        <button class="nav-btn" data-section="products-section">
+          قطعات
+        </button>
+
+        <button class="nav-btn" data-section="brands-section">
+          برندها
+        </button>
+
+        <button class="nav-btn" data-section="about-section">
+          درباره ما
+        </button>
+
+        <button class="nav-btn" data-section="contact-section">
+          تماس با ما
+        </button>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+    <h1>ChinoTech</h1>
+
+    <p>
+      فروش لوازم و قطعات خودروهای چینی
+    </p>
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="نام قطعه، برند یا مدل خودرو را جستجو کنید..."
+      />
+
+      <button id="searchBtn">
+        🔍
+      </button>
 
     </div>
 
-
-    <div
-      class="products"
-      id="productsList"
-    >
-
-      <div class="loading">
-        در حال دریافت محصولات...
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+  </section>
 
 
-<section
-  class="brands"
-  id="brands"
->
-
-  <div class="container">
+  <!-- PRODUCTS -->
+  <section class="section" id="products-section">
 
     <div class="section-title">
-
-      <div class="small">
-        BRANDS
-      </div>
-
-      <h2>
-        برندهای خودرو
-      </h2>
-
-      <p>
-        برند مورد نظر را انتخاب کنید.
-      </p>
-
+      <h2>قطعات خودرو</h2>
+      <p>قطعه مورد نظر خود را پیدا کنید</p>
     </div>
 
 
-    <div
-      class="brand-grid"
-      id="brandGrid"
-    >
+    <!-- MAIN TABS -->
+    <div class="tabs">
 
-      <div class="brand">
-        <div class="brand-logo">
-          <div class="brand-logo-fallback">
-            JAC
-          </div>
-        </div>
-        JAC
-      </div>
-
-
-      <div class="brand">
-        <div class="brand-logo">
-          <div class="brand-logo-fallback">
-            CHERY
-          </div>
-        </div>
-        CHERY
-      </div>
-
-
-      <div class="brand">
-        <div class="brand-logo">
-          <div class="brand-logo-fallback">
-            MVM
-          </div>
-        </div>
-        MVM
-      </div>
-
-
-      <div class="brand">
-        <div class="brand-logo">
-          <div class="brand-logo-fallback">
-            KMC
-          </div>
-        </div>
-        KMC
-      </div>
-
-
-      <div class="brand">
-        <div class="brand-logo">
-          <div class="brand-logo-fallback">
-            BAIC
-          </div>
-        </div>
-        BAIC
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section
-  class="models-section"
-  id="models"
->
-
-  <div class="container">
-
-    <div class="models-title">
-
-      <h2>
-        مدل‌های
-        <span id="selectedBrandName">
-          خودرو
-        </span>
-      </h2>
-
-    </div>
-
-
-    <div
-      class="models"
-      id="modelsList"
-    >
-
-      <div class="model">
-        همه مدل‌ها
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section id="about">
-
-  <div class="container about-grid">
-
-    <div class="about-card">
-
-      <div
-        class="small"
-        style="color:#c89500;font-weight:bold"
+      <button
+        class="tab active"
+        data-filter="parts"
+        id="partsTab"
       >
-        ABOUT CHINOTECH
+        🔧 قطعات
+      </button>
+
+      <button
+        class="tab"
+        data-filter="brands"
+        id="brandsTab"
+      >
+        🚗 برند
+      </button>
+
+      <button
+        class="tab"
+        data-filter="models"
+        id="modelsTab"
+      >
+        📋 مدل
+      </button>
+
+    </div>
+
+
+    <!-- BRAND SELECTOR -->
+    <div
+      class="selector-area hidden"
+      id="brandSelector"
+    >
+
+      <div class="selector-title">
+        انتخاب برند خودرو
       </div>
 
-      <h2>
-        چرا چینوتک؟
-      </h2>
+      <div class="brand-list" id="brandList"></div>
+
+    </div>
+
+
+    <!-- MODEL SELECTOR -->
+    <div
+      class="selector-area hidden"
+      id="modelSelector"
+    >
+
+      <div class="selector-title">
+        انتخاب مدل خودرو
+      </div>
+
+      <div class="model-list" id="modelList"></div>
+
+    </div>
+
+
+    <!-- PRODUCTS GRID -->
+    <div class="products" id="productsGrid"></div>
+
+  </section>
+
+
+  <!-- BRANDS -->
+  <section
+    class="section hidden"
+    id="brands-section"
+  >
+
+    <div class="section-title">
+      <h2>برندهای خودرو</h2>
+      <p>برند مورد نظر خود را انتخاب کنید</p>
+    </div>
+
+    <div class="brand-list" id="brandPageList"></div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section
+    class="section"
+    id="about-section"
+  >
+
+    <div class="section-title">
+      <h2>درباره ChinoTech</h2>
+    </div>
+
+    <div class="about">
 
       <p>
-        چینوتک با هدف تأمین لوازم و قطعات خودروهای چینی
-        فعالیت می‌کند و تلاش دارد خرید قطعه را برای مشتریان
-        ساده، سریع و مطمئن کند.
+        <strong>ChinoTech</strong>
+        با هدف ارائه لوازم و قطعات خودروهای چینی
+        فعالیت می‌کند.
+      </p>
+
+      <p>
+        در این فروشگاه می‌توانید قطعات خودروهای مختلف
+        چینی را بر اساس برند و مدل پیدا کنید.
+      </p>
+
+      <p>
+        هدف ما ارائه اطلاعات کامل قطعه، قیمت مناسب
+        و دسترسی آسان برای مشتریان است.
       </p>
 
     </div>
 
+  </section>
 
-    <div class="features">
 
-      <div class="feature">
+  <!-- CONTACT -->
+  <section
+    class="section"
+    id="contact-section"
+  >
 
-        <div class="feature-icon">
-          ✓
-        </div>
-
-        <div>
-
-          <h3>
-            استعلام سریع قیمت
-          </h3>
-
-          <p>
-            برای قیمت و موجودی با ما تماس بگیرید.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="feature">
-
-        <div class="feature-icon">
-          ⚙️
-       <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-const SUPABASE_URL =
-"https://viyqzrruxundtsgtfjsj.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_v0eLyw6i703J8p2gPeBUOA_iKepeDIY";
-
-const supabaseClient =
-supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-
-let allProducts = [];
-let selectedBrand = "all";
-let selectedModel = "all";
-
-
-const productsList =
-document.getElementById("productsList");
-
-const searchInput =
-document.getElementById("searchInput");
-
-const brandFilters =
-document.getElementById("brandFilters");
-
-const brandGrid =
-document.getElementById("brandGrid");
-
-const modelsList =
-document.getElementById("modelsList");
-
-const selectedBrandName =
-document.getElementById("selectedBrandName");
-
-const productCount =
-document.getElementById("productCount");
-
-const brandCount =
-document.getElementById("brandCount");
-
-
-
-function getValue(product, names){
-
-  for(const name of names){
-
-    if(
-      product[name] !== undefined &&
-      product[name] !== null &&
-      product[name] !== ""
-    ){
-      return product[name];
-    }
-
-  }
-
-  return "";
-
-}
-
-
-
-function escapeHTML(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-
-function formatPrice(value){
-
-  if(
-    value === null ||
-    value === undefined ||
-    value === ""
-  ){
-    return "";
-  }
-
-  const number =
-    Number(
-      String(value)
-        .replace(/,/g,"")
-        .replace(/[^\d.]/g,"")
-    );
-
-  if(Number.isNaN(number)){
-    return escapeHTML(value);
-  }
-
-  return number.toLocaleString("fa-IR") + " تومان";
-
-}
-
-
-
-function getImage(product){
-
-  return getValue(
-    product,
-    [
-      "image_url",
-      "image",
-      "photo",
-      "imageUrl",
-      "photo_url"
-    ]
-  );
-
-}
-
-
-
-function getProductName(product){
-
-  return getValue(
-    product,
-    [
-      "name",
-      "title",
-      "product_name",
-      "productName"
-    ]
-  ) || "قطعه خودرو";
-
-}
-
-
-
-function getBrand(product){
-
-  return getValue(
-    product,
-    [
-      "brand",
-      "brand_name",
-      "car_brand",
-      "carBrand"
-    ]
-  ) || "چینی";
-
-}
-
-
-
-function getModel(product){
-
-  return getValue(
-    product,
-    [
-      "model",
-      "model_name",
-      "car_model",
-      "carModel"
-    ]
-  ) || "";
-
-}
-
-
-
-function getDescription(product){
-
-  return getValue(
-    product,
-    [
-      "description",
-      "details",
-      "short_description"
-    ]
-  ) || "قطعه خودروهای چینی";
-
-}
-
-
-
-function getPrice(product){
-
-  return getValue(
-    product,
-    [
-      "price",
-      "amount",
-      "cost"
-    ]
-  );
-
-}
-
-
-
-function getStock(product){
-
-  return getValue(
-    product,
-    [
-      "stock",
-      "inventory",
-      "quantity",
-      "count"
-    ]
-  );
-
-}
-
-
-
-async function loadProducts(){
-
-  productsList.innerHTML = `
-    <div class="loading">
-      در حال دریافت محصولات...
+    <div class="section-title">
+      <h2>تماس با ما</h2>
+      <p>برای استعلام قیمت و موجودی با ما در ارتباط باشید</p>
     </div>
-  `;
 
+    <div class="contact-box">
 
-  const result =
-    await supabaseClient
-      .from("products")
-      .select("*")
-      .order("id",{ascending:false});
+      <div class="contact-item">
 
+        <div class="contact-icon">
+          📞
+        </div>
 
-  if(result.error){
+        <h3>تلفن</h3>
 
-    console.error(
-      "Supabase error:",
-      result.error
-    );
+        <p>
+          ۰۹۱۲۱۲۳۴۵۶۷۸
+        </p>
 
-    productsList.innerHTML = `
-      <div class="no-products">
-        خطا در دریافت محصولات
-        <br>
-        <small>
-          ${escapeHTML(result.error.message)}
-        </small>
       </div>
-    `;
-
-    return;
-  }
 
 
-  allProducts =
-    result.data || [];
+      <div class="contact-item">
+
+        <div class="contact-icon">
+          📸
+        </div>
+
+        <h3>اینستاگرام</h3>
+
+        <p>
+          ChinoTech
+        </p>
+
+      </div>
 
 
-  productCount.textContent =
-    allProducts.length;
+      <div class="contact-item">
+
+        <div class="contact-icon">
+          ✈️
+        </div>
+
+        <h3>تلگرام</h3>
+
+        <p>
+          ChinoTech
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
 
 
-  createBrandFilters();
+  <!-- FOOTER -->
+  <footer>
 
-  createBrandCards();
+    <strong>ChinoTech</strong>
 
-  renderModels();
+    <p>
+      لوازم و قطعات خودروهای چینی
+    </p>
 
-  renderProducts();
+    <div class="socials">
 
-}
+      <a href="#" target="_blank">
+        Instagram
+      </a>
+
+      <a href="#" target="_blank">
+        Telegram
+      </a>
+
+    </div>
+
+    <p style="margin-top:20px;">
+      © 2026 ChinoTech - تمامی حقوق محفوظ است
+    </p>
+
+  </footer>
 
 
+  <script>
 
-function getBrands(){
+    /* =========================
+       PRODUCT DATABASE
+    ========================= */
 
-  const brands = [];
+    const products = [
 
-  allProducts.forEach(product => {
+      {
+        id: 1,
+        name: "خنک‌کن گیربکس اتوماتیک",
+        brand: "JAC",
+        model: "S5",
+        category: "گیربکس",
+        price: "تماس بگیرید",
+        image: ""
+      },
 
-    const brand =
-      getBrand(product).trim();
+      {
+        id: 2,
+        name: "فیلتر هوا",
+        brand: "JAC",
+        model: "S5",
+        category: "موتور",
+        price: "تماس بگیرید",
+        image: ""
+      },
 
-    if(
-      brand &&
-      !brands.includes(brand)
-    ){
-      brands.push(brand);
+      {
+        id: 3,
+        name: "لنت ترمز جلو",
+        brand: "JAC",
+        model: "J4",
+        category: "ترمز",
+        price: "تماس بگیرید",
+        image: ""
+      },
+
+      {
+        id: 4,
+        name: "فیلتر روغن",
+        brand: "JAC",
+        model: "J4",
+        category: "موتور",
+        price: "تماس بگیرید",
+        image: ""
+      },
+
+      {
+        id: 5,
+        name: "لنت ترمز جلو",
+        brand: "Chery",
+        model: "Tiggo 5",
+        category: "ترمز",
+        price: "تماس بگیرید",
+        image: ""
+      },
+
+      {
+        id: 6,
+        name: "فیلتر هوا",
+        brand: "Chery",
+        model: "Tiggo 7",
+        category: "موتور",
+        price: "تماس بگیرید",
+        image: ""
+      },
+
+      {
+        id: 7,
+        name: "چراغ جلو",
+        brand: "Haima",
+        model: "S7",
+        category: "بدنه",
+        price: "تماس بگیرید",
+        image: ""
+      },
+
+      {
+        id: 8,
+        name: "لنت ترمز",
+        brand: "Haima",
+        model: "S5",
+        category: "ترمز",
+        price: "تماس بگیرید",
+        image: ""
+      }
+
+    ];
+
+
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+    const productsGrid =
+      document.getElementById("productsGrid");
+
+    const brandSelector =
+      document.getElementById("brandSelector");
+
+    const modelSelector =
+      document.getElementById("modelSelector");
+
+    const brandList =
+      document.getElementById("brandList");
+
+    const modelList =
+      document.getElementById("modelList");
+
+    const brandPageList =
+      document.getElementById("brandPageList");
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const searchBtn =
+      document.getElementById("searchBtn");
+
+
+    let selectedBrand = "";
+    let selectedModel = "";
+    let currentFilter = "parts";
+
+
+    /* =========================
+       GET BRANDS
+    ========================= */
+
+    function getBrands() {
+
+      return [
+        ...new Set(
+          products.map(product => product.brand)
+        )
+      ];
+
     }
 
-  });
 
-  return brands.sort();
+    /* =========================
+       GET MODELS
+    ========================= */
 
-}
+    function getModels(brand = "") {
 
+      let list = products;
 
+      if (brand) {
 
-function getModels(brand){
+        list = products.filter(
+          product => product.brand === brand
+        );
 
-  const models = [];
+      }
 
-  allProducts.forEach(product => {
+      return [
+        ...new Set(
+          list.map(product => product.model)
+        )
+      ];
 
-    const productBrand =
-      getBrand(product).trim();
-
-    const model =
-      getModel(product).trim();
-
-
-    if(
-      brand !== "all" &&
-      productBrand.toLowerCase() !==
-      brand.toLowerCase()
-    ){
-      return;
     }
 
 
-    if(
-      model &&
-      !models.includes(model)
-    ){
-      models.push(model);
+    /* =========================
+       RENDER BRANDS
+    ========================= */
+
+    function renderBrands() {
+
+      brandList.innerHTML = "";
+      brandPageList.innerHTML = "";
+
+      getBrands().forEach(brand => {
+
+        const button =
+          document.createElement("button");
+
+        button.className = "brand-btn";
+
+        button.textContent = brand;
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            selectedBrand = brand;
+            selectedModel = "";
+
+            document
+              .querySelectorAll(".brand-btn")
+              .forEach(btn =>
+                btn.classList.remove("selected")
+              );
+
+            button.classList.add("selected");
+
+            renderModels();
+            filterProducts();
+
+            modelSelector.classList.remove("hidden");
+
+          }
+        );
+
+        brandList.appendChild(button);
+
+
+        const pageButton =
+          document.createElement("button");
+
+        pageButton.className = "brand-btn";
+
+        pageButton.textContent = brand;
+
+        pageButton.addEventListener(
+          "click",
+          () => {
+
+            selectedBrand = brand;
+            selectedModel = "";
+
+            showProducts();
+
+            document.getElementById(
+              "products-section"
+            ).scrollIntoView({
+              behavior: "smooth"
+            });
+
+            activateTab("models");
+
+            renderModels();
+            filterProducts();
+
+          }
+        );
+
+        brandPageList.appendChild(pageButton);
+
+      });
+
     }
 
-  });
 
+    /* =========================
+       RENDER MODELS
+    ========================= */
 
-  return models.sort();
+    function renderModels() {
 
-}
+      modelList.innerHTML = "";
 
+      getModels(selectedBrand)
+        .forEach(model => {
 
+          const button =
+            document.createElement("button");
 
-function createBrandFilters(){
+          button.className = "model-btn";
 
-  const brands =
-    getBrands();
+          button.textContent = model;
 
+          button.addEventListener(
+            "click",
+            () => {
 
-  brandCount.textContent =
-    brands.length;
+              selectedModel = model;
 
+              document
+                .querySelectorAll(".model-btn")
+                .forEach(btn =>
+                  btn.classList.remove("selected")
+                );
 
-  brandFilters.innerHTML = "";
+              button.classList.add("selected");
 
+              filterProducts();
 
-  const allButton =
-    document.createElement("button");
+            }
+          );
 
-  allButton.type = "button";
+          modelList.appendChild(button);
 
-  allButton.className =
-    "brand-filter active";
+        });
 
-  allButton.dataset.brand =
-    "all";
+    }
 
-  allButton.textContent =
-    "همه";
 
-  allButton.onclick =
-    () => selectBrand("all");
+    /* =========================
+       RENDER PRODUCTS
+    ========================= */
 
-  brandFilters.appendChild(
-    allButton
-  );
+    function renderProducts(list) {
 
+      productsGrid.innerHTML = "";
 
-  brands.forEach(brand => {
+      if (!list.length) {
 
-    const button =
-      document.createElement("button");
+        productsGrid.innerHTML = `
+          <div class="no-products">
+            <h3>قطعه‌ای پیدا نشد</h3>
+            <p style="margin-top:10px;">
+              عبارت جستجو یا فیلتر انتخابی را تغییر دهید.
+            </p>
+          </div>
+        `;
 
-    button.type = "button";
+        return;
 
-    button.className =
-      "brand-filter";
+      }
 
-    button.dataset.brand =
-      brand;
 
-    button.textContent =
-      brand;
+      list.forEach(product => {
 
-    button.onclick =
-      () => selectBrand(brand);
+        const card =
+          document.createElement("div");
 
-    brandFilters.appendChild(
-      button
-    );
+        card.className = "product";
 
-  });
 
-}
+        let imageHTML = `
+          <div class="product-image">
+            🔧
+          </div>
+        `;
 
 
+        if (product.image) {
 
-function createBrandCards(){
+          imageHTML = `
+            <div class="product-image">
+              <img
+                src="${product.image}"
+                alt="${product.name}"
+              >
+            </div>
+          `;
 
-  const brands =
-    getBrands();
+        }
 
 
-  brandGrid.innerHTML = "";
+        card.innerHTML = `
 
+          ${imageHTML}
 
-  brands.forEach(brand => {
+          <div class="product-info">
 
-    const card =
-      document.createElement("div");
+            <div class="product-brand">
+              ${product.brand}
+            </div>
 
-    card.className =
-      "brand";
+            <div class="product-name">
+              ${product.name}
+            </div>
 
+            <div class="product-model">
+              مدل: ${product.model}
+            </div>
 
-    const logo =
-      document.createElement("div");
+            <div class="product-price">
+              ${product.price}
+            </div>
 
-    logo.className =
-      "brand-logo";
+          </div>
 
+        `;
 
-    const fallback =
-      document.createElement("div");
 
-    fallback.className =
-      "brand-logo-fallback";
+        productsGrid.appendChild(card);
 
-    fallback.textContent =
-      brand.toUpperCase();
+      });
 
+    }
 
-    logo.appendChild(
-      fallback
-    );
 
+    /* =========================
+       FILTER PRODUCTS
+    ========================= */
 
-    const name =
-      document.createElement("div");
+    function filterProducts() {
 
-    name.textContent =
-      brand;
+      let result = [...products];
 
 
-    card.appendChild(logo);
+      if (selectedBrand) {
 
-    card.appendChild(name);
+        result = result.filter(
+          product =>
+            product.brand === selectedBrand
+        );
 
+      }
 
-    card.onclick =
-      () => {
 
-        selectBrand(brand);
+      if (selectedModel) {
 
-        document
-          .getElementById("products")
-          .scrollIntoView({
-            behavior:"smooth"
-          });
+        result = result.filter(
+          product =>
+            product.model === selectedModel
+        );
 
-      };
+      }
 
 
-    brandGrid.appendChild(card);
+      renderProducts(result);
 
-  });
+    }
 
-}
 
+    /* =========================
+       SEARCH
+    ========================= */
 
-
-function selectBrand(brand){
-
-  selectedBrand =
-    brand;
-
-  selectedModel =
-    "all";
-
-
-  document
-    .querySelectorAll(".brand-filter")
-    .forEach(button => {
-
-      button.classList.toggle(
-        "active",
-        button.dataset.brand === brand
-      );
-
-    });
-
-
-  document
-    .querySelectorAll(".brand")
-    .forEach(card => {
+    function searchProducts() {
 
       const text =
-        card.textContent
+        searchInput.value
           .trim()
           .toLowerCase();
 
-      card.classList.toggle(
-        "active",
-        brand !== "all" &&
-        text === brand.toLowerCase()
+
+      if (!text) {
+
+        filterProducts();
+        return;
+
+      }
+
+
+      const result =
+        products.filter(product =>
+
+          product.name
+            .toLowerCase()
+            .includes(text)
+
+          ||
+
+          product.brand
+            .toLowerCase()
+            .includes(text)
+
+          ||
+
+          product.model
+            .toLowerCase()
+            .includes(text)
+
+          ||
+
+          product.category
+            .toLowerCase()
+            .includes(text)
+
+        );
+
+
+      renderProducts(result);
+
+      document
+        .getElementById("products-section")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+
+    searchBtn.addEventListener(
+      "click",
+      searchProducts
+    );
+
+
+    searchInput.addEventListener(
+      "keydown",
+      event => {
+
+        if (event.key === "Enter") {
+
+          searchProducts();
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       TABS
+    ========================= */
+
+    function activateTab(type) {
+
+      document
+        .querySelectorAll(".tab")
+        .forEach(tab =>
+          tab.classList.remove("active")
+        );
+
+
+      if (type === "parts") {
+
+        document
+          .getElementById("partsTab")
+          .classList.add("active");
+
+      }
+
+
+      if (type === "brands") {
+
+        document
+          .getElementById("brandsTab")
+          .classList.add("active");
+
+      }
+
+
+      if (type === "models") {
+
+        document
+          .getElementById("modelsTab")
+          .classList.add("active");
+
+      }
+
+    }
+
+
+    document
+      .getElementById("partsTab")
+      .addEventListener(
+        "click",
+        () => {
+
+          currentFilter = "parts";
+
+          selectedBrand = "";
+          selectedModel = "";
+
+          activateTab("parts");
+
+          brandSelector.classList.add("hidden");
+          modelSelector.classList.add("hidden");
+
+          renderProducts(products);
+
+        }
       );
 
-    });
 
+    document
+      .getElementById("brandsTab")
+      .addEventListener(
+        "click",
+        () => {
 
-  selectedBrandName.textContent =
-    brand === "all"
-      ? "خودرو"
-      : brand;
+          currentFilter = "brands";
 
+          activateTab("brands");
 
-  renderModels();
+          brandSelector.classList.remove("hidden");
+          modelSelector.classList.add("hidden");
 
-  renderProducts();
+          renderBrands();
 
-}
+          renderProducts(products);
 
-
-
-function renderModels(){
-
-  modelsList.innerHTML = "";
-
-
-  const allModelButton =
-    document.createElement("button");
-
-  allModelButton.type =
-    "button";
-
-  allModelButton.className =
-    "model" +
-    (
-      selectedModel === "all"
-        ? " active"
-        : ""
-    );
-
-  allModelButton.textContent =
-    "همه مدل‌ها";
-
-
-  allModelButton.onclick =
-    () => {
-
-      selectedModel =
-        "all";
-
-      renderModels();
-
-      renderProducts();
-
-    };
-
-
-  modelsList.appendChild(
-    allModelButton
-  );
-
-
-  const models =
-    getModels(selectedBrand);
-
-
-  models.forEach(model => {
-
-    const button =
-      document.createElement("button");
-
-    button.type =
-      "button";
-
-    button.className =
-      "model" +
-      (
-        selectedModel === model
-          ? " active"
-          : ""
+        }
       );
 
-    button.textContent =
-      model;
 
+    document
+      .getElementById("modelsTab")
+      .addEventListener(
+        "click",
+        () => {
 
-    button.onclick =
-      () => {
+          currentFilter = "models";
 
-        selectedModel =
-          model;
+          activateTab("models");
 
-        renderModels();
+          brandSelector.classList.remove("hidden");
+          modelSelector.classList.remove("hidden");
 
-        renderProducts();
+          renderBrands();
+          renderModels();
 
-      };
+          filterProducts();
 
-
-    modelsList.appendChild(
-      button
-    );
-
-  });
-
-}
-
-
-
-function renderProducts(){
-
-  const search =
-    searchInput.value
-      .trim()
-      .toLowerCase();
-
-
-  const filtered =
-    allProducts.filter(product => {
-
-      const name =
-        getProductName(product);
-
-      const brand =
-        getBrand(product);
-
-      const model =
-        getModel(product);
-
-      const description =
-        getDescription(product);
-
-
-      const searchable =
-        (
-          name +
-          " " +
-          brand +
-          " " +
-          model +
-          " " +
-          description
-        ).toLowerCase();
-
-
-      const searchOK =
-        !search ||
-        searchable.includes(search);
-
-
-      const brandOK =
-        selectedBrand === "all" ||
-        brand.toLowerCase() ===
-        selectedBrand.toLowerCase();
-
-
-      const modelOK =
-        selectedModel === "all" ||
-        model.toLowerCase() ===
-        selectedModel.toLowerCase();
-
-
-      return (
-        searchOK &&
-        brandOK &&
-        modelOK
+        }
       );
 
-    });
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    document
+      .querySelectorAll(".nav-btn")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const target =
+              document.getElementById(
+                button.dataset.section
+              );
 
 
-  if(filtered.length === 0){
-
-    productsList.innerHTML = `
-      <div class="no-products">
-        محصولی با این مشخصات پیدا نشد.
-      </div>
-    `;
-
-    return;
-  }
+            if (!target) return;
 
 
-  productsList.innerHTML =
-    filtered
-      .map(createProductCard)
-      .join("");
+            document
+              .querySelectorAll(".nav-btn")
+              .forEach(btn =>
+                btn.classList.remove("active")
+              );
 
-}
-
-
-
-function createProductCard(product){
-
-  const name =
-    escapeHTML(
-      getProductName(product)
-    );
+            button.classList.add("active");
 
 
-  const brand =
-    escapeHTML(
-      getBrand(product)
-    );
+            target.scrollIntoView({
+              behavior: "smooth"
+            });
 
-
-  const model =
-    escapeHTML(
-      getModel(product)
-    );
-
-
-  const description =
-    escapeHTML(
-      getDescription(product)
-    );
-
-
-  const price =
-    formatPrice(
-      getPrice(product)
-    );
-
-
-  const stock =
-    getStock(product);
-
-
-  const image =
-    getImage(product);
-
-
-  let imageHTML =
-    "⚙️";
-
-
-  if(image){
-
-    imageHTML = `
-      <img
-        src="${escapeHTML(image)}"
-        alt="${name}"
-        loading="lazy"
-        onerror="this.style.display='none'"
-      >
-    `;
-
-  }
-
-
-  return `
-
-    <div class="product">
-
-      <div class="product-image">
-
-        ${imageHTML}
-
-      </div>
-
-
-      <div class="product-info">
-
-        <span class="product-tag">
-
-          ${brand}
-
-          ${
-            model
-              ? " • " + model
-              : ""
           }
+        );
 
-        </span>
-
-
-        <h3>
-          ${name}
-        </h3>
+      });
 
 
-        <p>
-          ${description}
-        </p>
+    /* =========================
+       INITIALIZE
+    ========================= */
+
+    function showProducts() {
+
+      document
+        .getElementById("products-section")
+        .classList.remove("hidden");
+
+    }
 
 
-        ${
-          price
-            ? `
-              <div class="product-price">
-                ${price}
-              </div>
-            `
-            : ""
-        }
+    renderBrands();
 
+    renderModels();
 
-        ${
-          stock !== ""
-            ? `
-              <div class="product-stock">
-                موجودی:
-                ${escapeHTML(stock)}
-              </div>
-            `
-            : ""
-        }
+    renderProducts(products);
 
-
-        <a
-          class="product-btn"
-          href="tel:09102284286"
-        >
-          استعلام قیمت
-        </a>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-
-searchInput.addEventListener(
-  "input",
-  renderProducts
-);
-
-
-loadProducts();
-
-</script>
+  </script>
 
 </body>
 </html>
