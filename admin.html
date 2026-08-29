@@ -1,1135 +1,1152 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ChinoTech | مدیریت فروشگاه</title>
+  <title>ChinoTech | لوازم خودروهای چینی</title>
 
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+  <meta
+    name="description"
+    content="ChinoTech - فروش لوازم و قطعات خودروهای چینی"
+  >
 
-:root{
-  --gold:#f5b800;
-  --gold2:#ffd45a;
-  --dark:#090909;
-  --dark2:#151515;
-  --card:#fff;
-  --bg:#f4f5f7;
-  --text:#171717;
-  --muted:#777;
-  --danger:#d93636;
-  --success:#198754;
-}
+  <style>
 
-body{
-  font-family:Tahoma,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Tahoma, Arial, sans-serif;
+    }
 
-button,
-input,
-select,
-textarea{
-  font-family:inherit;
-}
+    body {
+      background: #f5f7fa;
+      color: #1f2937;
+      line-height: 1.8;
+    }
 
-button{
-  cursor:pointer;
-}
+    button,
+    input {
+      font-family: inherit;
+    }
 
-.admin-header{
-  background:var(--dark);
-  color:#fff;
-  padding:18px 0;
-  box-shadow:0 4px 20px rgba(0,0,0,.15);
-}
+    button {
+      cursor: pointer;
+    }
 
-.header-inner{
-  width:min(1200px,94%);
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
+    /* HEADER */
 
-.logo{
-  font-size:26px;
-  font-weight:900;
-  color:var(--gold);
-}
+    header {
+      background: #111827;
+      color: white;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 12px rgba(0,0,0,.15);
+    }
 
-.logo span{
-  color:#fff;
-}
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-.header-title{
-  color:#ccc;
-  font-size:14px;
-}
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      direction: ltr;
+    }
 
-.container{
-  width:min(1200px,94%);
-  margin:30px auto;
-}
+    .logo span {
+      color: #ef4444;
+    }
 
-.dashboard{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-bottom:25px;
-}
+    nav {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
 
-.stat-card{
-  background:#fff;
-  border-radius:16px;
-  padding:22px;
-  box-shadow:0 5px 22px rgba(0,0,0,.06);
-  border:1px solid #eee;
-}
+    nav button {
+      border: none;
+      background: transparent;
+      color: #d1d5db;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
 
-.stat-card .label{
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:8px;
-}
+    nav button:hover,
+    nav button.active {
+      background: #ef4444;
+      color: white;
+    }
 
-.stat-card .value{
-  font-size:28px;
-  font-weight:900;
-}
+    /* HERO */
 
-.stat-card .icon{
-  font-size:25px;
-  margin-bottom:8px;
-}
+    .hero {
+      background: linear-gradient(135deg, #111827, #374151);
+      color: white;
+      padding: 65px 20px;
+      text-align: center;
+    }
 
-.panel{
-  background:#fff;
-  border-radius:20px;
-  padding:25px;
-  margin-bottom:22px;
-  box-shadow:0 5px 25px rgba(0,0,0,.06);
-}
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+      direction: ltr;
+    }
 
-.panel-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:22px;
-}
+    .hero h1 span {
+      color: #ef4444;
+    }
 
-.panel-title h2{
-  font-size:21px;
-}
+    .hero p {
+      color: #d1d5db;
+      margin-bottom: 28px;
+      font-size: 17px;
+    }
 
-.panel-title p{
-  color:var(--muted);
-  font-size:12px;
-  margin-top:4px;
-}
+    /* SEARCH */
 
-.tabs{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-bottom:25px;
-}
+    .search-box {
+      max-width: 680px;
+      margin: auto;
+      display: flex;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-.tab{
-  border:1px solid #ddd;
-  background:#fff;
-  padding:10px 18px;
-  border-radius:10px;
-  font-size:13px;
-  transition:.2s;
-}
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 16px;
+      font-size: 15px;
+      color: #111827;
+    }
 
-.tab:hover,
-.tab.active{
-  background:var(--gold);
-  border-color:var(--gold);
-  color:#111;
-}
+    .search-box button {
+      width: 65px;
+      border: none;
+      background: #ef4444;
+      color: white;
+      font-size: 20px;
+    }
 
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
+    /* SECTIONS */
 
-.form-group{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-}
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
 
-.form-group.full{
-  grid-column:1/-1;
-}
+    .section-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-.form-group label{
-  font-size:12px;
-  font-weight:bold;
-}
+    .section-title h2 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
 
-.form-group input,
-.form-group select,
-.form-group textarea{
-  width:100%;
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:12px;
-  outline:none;
-  background:#fff;
-  font-size:13px;
-}
+    .section-title p {
+      color: #6b7280;
+    }
 
-.form-group textarea{
-  min-height:100px;
-  resize:vertical;
-}
+    /* TABS */
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-  border-color:var(--gold);
-  box-shadow:0 0 0 3px rgba(245,184,0,.1);
-}
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
 
-.btn{
-  border:0;
-  border-radius:10px;
-  padding:11px 20px;
-  font-weight:bold;
-  font-size:13px;
-  transition:.2s;
-}
+    .tab {
+      border: 1px solid #d1d5db;
+      background: white;
+      color: #374151;
+      padding: 11px 25px;
+      border-radius: 10px;
+      transition: .2s;
+    }
 
-.btn-primary{
-  background:var(--gold);
-  color:#111;
-}
+    .tab:hover {
+      border-color: #ef4444;
+      color: #ef4444;
+    }
 
-.btn-primary:hover{
-  background:var(--gold2);
-  transform:translateY(-1px);
-}
+    .tab.active {
+      background: #ef4444;
+      border-color: #ef4444;
+      color: white;
+    }
 
-.btn-dark{
-  background:#111;
-  color:#fff;
-}
+    /* SELECTORS */
 
-.btn-danger{
-  background:var(--danger);
-  color:#fff;
-}
+    .selector-area {
+      background: white;
+      border-radius: 15px;
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.06);
+    }
 
-.btn-success{
-  background:var(--success);
-  color:#fff;
-}
+    .selector-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
 
-.btn-small{
-  padding:7px 11px;
-  font-size:11px;
-}
+    .brand-list,
+    .model-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-.form-actions{
-  display:flex;
-  gap:10px;
-  margin-top:20px;
-  flex-wrap:wrap;
-}
+    .brand-btn,
+    .model-btn {
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      padding: 10px 16px;
+      border-radius: 9px;
+      color: #374151;
+    }
 
-.table-wrapper{
-  width:100%;
-  overflow-x:auto;
-}
+    .brand-btn:hover,
+    .model-btn:hover,
+    .brand-btn.selected,
+    .model-btn.selected {
+      background: #111827;
+      color: white;
+      border-color: #111827;
+    }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:700px;
-}
+    .hidden {
+      display: none !important;
+    }
 
-th,
-td{
-  padding:13px 10px;
-  border-bottom:1px solid #eee;
-  text-align:right;
-  font-size:12px;
-}
+    /* PRODUCTS */
 
-th{
-  background:#fafafa;
-  color:#555;
-}
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
 
-.product-image{
-  width:50px;
-  height:50px;
-  border-radius:8px;
-  object-fit:cover;
-  background:#eee;
-}
+    .product {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,.07);
+      transition: .2s;
+    }
 
-.empty{
-  text-align:center;
-  color:#777;
-  padding:30px;
-}
+    .product:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,.12);
+    }
 
-.message{
-  display:none;
-  padding:13px 15px;
-  border-radius:10px;
-  margin-bottom:18px;
-  font-size:13px;
-}
+    .product-image {
+      height: 190px;
+      background: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 48px;
+    }
 
-.message.show{
-  display:block;
-}
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.message.success{
-  background:#e8f7ef;
-  color:#157347;
-}
+    .product-info {
+      padding: 16px;
+    }
 
-.message.error{
-  background:#fdecec;
-  color:#b42323;
-}
+    .product-brand {
+      font-size: 12px;
+      color: #ef4444;
+      margin-bottom: 5px;
+    }
 
-.loading{
-  text-align:center;
-  padding:30px;
-  color:#777;
-}
+    .product-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
 
-@media(max-width:900px){
+    .product-model {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
 
-  .dashboard{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .product-price {
+      font-size: 17px;
+      font-weight: bold;
+      color: #111827;
+    }
 
-}
+    .no-products {
+      text-align: center;
+      background: white;
+      padding: 45px 20px;
+      border-radius: 15px;
+      color: #6b7280;
+      grid-column: 1 / -1;
+    }
 
-@media(max-width:650px){
+    /* ABOUT */
 
-  .header-inner{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+    .about {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      line-height: 2.2;
+      box-shadow: 0 3px 15px rgba(0,0,0,.05);
+    }
 
-  .dashboard{
-    grid-template-columns:1fr;
-  }
+    /* CONTACT */
 
-  .form-grid{
-    grid-template-columns:1fr;
-  }
+    .contact-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
 
-  .panel{
-    padding:18px;
-  }
+    .contact-item {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 3px 15px rgba(0,0,0,.05);
+    }
 
-}
-</style>
+    .contact-icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .contact-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .contact-item p {
+      color: #6b7280;
+    }
+
+    .contact-item a {
+      color: #374151;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact-item a:hover {
+      color: #ef4444;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 30px;
+      background: #111827;
+      color: #d1d5db;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer strong {
+      color: white;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .socials {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      color: white;
+      text-decoration: none;
+      background: #374151;
+      padding: 9px 15px;
+      border-radius: 8px;
+    }
+
+    .socials a:hover {
+      background: #ef4444;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        flex-direction: column;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .hero {
+        padding: 45px 15px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 220px;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      nav button {
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-<header class="admin-header">
+
+<!-- HEADER -->
+
+<header>
+
   <div class="header-inner">
 
     <div class="logo">
       Chino<span>Tech</span>
     </div>
 
-    <div class="header-title">
-      پنل مدیریت فروشگاه
-    </div>
+    <nav>
+
+      <button class="nav-btn active" data-section="home">
+        خانه
+      </button>
+
+      <button class="nav-btn" data-section="products-section">
+        قطعات
+      </button>
+
+      <button class="nav-btn" data-section="brands-section">
+        برندها
+      </button>
+
+      <button class="nav-btn" data-section="about-section">
+        درباره ما
+      </button>
+
+      <button class="nav-btn" data-section="contact-section">
+        تماس با ما
+      </button>
+
+    </nav>
 
   </div>
+
 </header>
 
-<main class="container">
 
-  <div id="message" class="message"></div>
+<!-- HERO -->
 
-  <section class="dashboard">
+<section class="hero" id="home">
 
-    <div class="stat-card">
-      <div class="icon">📦</div>
-      <div class="label">تعداد قطعات</div>
-      <div class="value" id="statProducts">0</div>
-    </div>
+  <h1>
+    Chino<span>Tech</span>
+  </h1>
 
-    <div class="stat-card">
-      <div class="icon">🚗</div>
-      <div class="label">برندها</div>
-      <div class="value" id="statBrands">0</div>
-    </div>
+  <p>
+    فروش لوازم و قطعات خودروهای چینی
+  </p>
 
-    <div class="stat-card">
-      <div class="icon">🚘</div>
-      <div class="label">مدل‌ها</div>
-      <div class="value" id="statModels">0</div>
-    </div>
+  <div class="search-box">
 
-    <div class="stat-card">
-      <div class="icon">💰</div>
-      <div class="label">وضعیت فروشگاه</div>
-      <div class="value" style="font-size:18px;">
-        فعال
-      </div>
-    </div>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="نام قطعه، برند یا مدل خودرو را جستجو کنید..."
+    >
 
-  </section>
+    <button id="searchBtn">
+      🔍
+    </button>
 
-  <section class="panel">
+  </div>
 
-    <div class="tabs">
+</section>
 
-      <button
-        class="tab active"
-        type="button"
-        data-tab="products"
-      >
-        📦 قطعات
-      </button>
 
-      <button
-        class="tab"
-        type="button"
-        data-tab="brands"
-      >
-        🚗 برندها
-      </button>
+<!-- PRODUCTS -->
 
-      <button
-        class="tab"
-        type="button"
-        data-tab="models"
-      >
-        🚘 مدل‌ها
-      </button>
+<section class="section" id="products-section">
 
-    </div>
+  <div class="section-title">
 
-    <div id="productsTab">
+    <h2>
+      قطعات خودرو
+    </h2>
 
-      <div class="panel-title">
+    <p>
+      قطعه مورد نظر خود را پیدا کنید
+    </p>
 
-        <div>
-          <h2>مدیریت قطعات</h2>
-          <p>
-            افزودن و مدیریت قطعات فروشگاه
-          </p>
-        </div>
+  </div>
 
-      </div>
 
-      <div class="form-grid">
+  <div class="tabs">
 
-        <div class="form-group">
-          <label>نام قطعه</label>
-          <input
-            id="productName"
-            type="text"
-            placeholder="مثلاً خنک‌کن گیربکس"
-          >
-        </div>
+    <button
+      class="tab active"
+      id="partsTab"
+    >
+      🔧 قطعات
+    </button>
 
-        <div class="form-group">
-          <label>برند خودرو</label>
-          <select id="productBrand">
-            <option value="">
-              انتخاب برند
-            </option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>مدل خودرو</label>
-          <select id="productModel">
-            <option value="">
-              ابتدا برند را انتخاب کنید
-            </option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>قیمت</label>
-          <input
-            id="productPrice"
-            type="number"
-            placeholder="مثلاً 2500000"
-          >
-        </div>
-
-        <div class="form-group">
-          <label>موجودی</label>
-          <input
-            id="productStock"
-            type="number"
-            value="0"
-            min="0"
-          >
-        </div>
-
-        <div class="form-group">
-          <label>آدرس عکس قطعه</label>
-          <input
-            id="productImage"
-            type="url"
-            placeholder="https://..."
-          >
-        </div>
-
-        <div class="form-group full">
-          <label>توضیحات</label>
-          <textarea
-            id="productDescription"
-            placeholder="توضیحات مربوط به قطعه..."
-          ></textarea>
-        </div>
-
-      </div>
-
-      <div class="form-actions">
-
-        <button
-          class="btn btn-primary"
-          id="addProductBtn"
-          type="button"
-        >
-          ➕ افزودن قطعه
-        </button>
-
-        <button
-          class="btn btn-dark"
-          id="clearProductBtn"
-          type="button"
-        >
-          پاک کردن فرم
-        </button>
-
-      </div>
-
-    </div>
-
-    <div
+    <button
+      class="tab"
       id="brandsTab"
-      style="display:none;"
     >
+      🚗 برند
+    </button>
 
-      <div class="panel-title">
+    <button
+      class="tab"
+      id="modelsTab"
+    >
+      📋 مدل
+    </button>
 
-        <div>
-          <h2>مدیریت برندها</h2>
-          <p>
-            برند خودرو و لوگوی آن را اضافه کنید
-          </p>
-        </div>
+  </div>
 
-      </div>
 
-      <div class="form-grid">
+  <!-- BRAND -->
 
-        <div class="form-group">
-          <label>نام برند</label>
-          <input
-            id="brandName"
-            type="text"
-            placeholder="مثلاً JAC"
-          >
-        </div>
+  <div
+    class="selector-area hidden"
+    id="brandSelector"
+  >
 
-        <div class="form-group">
-          <label>آدرس لوگو</label>
-          <input
-            id="brandLogo"
-            type="url"
-            placeholder="https://..."
-          >
-        </div>
-
-      </div>
-
-      <div class="form-actions">
-
-        <button
-          class="btn btn-primary"
-          id="addBrandBtn"
-          type="button"
-        >
-          ➕ افزودن برند
-        </button>
-
-      </div>
-
+    <div class="selector-title">
+      انتخاب برند خودرو
     </div>
 
     <div
-      id="modelsTab"
-      style="display:none;"
-    >
+      class="brand-list"
+      id="brandList"
+    ></div>
 
-      <div class="panel-title">
+  </div>
 
-        <div>
-          <h2>مدیریت مدل‌ها</h2>
-          <p>
-            برای هر برند می‌توانی مدل‌های مختلف اضافه کنی
-          </p>
-        </div>
 
+  <!-- MODEL -->
+
+  <div
+    class="selector-area hidden"
+    id="modelSelector"
+  >
+
+    <div class="selector-title">
+      انتخاب مدل خودرو
+    </div>
+
+    <div
+      class="model-list"
+      id="modelList"
+    ></div>
+
+  </div>
+
+
+  <!-- PRODUCTS -->
+
+  <div
+    class="products"
+    id="productsGrid"
+  ></div>
+
+</section>
+
+
+<!-- BRANDS -->
+
+<section
+  class="section hidden"
+  id="brands-section"
+>
+
+  <div class="section-title">
+
+    <h2>
+      برندهای خودرو
+    </h2>
+
+    <p>
+      برند مورد نظر خود را انتخاب کنید
+    </p>
+
+  </div>
+
+  <div
+    class="brand-list"
+    id="brandPageList"
+  ></div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section
+  class="section"
+  id="about-section"
+>
+
+  <div class="section-title">
+
+    <h2>
+      درباره ChinoTech
+    </h2>
+
+  </div>
+
+  <div class="about">
+
+    <p>
+      <strong>ChinoTech</strong>
+      با هدف ارائه لوازم و قطعات خودروهای چینی فعالیت می‌کند.
+    </p>
+
+    <p>
+      در این فروشگاه می‌توانید قطعات خودروهای مختلف چینی را
+      بر اساس برند و مدل پیدا کنید.
+    </p>
+
+    <p>
+      هدف ما ارائه اطلاعات کامل قطعه، قیمت مناسب و دسترسی
+      آسان برای مشتریان است.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section
+  class="section"
+  id="contact-section"
+>
+
+  <div class="section-title">
+
+    <h2>
+      تماس با ما
+    </h2>
+
+    <p>
+      برای استعلام قیمت و موجودی با ما در ارتباط باشید
+    </p>
+
+  </div>
+
+
+  <div class="contact-box">
+
+
+    <!-- PHONE -->
+
+    <div class="contact-item">
+
+      <div class="contact-icon">
+        📞
       </div>
 
-      <div class="form-grid">
+      <h3>
+        تماس مستقیم
+      </h3>
 
-        <div class="form-group">
-          <label>برند</label>
-          <select id="modelBrand">
-            <option value="">
-              انتخاب برند
-            </option>
-          </select>
-        </div>
+      <p>
+        <a href="tel:09389886161">
+          ۰۹۳۸۹۸۸۶۱۶۱
+        </a>
+      </p>
 
-        <div class="form-group">
-          <label>نام مدل</label>
-          <input
-            id="modelName"
-            type="text"
-            placeholder="مثلاً S5"
-          >
-        </div>
+      <p>
+        <a href="tel:09359886161">
+          ۰۹۳۵۹۸۸۶۱۶۱
+        </a>
+      </p>
 
+      <p>
+        <a href="tel:09102284286">
+          ۰۹۱۰۲۲۸۴۲۸۶
+        </a>
+      </p>
+
+      <p>
+        <a href="tel:09129886163">
+          ۰۹۱۲۹۸۸۶۱۶۳
+        </a>
+      </p>
+
+    </div>
+
+
+    <!-- WHATSAPP -->
+
+    <div class="contact-item">
+
+      <div class="contact-icon">
+        🟢
       </div>
 
-      <div class="form-actions">
+      <h3>
+        واتساپ
+      </h3>
 
-        <button
-          class="btn btn-primary"
-          id="addModelBtn"
-          type="button"
+      <p>
+        <a
+          href="https://wa.me/989389886161"
+          target="_blank"
         >
-          ➕ افزودن مدل
-        </button>
+          پیام در واتساپ
+        </a>
+      </p>
 
+      <p>
+        ۰۹۳۸۹۸۸۶۱۶۱
+      </p>
+
+    </div>
+
+
+    <!-- SOCIAL -->
+
+    <div class="contact-item">
+
+      <div class="contact-icon">
+        📱
       </div>
 
-    </div>
+      <h3>
+        شبکه‌های اجتماعی
+      </h3>
 
-  </section>
-
-</main>
-  
-<section class="panel">
-
-  <div class="panel-title">
-
-    <div>
-      <h2>لیست قطعات</h2>
       <p>
-        قطعات ثبت‌شده در فروشگاه
+        <a
+          href="https://instagram.com/Chinotech.tehran"
+          target="_blank"
+        >
+          📸 Instagram
+        </a>
       </p>
+
+      <p>
+        <a
+          href="https://t.me/09389886161"
+          target="_blank"
+        >
+          ✈️ Telegram
+        </a>
+      </p>
+
     </div>
 
-    <button
-      class="btn btn-dark"
-      type="button"
-      id="refreshProductsBtn"
-    >
-      🔄 بروزرسانی
-    </button>
-
-  </div>
-
-
-  <div class="table-wrapper">
-
-    <table>
-
-      <thead>
-
-        <tr>
-          <th>عکس</th>
-          <th>قطعه</th>
-          <th>برند</th>
-          <th>مدل</th>
-          <th>قیمت</th>
-          <th>موجودی</th>
-          <th>عملیات</th>
-        </tr>
-
-      </thead>
-
-      <tbody id="productsTable">
-
-        <tr>
-          <td
-            colspan="7"
-            class="empty"
-          >
-            در حال دریافت اطلاعات...
-          </td>
-        </tr>
-
-      </tbody>
-
-    </table>
 
   </div>
 
 </section>
 
 
-<section class="panel">
+<!-- FOOTER -->
 
-  <div class="panel-title">
+<footer>
 
-    <div>
-      <h2>لیست برندها</h2>
-      <p>
-        برندهای ثبت‌شده
-      </p>
-    </div>
+  <strong>
+    ChinoTech
+  </strong>
 
-    <button
-      class="btn btn-dark"
-      type="button"
-      id="refreshBrandsBtn"
+  <p>
+    لوازم و قطعات خودروهای چینی
+  </p>
+
+  <div class="socials">
+
+    <a
+      href="https://instagram.com/Chinotech.tehran"
+      target="_blank"
     >
-      🔄 بروزرسانی
-    </button>
+      📸 Instagram
+    </a>
 
-  </div>
-
-
-  <div class="table-wrapper">
-
-    <table>
-
-      <thead>
-
-        <tr>
-          <th>لوگو</th>
-          <th>برند</th>
-          <th>تعداد مدل</th>
-          <th>عملیات</th>
-        </tr>
-
-      </thead>
-
-      <tbody id="brandsTable">
-
-        <tr>
-          <td
-            colspan="4"
-            class="empty"
-          >
-            در حال دریافت اطلاعات...
-          </td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</section>
-
-
-<section class="panel">
-
-  <div class="panel-title">
-
-    <div>
-      <h2>لیست مدل‌ها</h2>
-      <p>
-        مدل‌های ثبت‌شده برای برندها
-      </p>
-    </div>
-
-    <button
-      class="btn btn-dark"
-      type="button"
-      id="refreshModelsBtn"
+    <a
+      href="https://t.me/09389886161"
+      target="_blank"
     >
-      🔄 بروزرسانی
-    </button>
+      ✈️ Telegram
+    </a>
+
+    <a
+      href="https://wa.me/989389886161"
+      target="_blank"
+    >
+      🟢 WhatsApp
+    </a>
 
   </div>
 
+  <p style="margin-top:20px;">
+    © 2026 ChinoTech - تمامی حقوق محفوظ است
+  </p>
 
-  <div class="table-wrapper">
+</footer>
 
-    <table>
-
-      <thead>
-
-        <tr>
-          <th>مدل</th>
-          <th>برند</th>
-          <th>عملیات</th>
-        </tr>
-
-      </thead>
-
-      <tbody id="modelsTable">
-
-        <tr>
-          <td
-            colspan="3"
-            class="empty"
-          >
-            در حال دریافت اطلاعات...
-          </td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</section>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-const SUPABASE_URL =
-"https://viyqzrruxundtsgtfjsj.supabase.co";
 
-const SUPABASE_KEY =
-"sb_publishable_v0eLyw6i703J8p2gPeBUOA_iKepeDIY";
+/* =========================
+   PRODUCTS
+========================= */
 
-const supabaseClient =
-supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+const products = [
+
+  {
+    id: 1,
+    name: "خنک‌کن گیربکس اتوماتیک",
+    brand: "JAC",
+    model: "S5",
+    category: "گیربکس",
+    price: "تماس بگیرید",
+    image: ""
+  },
+
+  {
+    id: 2,
+    name: "فیلتر هوا",
+    brand: "JAC",
+    model: "S5",
+    category: "موتور",
+    price: "تماس بگیرید",
+    image: ""
+  },
+
+  {
+    id: 3,
+    name: "لنت ترمز جلو",
+    brand: "JAC",
+    model: "J4",
+    category: "ترمز",
+    price: "تماس بگیرید",
+    image: ""
+  },
+
+  {
+    id: 4,
+    name: "فیلتر روغن",
+    brand: "JAC",
+    model: "J4",
+    category: "موتور",
+    price: "تماس بگیرید",
+    image: ""
+  },
+
+  {
+    id: 5,
+    name: "لنت ترمز جلو",
+    brand: "Chery",
+    model: "Tiggo 5",
+    category: "ترمز",
+    price: "تماس بگیرید",
+    image: ""
+  },
+
+  {
+    id: 6,
+    name: "فیلتر هوا",
+    brand: "Chery",
+    model: "Tiggo 7",
+    category: "موتور",
+    price: "تماس بگیرید",
+    image: ""
+  },
+
+  {
+    id: 7,
+    name: "چراغ جلو",
+    brand: "Haima",
+    model: "S7",
+    category: "بدنه",
+    price: "تماس بگیرید",
+    image: ""
+  },
+
+  {
+    id: 8,
+    name: "لنت ترمز",
+    brand: "Haima",
+    model: "S5",
+    category: "ترمز",
+    price: "تماس بگیرید",
+    image: ""
+  }
+
+];
 
 
-let brandsData = [];
-let modelsData = [];
-let productsData = [];
+let selectedBrand = "";
+let selectedModel = "";
 
 
-const messageBox =
-document.getElementById("message");
+/* ELEMENTS */
+
+const productsGrid =
+  document.getElementById("productsGrid");
+
+const brandSelector =
+  document.getElementById("brandSelector");
+
+const modelSelector =
+  document.getElementById("modelSelector");
+
+const brandList =
+  document.getElementById("brandList");
+
+const modelList =
+  document.getElementById("modelList");
+
+const brandPageList =
+  document.getElementById("brandPageList");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const searchBtn =
+  document.getElementById("searchBtn");
 
 
-function showMessage(
-  text,
-  type="success"
-){
+/* GET BRANDS */
 
-  messageBox.textContent =
-    text;
+function getBrands() {
 
-  messageBox.className =
-    "message show " + type;
-
-  setTimeout(() => {
-
-    messageBox.className =
-      "message";
-
-  },4000);
+  return [
+    ...new Set(
+      products.map(product => product.brand)
+    )
+  ];
 
 }
 
 
+/* GET MODELS */
 
-function escapeHTML(value){
+function getModels(brand = "") {
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  let list = products;
 
-}
+  if (brand) {
 
-
-
-function formatPrice(value){
-
-  if(
-    value === null ||
-    value === undefined ||
-    value === ""
-  ){
-
-    return "-";
+    list = products.filter(
+      product => product.brand === brand
+    );
 
   }
 
-  return Number(value)
-    .toLocaleString("fa-IR")
-    + " تومان";
+  return [
+    ...new Set(
+      list.map(product => product.model)
+    )
+  ];
 
 }
 
 
+/* RENDER BRANDS */
 
-async function loadBrands(){
+function renderBrands() {
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("brands")
-    .select("*")
-    .order("name");
+  brandList.innerHTML = "";
+  brandPageList.innerHTML = "";
 
-  if(error){
-
-    showMessage(
-      "خطا در دریافت برندها: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-  brandsData =
-    data || [];
+  getBrands().forEach(brand => {
 
 
-  document.getElementById(
-    "statBrands"
-  ).textContent =
-    brandsData.length;
+    const button =
+      document.createElement("button");
+
+    button.className = "brand-btn";
+
+    button.textContent = brand;
+
+    button.onclick = () => {
+
+      selectedBrand = brand;
+      selectedModel = "";
+
+      document
+        .querySelectorAll(".brand-btn")
+        .forEach(btn =>
+          btn.classList.remove("selected")
+        );
+
+      button.classList.add("selected");
+
+      renderModels();
+
+      modelSelector.classList.remove("hidden");
+
+      filterProducts();
+
+    };
+
+    brandList.appendChild(button);
 
 
-  const productBrand =
-    document.getElementById(
-      "productBrand"
-    );
+    const pageButton =
+      document.createElement("button");
 
-  const modelBrand =
-    document.getElementById(
-      "modelBrand"
-    );
+    pageButton.className = "brand-btn";
 
+    pageButton.textContent = brand;
 
-  productBrand.innerHTML =
-    `<option value="">
-      انتخاب برند
-    </option>`;
+    pageButton.onclick = () => {
 
+      selectedBrand = brand;
+      selectedModel = "";
 
-  modelBrand.innerHTML =
-    `<option value="">
-      انتخاب برند
-    </option>`;
+      document
+        .getElementById("products-section")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
 
+      document
+        .getElementById("brands-section")
+        .classList.add("hidden");
 
-  brandsData.forEach(brand => {
+      brandSelector.classList.remove("hidden");
 
-    const option1 =
-      document.createElement("option");
+      modelSelector.classList.remove("hidden");
 
-    option1.value =
-      brand.id;
+      activateTab("models");
 
-    option1.textContent =
-      brand.name;
+      renderModels();
 
-    productBrand.appendChild(
-      option1
-    );
+      filterProducts();
 
+    };
 
-    const option2 =
-      document.createElement("option");
-
-    option2.value =
-      brand.id;
-
-    option2.textContent =
-      brand.name;
-
-    modelBrand.appendChild(
-      option2
-    );
+    brandPageList.appendChild(pageButton);
 
   });
 
+}
 
-  renderBrandsTable();
+
+/* RENDER MODELS */
+
+function renderModels() {
+
+  modelList.innerHTML = "";
+
+  getModels(selectedBrand)
+    .forEach(model => {
+
+      const button =
+        document.createElement("button");
+
+      button.className = "model-btn";
+
+      button.textContent = model;
+
+      button.onclick = () => {
+
+        selectedModel = model;
+
+        document
+          .querySelectorAll(".model-btn")
+          .forEach(btn =>
+            btn.classList.remove("selected")
+          );
+
+        button.classList.add("selected");
+
+        filterProducts();
+
+      };
+
+      modelList.appendChild(button);
+
+    });
 
 }
 
 
+/* RENDER PRODUCTS */
 
-async function loadModels(){
+function renderProducts(list) {
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("models")
-    .select("*")
-    .order("name");
+  productsGrid.innerHTML = "";
 
+  if (!list.length) {
 
-  if(error){
+    productsGrid.innerHTML = `
 
-    showMessage(
-      "خطا در دریافت مدل‌ها: " +
-      error.message,
-      "error"
-    );
+      <div class="no-products">
 
-    return;
+        <h3>
+          قطعه‌ای پیدا نشد
+        </h3>
 
-  }
+        <p style="margin-top:10px;">
+          عبارت جستجو یا فیلتر انتخابی را تغییر دهید.
+        </p>
 
+      </div>
 
-  modelsData =
-    data || [];
-
-
-  document.getElementById(
-    "statModels"
-  ).textContent =
-    modelsData.length;
-
-
-  renderModelsTable();
-
-}
-
-
-
-async function loadProducts(){
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("products")
-    .select("*")
-    .order(
-      "id",
-      {
-        ascending:false
-      }
-    );
-
-
-  if(error){
-
-    showMessage(
-      "خطا در دریافت قطعات: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  productsData =
-    data || [];
-
-
-  document.getElementById(
-    "statProducts"
-  ).textContent =
-    productsData.length;
-
-
-  renderProductsTable();
-
-}
-
-
-
-function getBrandName(
-  brandId
-){
-
-  const brand =
-    brandsData.find(
-      item =>
-        String(item.id) ===
-        String(brandId)
-    );
-
-  return brand
-    ? brand.name
-    : "-";
-
-}
-
-
-
-function getModelName(
-  modelId
-){
-
-  const model =
-    modelsData.find(
-      item =>
-        String(item.id) ===
-        String(modelId)
-    );
-
-  return model
-    ? model.name
-    : "-";
-
-}
-
-
-
-function renderProductsTable(){
-
-  const table =
-    document.getElementById(
-      "productsTable"
-    );
-
-
-  if(!productsData.length){
-
-    table.innerHTML = `
-      <tr>
-        <td
-          colspan="7"
-          class="empty"
-        >
-          هنوز قطعه‌ای ثبت نشده است.
-        </td>
-      </tr>
     `;
 
     return;
@@ -1137,974 +1154,339 @@ function renderProductsTable(){
   }
 
 
-  table.innerHTML =
-    productsData.map(product => {
+  list.forEach(product => {
 
-      const image =
-        product.image_url
-          ? `
-            <img
-              class="product-image"
-              src="${escapeHTML(product.image_url)}"
-              alt=""
-            >
-          `
-          : "⚙️";
+    const card =
+      document.createElement("div");
+
+    card.className = "product";
 
 
-      return `
+    let imageHTML = `
 
-        <tr>
+      <div class="product-image">
+        🔧
+      </div>
 
-          <td>
-            ${image}
-          </td>
-
-          <td>
-            ${escapeHTML(product.name)}
-          </td>
-
-          <td>
-            ${escapeHTML(
-              getBrandName(
-                product.brand_id
-              )
-            )}
-          </td>
-
-          <td>
-            ${escapeHTML(
-              getModelName(
-                product.model_id
-              )
-            )}
-          </td>
-
-          <td>
-            ${formatPrice(
-              product.price
-            )}
-          </td>
-
-          <td>
-            ${escapeHTML(
-              product.stock ?? 0
-            )}
-          </td>
-
-          <td>
-
-            <button
-              class="btn btn-danger btn-small"
-              type="button"
-              onclick="deleteProduct(${product.id})"
-            >
-              حذف
-            </button>
-
-          </td>
-
-        </tr>
-
-      `;
-
-    }).join("");
-
-}
-
-
-
-function renderBrandsTable(){
-
-  const table =
-    document.getElementById(
-      "brandsTable"
-    );
-
-
-  if(!brandsData.length){
-
-    table.innerHTML = `
-      <tr>
-        <td
-          colspan="4"
-          class="empty"
-        >
-          هنوز برندی ثبت نشده است.
-        </td>
-      </tr>
     `;
 
-    return;
 
-  }
+    if (product.image) {
 
+      imageHTML = `
 
-  table.innerHTML =
-    brandsData.map(brand => {
+        <div class="product-image">
 
-      const modelsCount =
-        modelsData.filter(
-          model =>
-            String(model.brand_id) ===
-            String(brand.id)
-        ).length;
+          <img
+            src="${product.image}"
+            alt="${product.name}"
+          >
 
-
-      const logo =
-        brand.logo_url
-          ? `
-            <img
-              class="product-image"
-              src="${escapeHTML(brand.logo_url)}"
-              alt=""
-            >
-          `
-          : "🚗";
-
-
-      return `
-
-        <tr>
-
-          <td>
-            ${logo}
-          </td>
-
-          <td>
-            ${escapeHTML(
-              brand.name
-            )}
-          </td>
-
-          <td>
-            ${modelsCount}
-          </td>
-
-          <td>
-
-            <button
-              class="btn btn-danger btn-small"
-              type="button"
-              onclick="deleteBrand(${brand.id})"
-            >
-              حذف
-            </button>
-
-          </td>
-
-        </tr>
+        </div>
 
       `;
 
-    }).join("");
-
-}
+    }
 
 
+    card.innerHTML = `
 
-function renderModelsTable(){
+      ${imageHTML}
 
-  const table =
-    document.getElementById(
-      "modelsTable"
-    );
+      <div class="product-info">
 
+        <div class="product-brand">
+          ${product.brand}
+        </div>
 
-  if(!modelsData.length){
+        <div class="product-name">
+          ${product.name}
+        </div>
 
-    table.innerHTML = `
-      <tr>
-        <td
-          colspan="3"
-          class="empty"
-        >
-          هنوز مدلی ثبت نشده است.
-        </td>
-      </tr>
+        <div class="product-model">
+          مدل: ${product.model}
+        </div>
+
+        <div class="product-price">
+          ${product.price}
+        </div>
+
+      </div>
+
     `;
 
-    return;
 
-  }
+    productsGrid.appendChild(card);
 
-
-  table.innerHTML =
-    modelsData.map(model => {
-
-      return `
-
-        <tr>
-
-          <td>
-            ${escapeHTML(
-              model.name
-            )}
-          </td>
-
-          <td>
-            ${escapeHTML(
-              getBrandName(
-                model.brand_id
-              )
-            )}
-          </td>
-
-          <td>
-
-            <button
-              class="btn btn-danger btn-small"
-              type="button"
-              onclick="deleteModel(${model.id})"
-            >
-              حذف
-            </button>
-
-          </td>
-
-        </tr>
-
-      `;
-
-    }).join("");
+  });
 
 }
 
 
-</script>
-<script>
+/* FILTER */
 
-async function addBrand(){
+function filterProducts() {
 
-  const name =
-    document.getElementById(
-      "brandName"
-    ).value.trim();
-
-  const logo_url =
-    document.getElementById(
-      "brandLogo"
-    ).value.trim();
+  let result = [...products];
 
 
-  if(!name){
+  if (selectedBrand) {
 
-    showMessage(
-      "نام برند را وارد کن.",
-      "error"
-    );
-
-    return;
+    result =
+      result.filter(
+        product =>
+          product.brand === selectedBrand
+      );
 
   }
 
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("brands")
-    .insert([
-      {
-        name:name,
-        logo_url:logo_url || null
-      }
-    ]);
+  if (selectedModel) {
 
-
-  if(error){
-
-    showMessage(
-      "خطا در افزودن برند: " +
-      error.message,
-      "error"
-    );
-
-    return;
+    result =
+      result.filter(
+        product =>
+          product.model === selectedModel
+      );
 
   }
 
 
-  document.getElementById(
-    "brandName"
-  ).value = "";
-
-  document.getElementById(
-    "brandLogo"
-  ).value = "";
-
-
-  showMessage(
-    "برند با موفقیت اضافه شد."
-  );
-
-
-  await loadBrands();
+  renderProducts(result);
 
 }
 
 
+/* SEARCH */
 
-async function addModel(){
+function searchProducts() {
 
-  const brand_id =
-    document.getElementById(
-      "modelBrand"
-    ).value;
-
-  const name =
-    document.getElementById(
-      "modelName"
-    ).value.trim();
+  const text =
+    searchInput.value
+      .trim()
+      .toLowerCase();
 
 
-  if(!brand_id){
+  if (!text) {
 
-    showMessage(
-      "ابتدا برند را انتخاب کن.",
-      "error"
-    );
-
+    filterProducts();
     return;
 
   }
 
 
-  if(!name){
+  const result =
+    products.filter(product =>
 
-    showMessage(
-      "نام مدل را وارد کن.",
-      "error"
+      product.name
+        .toLowerCase()
+        .includes(text)
+
+      ||
+
+      product.brand
+        .toLowerCase()
+        .includes(text)
+
+      ||
+
+      product.model
+        .toLowerCase()
+        .includes(text)
+
+      ||
+
+      product.category
+        .toLowerCase()
+        .includes(text)
+
     );
 
-    return;
 
-  }
+  renderProducts(result);
 
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("models")
-    .insert([
-      {
-        brand_id:brand_id,
-        name:name
-      }
-    ]);
-
-
-  if(error){
-
-    showMessage(
-      "خطا در افزودن مدل: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  document.getElementById(
-    "modelName"
-  ).value = "";
-
-
-  showMessage(
-    "مدل با موفقیت اضافه شد."
-  );
-
-
-  await loadModels();
+  document
+    .getElementById("products-section")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
 
 }
 
-async function addProduct(){
 
-  const name =
-    document.getElementById("productName").value.trim();
-
-  const brand_id =
-    document.getElementById("productBrand").value || null;
-
-  const model_id =
-    document.getElementById("productModel").value || null;
-
-  const price =
-    document.getElementById("productPrice").value;
-
-  const stock =
-    document.getElementById("productStock").value;
-
-  const image_url =
-    document.getElementById("productImage").value.trim();
-
-  const description =
-    document.getElementById("productDescription").value.trim();
+searchBtn.onclick =
+  searchProducts;
 
 
-  if(!name){
+searchInput.addEventListener(
+  "keydown",
+  event => {
 
-    showMessage(
-      "نام قطعه را وارد کن.",
-      "error"
+    if (event.key === "Enter") {
+      searchProducts();
+    }
+
+  }
+);
+
+
+/* TABS */
+
+function activateTab(type) {
+
+  document
+    .querySelectorAll(".tab")
+    .forEach(tab =>
+      tab.classList.remove("active")
     );
 
-    return;
+
+  if (type === "parts") {
+
+    document
+      .getElementById("partsTab")
+      .classList.add("active");
 
   }
 
 
-  const productData = {
+  if (type === "brands") {
 
-    Name: name,
+    document
+      .getElementById("brandsTab")
+      .classList.add("active");
 
-    Price:
-      price
-        ? Number(price)
-        : null,
+  }
 
-    stock:
-      stock
-        ? Number(stock)
-        : 0,
 
-    Discrepion:
-      description || null,
+  if (type === "models") {
 
-    "Brand id":
-      brand_id,
+    document
+      .getElementById("modelsTab")
+      .classList.add("active");
 
-    "Model id":
-      model_id,
+  }
 
-    "Image url":
-      image_url || null
+}
+
+
+/* PARTS */
+
+document
+  .getElementById("partsTab")
+  .onclick = () => {
+
+    selectedBrand = "";
+    selectedModel = "";
+
+    activateTab("parts");
+
+    brandSelector.classList.add("hidden");
+    modelSelector.classList.add("hidden");
+
+    renderProducts(products);
 
   };
 
 
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("products")
-    .insert([productData]);
-
-
-  if(error){
-
-    console.error(error);
-
-    showMessage(
-      "خطا در افزودن قطعه: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  clearProductForm();
-
-
-  showMessage(
-    "قطعه با موفقیت اضافه شد."
-  );
-
-
-  await loadProducts();
-
-}
-
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("products")
-    .insert([
-      {
-        name:name,
-        brand_id:
-          brand_id || null,
-        model_id:
-          model_id || null,
-        price:
-          price
-            ? Number(price)
-            : null,
-        stock:
-          stock
-            ? Number(stock)
-            : 0,
-        image_url:
-          image_url || null,
-        description:
-          description || null
-      }
-    ]);
-
-
-  if(error){
-
-    showMessage(
-      "خطا در افزودن قطعه: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  clearProductForm();
-
-
-  showMessage(
-    "قطعه با موفقیت اضافه شد."
-  );
-
-
-  await loadProducts();
-
-}
-
-
-
-function clearProductForm(){
-
-  document.getElementById(
-    "productName"
-  ).value = "";
-
-  document.getElementById(
-    "productBrand"
-  ).value = "";
-
-  document.getElementById(
-    "productModel"
-  ).innerHTML = `
-    <option value="">
-      ابتدا برند را انتخاب کنید
-    </option>
-  `;
-
-  document.getElementById(
-    "productPrice"
-  ).value = "";
-
-  document.getElementById(
-    "productStock"
-  ).value = "0";
-
-  document.getElementById(
-    "productImage"
-  ).value = "";
-
-  document.getElementById(
-    "productDescription"
-  ).value = "";
-
-}
-
-
-
-async function deleteProduct(id){
-
-  if(
-    !confirm(
-      "آیا از حذف این قطعه مطمئنی؟"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("products")
-    .delete()
-    .eq("id",id);
-
-
-  if(error){
-
-    showMessage(
-      "خطا در حذف قطعه: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  showMessage(
-    "قطعه حذف شد."
-  );
-
-
-  await loadProducts();
-
-}
-
-
-
-async function deleteModel(id){
-
-  if(
-    !confirm(
-      "آیا از حذف این مدل مطمئنی؟"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("models")
-    .delete()
-    .eq("id",id);
-
-
-  if(error){
-
-    showMessage(
-      "خطا در حذف مدل: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  showMessage(
-    "مدل حذف شد."
-  );
-
-
-  await loadModels();
-
-}
-
-
-
-async function deleteBrand(id){
-
-  if(
-    !confirm(
-      "آیا از حذف این برند مطمئنی؟"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  const {
-    error
-  } =
-  await supabaseClient
-    .from("brands")
-    .delete()
-    .eq("id",id);
-
-
-  if(error){
-
-    showMessage(
-      "خطا در حذف برند: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  showMessage(
-    "برند حذف شد."
-  );
-
-
-  await loadBrands();
-
-  await loadModels();
-
-}
-
-
+/* BRANDS */
 
 document
-  .getElementById("addBrandBtn")
-  .addEventListener(
-    "click",
-    addBrand
-  );
+  .getElementById("brandsTab")
+  .onclick = () => {
+
+    selectedBrand = "";
+    selectedModel = "";
+
+    activateTab("brands");
+
+    brandSelector.classList.remove("hidden");
+    modelSelector.classList.add("hidden");
+
+    renderBrands();
+
+    renderProducts(products);
+
+  };
 
 
-document
-  .getElementById("addModelBtn")
-  .addEventListener(
-    "click",
-    addModel
-  );
-
-
-document
-  .getElementById("addProductBtn")
-  .addEventListener(
-    "click",
-    addProduct
-  );
-
+/* MODELS */
 
 document
-  .getElementById("clearProductBtn")
-  .addEventListener(
-    "click",
-    clearProductForm
-  );
+  .getElementById("modelsTab")
+  .onclick = () => {
+
+    activateTab("models");
+
+    brandSelector.classList.remove("hidden");
+    modelSelector.classList.remove("hidden");
+
+    renderBrands();
+
+    renderModels();
+
+    filterProducts();
+
+  };
 
 
-document
-  .getElementById("refreshProductsBtn")
-  .addEventListener(
-    "click",
-    loadProducts
-  );
-
-
-document
-  .getElementById("refreshBrandsBtn")
-  .addEventListener(
-    "click",
-    async () => {
-
-      await loadBrands();
-      await loadModels();
-
-    }
-  );
-
+/* NAVIGATION */
 
 document
-  .getElementById("refreshModelsBtn")
-  .addEventListener(
-    "click",
-    loadModels
-  );
+  .querySelectorAll(".nav-btn")
+  .forEach(button => {
 
+    button.onclick = () => {
 
-
-document
-  .getElementById("productBrand")
-  .addEventListener(
-    "change",
-    async function(){
-
-      const brandId =
-        this.value;
-
-      const modelSelect =
+      const target =
         document.getElementById(
-          "productModel"
+          button.dataset.section
         );
 
-
-      modelSelect.innerHTML = `
-        <option value="">
-          انتخاب مدل
-        </option>
-      `;
+      if (!target) return;
 
 
-      if(!brandId){
+      document
+        .querySelectorAll(".nav-btn")
+        .forEach(btn =>
+          btn.classList.remove("active")
+        );
 
-        return;
+      button.classList.add("active");
+
+
+      if (
+        button.dataset.section ===
+        "brands-section"
+      ) {
+
+        document
+          .getElementById("brands-section")
+          .classList.remove("hidden");
+
+        renderBrands();
 
       }
 
 
-      const models =
-        modelsData.filter(
-          model =>
-            String(model.brand_id) ===
-            String(brandId)
-        );
-
-
-      models.forEach(model => {
-
-        const option =
-          document.createElement(
-            "option"
-          );
-
-        option.value =
-          model.id;
-
-        option.textContent =
-          model.name;
-
-        modelSelect.appendChild(
-          option
-        );
-
+      target.scrollIntoView({
+        behavior: "smooth"
       });
 
-    }
-  );
-
-
-
-document
-  .querySelectorAll(".tab")
-  .forEach(tab => {
-
-    tab.addEventListener(
-      "click",
-      function(){
-
-        document
-          .querySelectorAll(".tab")
-          .forEach(item =>
-            item.classList.remove(
-              "active"
-            )
-          );
-
-
-        this.classList.add(
-          "active"
-        );
-
-
-        document
-          .getElementById(
-            "productsTab"
-          )
-          .style.display =
-          "none";
-
-
-        document
-          .getElementById(
-            "brandsTab"
-          )
-          .style.display =
-          "none";
-
-
-        document
-          .getElementById(
-            "modelsTab"
-          )
-          .style.display =
-          "none";
-
-
-        const tabName =
-          this.dataset.tab;
-
-
-        if(tabName === "products"){
-
-          document
-            .getElementById(
-              "productsTab"
-            )
-            .style.display =
-            "block";
-
-        }
-
-
-        if(tabName === "brands"){
-
-          document
-            .getElementById(
-              "brandsTab"
-            )
-            .style.display =
-            "block";
-
-        }
-
-
-        if(tabName === "models"){
-
-          document
-            .getElementById(
-              "modelsTab"
-            )
-            .style.display =
-            "block";
-
-        }
-
-      }
-    );
+    };
 
   });
 
 
+/* START */
 
-async function startAdmin(){
+renderBrands();
 
-  try{
+renderModels();
 
-    await loadBrands();
-
-    await loadModels();
-
-    await loadProducts();
-
-  }
-  catch(error){
-
-    console.error(
-      error
-    );
-
-    showMessage(
-      "خطا در راه‌اندازی پنل.",
-      "error"
-    );
-
-  }
-
-}
-
-
-startAdmin();
+renderProducts(products);
 
 </script>
 
 </body>
 </html>
-
-
-
-  
