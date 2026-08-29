@@ -3,810 +3,690 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ChinoTech | قطعات خودروهای چینی</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 *{
-box-sizing:border-box;
-margin:0;
-padding:0
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-font-family:Tahoma,Arial,sans-serif;
-background:#070b12;
-color:#fff;
-line-height:1.8
+    font-family:Tahoma,Arial,sans-serif;
+    background:#070b12;
+    color:#fff;
+    line-height:1.8;
 }
 
-button,input,select,textarea{
-font-family:inherit
+button,
+input,
+select,
+textarea{
+    font-family:inherit;
 }
 
 button{
-cursor:pointer
+    cursor:pointer;
 }
 
 a{
-text-decoration:none;
-color:inherit
+    text-decoration:none;
+    color:inherit;
 }
 
 .container{
-width:92%;
-max-width:1250px;
-margin:auto
+    width:92%;
+    max-width:1250px;
+    margin:auto;
 }
 
+/* HEADER */
+
 header{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(7,11,18,.94);
-backdrop-filter:blur(15px);
-border-bottom:1px solid rgba(255,255,255,.08)
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(7,11,18,.94);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .navbar{
-height:75px;
-display:flex;
-align-items:center;
-justify-content:space-between
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
 .logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:21px;
-font-weight:bold
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:22px;
+    font-weight:bold;
 }
 
 .logo-icon{
-width:44px;
-height:44px;
-border-radius:14px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#20d3a5,#319cff);
-color:#061016;
-font-weight:900
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#20d3a5,#319cff);
+    color:#061016;
+    font-weight:900;
+    box-shadow:0 0 25px rgba(32,211,165,.3);
 }
 
 .logo span{
-color:#20d3a5
+    color:#20d3a5;
 }
 
 .nav-links{
-display:flex;
-gap:25px;
-color:#aeb9c9;
-font-size:14px
+    display:flex;
+    gap:25px;
+    color:#aeb9c9;
+    font-size:14px;
 }
 
 .nav-links a:hover{
-color:#20d3a5
+    color:#20d3a5;
 }
 
 .admin-button{
-padding:10px 18px;
-border-radius:12px;
-border:1px solid #243247;
-background:#111a28;
-color:#fff
+    padding:10px 18px;
+    border-radius:12px;
+    border:1px solid #243247;
+    background:#111a28;
+    color:white;
 }
 
+/* HERO */
+
 .hero{
-padding:90px 0 70px;
-background:
-radial-gradient(circle at 15% 10%,rgba(32,211,165,.15),transparent 30%),
-radial-gradient(circle at 85% 10%,rgba(49,156,255,.15),transparent 30%)
+    padding:90px 0 70px;
+    background:
+    radial-gradient(
+        circle at 15% 10%,
+        rgba(32,211,165,.15),
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 85% 10%,
+        rgba(49,156,255,.15),
+        transparent 30%
+    );
 }
 
 .hero-grid{
-display:grid;
-grid-template-columns:1.2fr .8fr;
-gap:50px;
-align-items:center
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:50px;
+    align-items:center;
 }
 
 .badge{
-display:inline-block;
-color:#20d3a5;
-background:rgba(32,211,165,.08);
-border:1px solid rgba(32,211,165,.2);
-padding:7px 13px;
-border-radius:30px;
-font-size:13px;
-margin-bottom:18px
+    display:inline-block;
+    color:#20d3a5;
+    background:rgba(32,211,165,.08);
+    border:1px solid rgba(32,211,165,.2);
+    padding:7px 13px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:18px;
 }
 
 .hero h1{
-font-size:clamp(35px,5vw,65px);
-line-height:1.15;
-margin-bottom:20px
+    font-size:clamp(35px,5vw,65px);
+    line-height:1.15;
+    margin-bottom:20px;
 }
 
 .hero h1 span{
-color:#20d3a5
+    color:#20d3a5;
 }
 
 .hero p{
-color:#9aa7ba;
-font-size:17px;
-max-width:700px;
-margin-bottom:28px
+    color:#9aa7ba;
+    font-size:17px;
+    max-width:700px;
+    margin-bottom:28px;
 }
 
 .search-box{
-display:flex;
-background:#0d1522;
-border:1px solid #27364b;
-border-radius:18px;
-padding:7px;
-max-width:700px
+    display:flex;
+    background:#0d1522;
+    border:1px solid #27364b;
+    border-radius:18px;
+    padding:7px;
+    max-width:700px;
 }
 
 .search-box input{
-flex:1;
-background:transparent;
-border:0;
-outline:0;
-color:#fff;
-padding:14px;
-font-size:15px
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:white;
+    padding:14px;
+    font-size:15px;
 }
 
 .search-box button{
-background:linear-gradient(135deg,#20d3a5,#319cff);
-color:#061016;
-border:0;
-border-radius:12px;
-padding:0 22px;
-font-weight:bold
+    background:linear-gradient(135deg,#20d3a5,#319cff);
+    color:#061016;
+    border:none;
+    border-radius:12px;
+    padding:0 22px;
+    font-weight:bold;
 }
 
 .hero-card{
-background:linear-gradient(145deg,#122238,#0c121c);
-border:1px solid #26364b;
-border-radius:28px;
-padding:30px
+    background:linear-gradient(145deg,#122238,#0c121c);
+    border:1px solid #26364b;
+    border-radius:28px;
+    padding:30px;
 }
 
 .car-emoji{
-font-size:90px;
-text-align:center;
-margin-bottom:25px
+    font-size:90px;
+    text-align:center;
+    margin-bottom:25px;
 }
 
 .stats{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
 }
 
 .stat{
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.07);
-border-radius:16px;
-padding:16px
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:16px;
+    padding:16px;
 }
 
 .stat strong{
-display:block;
-font-size:25px
+    display:block;
+    font-size:25px;
 }
 
 .stat small{
-color:#9aa7ba
+    color:#9aa7ba;
 }
 
+/* SECTIONS */
+
 section{
-padding:70px 0
+    padding:70px 0;
 }
 
 .section-title{
-margin-bottom:30px
+    margin-bottom:30px;
 }
 
 .section-title h2{
-font-size:32px;
-margin-bottom:5px
+    font-size:32px;
+    margin-bottom:5px;
 }
 
 .section-title p{
-color:#8f9caf
+    color:#8f9caf;
 }
 
+/* BRANDS */
+
 .brand-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
 
 .brand-card{
-position:relative;
-min-height:190px;
-padding:22px;
-border-radius:22px;
-background:linear-gradient(145deg,#101a2a,#0c121d);
-border:1px solid #243247;
-cursor:pointer;
-transition:.25s;
-overflow:hidden
+    position:relative;
+    min-height:190px;
+    padding:22px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#101a2a,#0c121d);
+    border:1px solid #243247;
+    cursor:pointer;
+    transition:.25s;
+    overflow:hidden;
 }
 
 .brand-card:hover{
-transform:translateY(-5px);
-border-color:#20d3a5;
-box-shadow:0 20px 50px rgba(0,0,0,.35)
+    transform:translateY(-5px);
+    border-color:#20d3a5;
 }
 
 .brand-logo{
-width:65px;
-height:65px;
-border-radius:18px;
-background:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-margin-bottom:20px
+    width:65px;
+    height:65px;
+    border-radius:18px;
+    background:white;
+    color:#111827;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    margin-bottom:20px;
 }
 
-.brand-logo img{
-width:100%;
-height:100%;
-object-fit:contain
-}
-
-.brand-logo-text{
-color:#111827;
-font-weight:bold;
-font-size:13px
+.brand-card h3{
+    margin-bottom:5px;
 }
 
 .brand-card small{
-color:#8d99ab
+    color:#8d99ab;
 }
 
 .arrow{
-position:absolute;
-left:20px;
-bottom:18px;
-color:#20d3a5
+    position:absolute;
+    left:20px;
+    bottom:18px;
+    color:#20d3a5;
 }
 
+/* MODELS */
+
 .model-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
 .model-card{
-background:#0d1522;
-border:1px solid #243247;
-border-radius:20px;
-padding:20px;
-display:flex;
-align-items:center;
-gap:15px;
-cursor:pointer;
-transition:.2s
+    background:#0d1522;
+    border:1px solid #243247;
+    border-radius:20px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    cursor:pointer;
 }
 
 .model-card:hover{
-border-color:#20d3a5;
-transform:translateY(-3px)
+    border-color:#20d3a5;
 }
 
 .model-image{
-width:60px;
-height:60px;
-border-radius:16px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#1a3047,#111c2b);
-font-size:28px
+    width:60px;
+    height:60px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#1a3047,#111c2b);
+    font-size:28px;
 }
 
 .model-card span{
-color:#8d99ab;
-font-size:12px
+    color:#8d99ab;
+    font-size:12px;
+}
+
+/* PARTS */
+
+.parts-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
 
 .filters{
-display:flex;
-gap:10px;
-overflow:auto;
-padding-bottom:15px
+    display:flex;
+    gap:10px;
+    overflow:auto;
+    padding-bottom:15px;
 }
 
 .filter{
-white-space:nowrap;
-background:#101925;
-border:1px solid #26364b;
-color:#cbd5e1;
-padding:9px 16px;
-border-radius:30px
+    white-space:nowrap;
+    background:#101925;
+    border:1px solid #26364b;
+    color:#cbd5e1;
+    padding:9px 16px;
+    border-radius:30px;
 }
 
 .filter.active,
 .filter:hover{
-background:rgba(32,211,165,.1);
-border-color:#20d3a5;
-color:#20d3a5
-}
-
-.parts-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px
+    background:rgba(32,211,165,.1);
+    border-color:#20d3a5;
+    color:#20d3a5;
 }
 
 .part-card{
-background:#0d1522;
-border:1px solid #243247;
-border-radius:18px;
-padding:20px;
-overflow:hidden
+    background:#0d1522;
+    border:1px solid #243247;
+    border-radius:18px;
+    padding:20px;
 }
 
 .part-image{
-width:100%;
-height:180px;
-border-radius:14px;
-background:#111b29;
-margin-bottom:15px;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden
-}
-
-.part-image img{
-width:100%;
-height:100%;
-object-fit:cover
-}
-
-.part-image-placeholder{
-font-size:45px;
-opacity:.5
+    width:100%;
+    height:170px;
+    object-fit:cover;
+    border-radius:13px;
+    margin-bottom:13px;
+    background:#111b29;
 }
 
 .part-tag{
-display:inline-block;
-background:rgba(32,211,165,.08);
-color:#20d3a5;
-padding:5px 9px;
-border-radius:20px;
-font-size:11px;
-margin-bottom:12px
+    display:inline-block;
+    background:rgba(32,211,165,.08);
+    color:#20d3a5;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:11px;
+    margin-bottom:12px;
 }
 
 .part-card h3{
-font-size:15px;
-margin-bottom:8px
+    font-size:15px;
+    margin-bottom:8px;
 }
 
 .part-card p{
-color:#8996a9;
-font-size:12px;
-margin-bottom:10px
+    color:#8996a9;
+    font-size:12px;
 }
 
 .price{
-color:#20d3a5;
-font-size:18px;
-font-weight:bold;
-margin-top:8px
+    color:#20d3a5;
+    font-weight:bold;
+    margin:8px 0;
 }
 
 .stock{
-font-size:11px;
-color:#9aa7ba
+    font-size:12px;
+    color:#9aa7ba;
 }
 
+/* CONTACT */
+
 .contact-box{
-background:linear-gradient(145deg,#101b2b,#0b121c);
-border:1px solid #26364b;
-border-radius:28px;
-padding:35px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px
+    background:linear-gradient(145deg,#101b2b,#0b121c);
+    border:1px solid #26364b;
+    border-radius:28px;
+    padding:35px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
 }
 
 .contact-box h2{
-margin-bottom:15px
+    margin-bottom:15px;
 }
 
 .contact-box p{
-color:#929fb1;
-margin-bottom:20px
+    color:#929fb1;
+    margin-bottom:20px;
 }
 
 .contact-list{
-display:grid;
-gap:10px
+    display:grid;
+    gap:10px;
 }
 
 .contact-item{
-padding:13px 16px;
-background:rgba(255,255,255,.035);
-border:1px solid rgba(255,255,255,.06);
-border-radius:13px
+    padding:13px 16px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:13px;
 }
+
+/* FOOTER */
 
 footer{
-border-top:1px solid rgba(255,255,255,.08);
-padding:30px 0;
-color:#7f8b9c;
-font-size:12px
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:30px 0;
+    color:#7f8b9c;
+    font-size:12px;
 }
 
-/* LOGIN */
+/* PANELS */
 
-.modal{
-position:fixed;
-inset:0;
-z-index:9000;
-background:rgba(0,0,0,.82);
-backdrop-filter:blur(10px);
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px
+.login-panel,
+.admin-panel{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(12px);
+    display:none;
+    padding:20px;
 }
 
-.modal.show{
-display:flex
+.login-panel.show,
+.admin-panel.show{
+    display:block;
 }
 
-.login-box{
-width:100%;
-max-width:430px;
-background:#0c1420;
-border:1px solid #26364b;
-border-radius:25px;
-padding:30px;
-box-shadow:0 25px 80px rgba(0,0,0,.5)
+.login-container,
+.admin-container{
+    width:100%;
+    max-width:1100px;
+    height:100%;
+    margin:auto;
+    overflow:auto;
+    background:#0b121e;
+    border:1px solid #26364b;
+    border-radius:25px;
+    padding:25px;
 }
 
-.login-box h2{
-margin-bottom:8px
+.login-container{
+    max-width:460px;
+    height:auto;
+    margin:8vh auto;
 }
 
-.login-box>p{
-color:#8996a9;
-font-size:13px;
-margin-bottom:25px
+.admin-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.close-admin{
+    background:#182334;
+    color:white;
+    border:1px solid #26364b;
+    padding:10px 15px;
+    border-radius:10px;
+}
+
+.admin-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.admin-card{
+    background:#101925;
+    border:1px solid #26364b;
+    border-radius:18px;
+    padding:20px;
+}
+
+.admin-card h3{
+    margin-bottom:15px;
 }
 
 .form{
-display:grid;
-gap:12px
+    display:grid;
+    gap:10px;
 }
 
 .form input,
 .form select,
 .form textarea{
-width:100%;
-background:#080e17;
-border:1px solid #29384d;
-color:#fff;
-padding:12px;
-border-radius:10px;
-outline:0
+    width:100%;
+    background:#080e17;
+    border:1px solid #29384d;
+    color:white;
+    padding:11px;
+    border-radius:10px;
+    outline:none;
 }
 
 .form textarea{
-min-height:100px;
-resize:vertical
+    min-height:90px;
+    resize:vertical;
 }
 
-.form button,
 .primary{
-background:linear-gradient(135deg,#20d3a5,#319cff);
-border:0;
-padding:12px;
-border-radius:10px;
-font-weight:bold;
-color:#061016
-}
-
-.secondary{
-background:#182334;
-color:#fff;
-border:1px solid #29384d;
-padding:11px;
-border-radius:10px
-}
-
-.close{
-position:absolute;
-left:20px;
-top:20px;
-background:#182334;
-color:#fff;
-border:1px solid #29384d;
-border-radius:10px;
-padding:9px 13px
-}
-
-.login-message{
-margin-top:15px;
-padding:10px;
-border-radius:10px;
-font-size:13px;
-display:none
-}
-
-.login-message.show{
-display:block
-}
-
-.login-message.error{
-background:rgba(255,80,100,.1);
-color:#ff8797
-}
-
-.login-message.success{
-background:rgba(32,211,165,.1);
-color:#20d3a5
-}
-
-.switch-login{
-margin-top:18px;
-text-align:center;
-color:#8996a9;
-font-size:13px
-}
-
-.switch-login button{
-background:none;
-border:0;
-color:#20d3a5
-}
-
-/* ADMIN */
-
-.admin-panel{
-position:fixed;
-inset:0;
-z-index:8000;
-background:rgba(0,0,0,.85);
-backdrop-filter:blur(12px);
-display:none;
-padding:20px
-}
-
-.admin-panel.show{
-display:block
-}
-
-.admin-container{
-width:100%;
-max-width:1200px;
-height:100%;
-margin:auto;
-overflow:auto;
-background:#0b121e;
-border:1px solid #26364b;
-border-radius:25px;
-padding:25px
-}
-
-.admin-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
-gap:10px
-}
-
-.admin-header small{
-color:#8996a9
-}
-
-.admin-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px
-}
-
-.admin-card{
-background:#101925;
-border:1px solid #26364b;
-border-radius:18px;
-padding:20px
-}
-
-.admin-card h3{
-margin-bottom:15px
+    background:linear-gradient(135deg,#20d3a5,#319cff);
+    color:#061016;
+    border:none;
+    padding:11px;
+    border-radius:10px;
+    font-weight:bold;
 }
 
 .management{
-margin-top:20px
+    margin-top:20px;
 }
 
 .management-item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-background:#111b29;
-border:1px solid #25354a;
-padding:12px;
-border-radius:10px;
-margin-bottom:8px
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    background:#111b29;
+    border:1px solid #25354a;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:8px;
 }
 
 .delete{
-background:rgba(255,80,100,.1);
-border:1px solid rgba(255,80,100,.3);
-color:#ff7b8d;
-padding:6px 10px;
-border-radius:8px
-}
-
-.admin-tabs{
-display:flex;
-gap:8px;
-margin-bottom:20px;
-overflow:auto
-}
-
-.admin-tab{
-white-space:nowrap;
-background:#111b29;
-color:#aeb9c9;
-border:1px solid #29384d;
-padding:9px 15px;
-border-radius:10px
-}
-
-.admin-tab.active{
-color:#20d3a5;
-border-color:#20d3a5
-}
-
-.tab-content{
-display:none
-}
-
-.tab-content.active{
-display:block
-}
-
-.admin-list{
-margin-top:20px
+    background:rgba(255,80,100,.1);
+    border:1px solid rgba(255,80,100,.3);
+    color:#ff7b8d;
+    padding:6px 10px;
+    border-radius:8px;
 }
 
 .logout{
-background:rgba(255,80,100,.1);
-color:#ff7b8d;
-border:1px solid rgba(255,80,100,.3);
-padding:9px 14px;
-border-radius:10px
+    background:#351820;
+    color:#ff9cab;
+    border:1px solid #69303b;
+    padding:8px 13px;
+    border-radius:9px;
 }
 
-.hidden{
-display:none!important
+.message{
+    padding:10px;
+    border-radius:10px;
+    margin-top:10px;
+    display:none;
 }
 
-.loading{
-text-align:center;
-color:#8996a9;
-padding:30px
+.message.show{
+    display:block;
+}
+
+.success{
+    background:rgba(32,211,165,.1);
+    color:#55e5bf;
+}
+
+.error{
+    background:rgba(255,80,100,.1);
+    color:#ff9cab;
+}
+
+.user-info{
+    color:#9aa7ba;
+    font-size:12px;
+    margin-top:5px;
 }
 
 @media(max-width:1000px){
-.brand-grid,
-.parts-grid{
-grid-template-columns:repeat(2,1fr)
-}
 
-.model-grid{
-grid-template-columns:repeat(2,1fr)
-}
+    .brand-grid,
+    .parts-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-.hero-grid{
-grid-template-columns:1fr
-}
+    .model-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-.contact-box{
-grid-template-columns:1fr
-}
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
 
-.admin-grid{
-grid-template-columns:1fr
-}
+    .contact-box{
+        grid-template-columns:1fr;
+    }
+
+    .admin-grid{
+        grid-template-columns:1fr;
+    }
 }
 
 @media(max-width:600px){
-.nav-links{
-display:none
+
+    .nav-links{
+        display:none;
+    }
+
+    .brand-grid,
+    .model-grid,
+    .parts-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:50px;
+    }
+
+    .hero-card{
+        display:none;
+    }
+
+    .search-box{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .search-box button{
+        height:48px;
+    }
+
+    .contact-box{
+        padding:22px;
+    }
 }
 
-.brand-grid,
-.model-grid,
-.parts-grid{
-grid-template-columns:1fr
-}
-
-.hero{
-padding-top:50px
-}
-
-.hero-card{
-display:none
-}
-
-.search-box{
-flex-direction:column;
-gap:8px
-}
-
-.search-box button{
-height:48px
-}
-
-.contact-box{
-padding:22px
-}
-
-.admin-panel{
-padding:5px
-}
-
-.admin-container{
-padding:18px
-}
-
-.admin-header{
-align-items:flex-start
-}
-}
 </style>
 </head>
 
 <body>
-
-<header>
-<div class="container navbar">
-
-<a href="#" class="logo">
-<div class="logo-icon">CT</div>
-<div>CHINO<span>TECH</span></div>
-</a>
-
-<nav class="nav-links">
-<a href="#brands">برندها</a>
-<a href="#models">مدل‌ها</a>
-<a href="#parts">قطعات</a>
-<a href="#contact">تماس با ما</a>
-</nav>
-
-<button class="admin-button" onclick="openLogin()">
-پنل مدیریت
-</button>
-
-</div>
-</header>
+   <!-- ================= HERO ================= -->
 
 <section class="hero">
+
 <div class="container hero-grid">
 
 <div>
-<div class="badge">مرجع تخصصی قطعات خودروهای چینی</div>
+
+<div class="badge">
+مرجع تخصصی قطعات خودروهای چینی
+</div>
 
 <h1>
 قطعه‌ی ماشینت رو
@@ -816,25 +696,34 @@ align-items:flex-start
 
 <p>
 برند، مدل خودرو یا نام قطعه را جستجو کن
-و قطعه موردنظر خودت را پیدا کن.
+و به راحتی قطعه موردنظر خودت را پیدا کن.
 </p>
 
 <div class="search-box">
+
 <input
-id="searchInput"
 type="text"
+id="searchInput"
 placeholder="مثلاً خنک‌کن گیربکس S5، چراغ جلو، لنت..."
 oninput="searchParts()"
 >
 
-<button onclick="goParts()">جستجو</button>
+<button onclick="scrollToParts()">
+جستجو
+</button>
+
 </div>
+
 </div>
 
 <div class="hero-card">
-<div class="car-emoji">🚘</div>
+
+<div class="car-emoji">
+🚘
+</div>
 
 <div class="stats">
+
 <div class="stat">
 <strong id="brandCount">0</strong>
 <small>برند خودرو</small>
@@ -854,94 +743,162 @@ oninput="searchParts()"
 <strong>24/7</strong>
 <small>پشتیبانی</small>
 </div>
-</div>
+
 </div>
 
 </div>
+
+</div>
+
 </section>
+
+
+<!-- ================= BRANDS ================= -->
 
 <section id="brands">
+
 <div class="container">
 
 <div class="section-title">
-<h2>برندهای خودرو</h2>
-<p>برند خودرو را انتخاب کنید.</p>
+
+<h2>
+برندهای خودرو
+</h2>
+
+<p>
+برند خودرو را انتخاب کنید.
+</p>
+
 </div>
 
-<div class="brand-grid" id="brandGrid">
-<div class="loading">در حال دریافت اطلاعات...</div>
+<div
+class="brand-grid"
+id="brandGrid">
 </div>
 
 </div>
+
 </section>
+
+
+<!-- ================= MODELS ================= -->
 
 <section id="models">
+
 <div class="container">
 
 <div class="section-title">
-<h2 id="modelTitle">مدل‌های خودرو</h2>
-<p>مدل خودرو را انتخاب کنید تا قطعات آن نمایش داده شود.</p>
+
+<h2 id="modelTitle">
+مدل‌های خودرو
+</h2>
+
+<p>
+مدل خودرو را انتخاب کنید.
+</p>
+
 </div>
 
-<div class="model-grid" id="modelGrid"></div>
+<div
+class="model-grid"
+id="modelGrid">
+</div>
 
 </div>
+
 </section>
+
+
+<!-- ================= PARTS ================= -->
 
 <section id="parts">
+
 <div class="container">
 
 <div class="section-title">
-<h2>قطعات</h2>
-<p>قطعه موردنظر خود را جستجو کنید.</p>
+
+<h2>
+قطعات
+</h2>
+
+<p>
+قطعه موردنظر خود را جستجو کنید.
+</p>
+
 </div>
 
-<div class="filters" id="filters"></div>
+<div
+class="filters"
+id="filters">
+</div>
 
-<div class="parts-grid" id="partsGrid"></div>
+<div
+class="parts-grid"
+id="partsGrid">
+</div>
 
 </div>
+
 </section>
 
+
+<!-- ================= CONTACT ================= -->
+
 <section id="contact">
+
 <div class="container">
 
 <div class="contact-box">
 
 <div>
-<div class="badge">CHINOTECH</div>
 
-<h2>برای استعلام قطعه با ما در تماس باشید</h2>
+<div class="badge">
+CHINOTECH
+</div>
+
+<h2>
+برای استعلام قطعه با ما در تماس باشید
+</h2>
 
 <p>
 اگر قطعه موردنظر خود را پیدا نکردید،
 مدل خودرو یا عکس قطعه را برای ما ارسال کنید.
 </p>
 
-<a href="tel:09102284286"
-class="primary"
-style="display:inline-block;padding:12px 20px">
+<a
+href="tel:09102284286"
+class="search-box"
+style="
+display:inline-flex;
+padding:13px 20px;
+color:white;
+width:auto;
+">
+
 📞 تماس سریع
+
 </a>
+
 </div>
+
 
 <div class="contact-list">
 
-<a class="contact-item" href="tel:09102284286">
+<div class="contact-item">
 📞 09102284286
-</a>
+</div>
 
-<a class="contact-item" href="tel:09359886163">
+<div class="contact-item">
 📞 09359886163
-</a>
+</div>
 
-<a class="contact-item" href="tel:09389886161">
+<div class="contact-item">
 📞 09389886161
-</a>
+</div>
 
-<a class="contact-item" href="tel:09219886163">
+<div class="contact-item">
 📞 09219886163
-</a>
+</div>
 
 <div class="contact-item">
 📸 Instagram: @Chinotech.tehran
@@ -951,1865 +908,116 @@ style="display:inline-block;padding:12px 20px">
 ✈️ Telegram: @chinotech1
 </div>
 
-<a class="contact-item" href="https://wa.me/989389886161" target="_blank">
+<div class="contact-item">
 🟢 WhatsApp: 09389886161
-</a>
+</div>
 
 <div class="contact-item">
 📍 بلوار فردوس، خیابان ابراهیمی شمالی، کوچه ششم، پلاک 5
 </div>
 
 </div>
+
 </div>
+
 </div>
+
 </section>
 
+
 <footer>
+
 <div class="container">
+
 © 2026 ChinoTech — قطعات خودروهای چینی
+
 </div>
+
 </footer>
 
 
-<!-- LOGIN MODAL -->
+<!-- =====================================================
+     LOGIN PANEL
+===================================================== -->
 
-<div class="modal" id="loginModal">
+<div
+class="login-panel"
+id="loginPanel">
 
-<div class="login-box">
-
-<button class="close" onclick="closeLogin()">✕</button>
-
-<div class="badge">CHINOTECH MANAGEMENT</div>
-
-<h2 id="authTitle">ورود به پنل مدیریت</h2>
-
-<p id="authDescription">
-ایمیل و رمز عبور مدیر را وارد کنید.
-</p>
-
-<form class="form" onsubmit="handleAuth(event)">
-
-<input
-id="authEmail"
-type="email"
-placeholder="ایمیل"
-required
->
-
-<input
-id="authPassword"
-type="password"
-placeholder="رمز عبور"
-required
-minlength="6"
->
-
-<button type="submit" id="authButton">
-ورود
-</button>
-
-</form>
-
-<div id="authMessage" class="login-message"></div>
-
-<div class="switch-login">
-<span id="switchText">حساب ندارید؟</span>
-<button onclick="toggleAuthMode()" id="switchButton">
-ثبت‌نام
-</button>
-</div>
-
-</div>
-</div>
-
-
-<!-- ADMIN -->
-
-<div class="admin-panel" id="adminPanel">
-
-<div class="admin-container">
+<div class="login-container">
 
 <div class="admin-header">
 
 <div>
-<div class="badge">MANAGEMENT</div>
-<h2>پنل مدیریت چینوتک</h2>
-<small id="adminUser"></small>
+
+<div class="badge">
+ADMIN LOGIN
 </div>
 
-<div style="display:flex;gap:8px;flex-wrap:wrap">
-<button class="logout" onclick="logout()">خروج</button>
-<button class="secondary" onclick="closeAdmin()">✕ بستن</button>
+<h2>
+ورود به پنل مدیریت
+</h2>
+
+<div class="user-info">
+ورود فقط با ایمیل و رمز عبور
 </div>
-
-</div>
-
-<div class="admin-tabs">
-
-<button class="admin-tab active"
-onclick="showTab('brandTab',this)">
-🏷 برندها
-</button>
-
-<button class="admin-tab"
-onclick="showTab('modelTab',this)">
-🚘 مدل‌ها
-</button>
-
-<button class="admin-tab"
-onclick="showTab('productTab',this)">
-🔧 قطعات
-</button>
-
-</div>
-
-
-<!-- BRAND TAB -->
-
-<div id="brandTab" class="tab-content active">
-
-<div class="admin-card">
-
-<h3>➕ افزودن برند</h3>
-
-<form class="form" onsubmit="addBrand(event)">
-
-<input
-id="brandName"
-placeholder="نام برند - مثال: JAC"
-required
->
-
-<input
-id="brandLogo"
-placeholder="آدرس لوگو - اختیاری"
->
-
-<button type="submit">
-افزودن برند
-</button>
-
-</form>
-
-</div>
-
-<div class="admin-card admin-list">
-
-<h3>برندهای موجود</h3>
-
-<div id="adminBrands"></div>
-
-</div>
-
-</div>
-
-
-<!-- MODEL TAB -->
-
-<div id="modelTab" class="tab-content">
-
-<div class="admin-card">
-
-<h3>➕ افزودن مدل</h3>
-
-<form class="form" onsubmit="addModel(event)">
-
-<select id="modelBrand" required>
-<option value="">انتخاب برند</option>
-</select>
-
-<input
-id="modelName"
-placeholder="مثال: S5"
-required
->
-
-<button type="submit">
-افزودن مدل
-</button>
-
-</form>
-
-</div>
-
-<div class="admin-card admin-list">
-
-<h3>مدل‌های موجود</h3>
-
-<div id="adminModels"></div>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCT TAB -->
-
-<div id="productTab" class="tab-content">
-
-<div class="admin-card">
-
-<h3>➕ افزودن قطعه</h3>
-
-<form class="form" onsubmit="addProduct(event)">
-
-<select id="productBrand" onchange="loadProductModels()" required>
-<option value="">انتخاب برند</option>
-</select>
-
-<select id="productModel" required>
-<option value="">ابتدا برند را انتخاب کنید</option>
-</select>
-
-<input
-id="productName"
-placeholder="نام قطعه"
-required
->
-
-<input
-id="productPrice"
-type="number"
-placeholder="قیمت به تومان"
->
-
-<input
-id="productImage"
-placeholder="آدرس تصویر قطعه"
->
-
-<input
-id="productCategory"
-placeholder="دسته‌بندی - مثال: موتور"
->
-
-<input
-id="productStock"
-type="number"
-placeholder="موجودی"
-value="0"
->
-
-<textarea
-id="productDescription"
-placeholder="توضیحات قطعه"
-></textarea>
-
-<button type="submit">
-افزودن قطعه
-</button>
-
-</form>
-
-</div>
-
-<div class="admin-card admin-list">
-
-<h3>قطعات موجود</h3>
-
-<div id="adminProducts"></div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-
-<script>
-
-/* =========================================================
-   SUPABASE
-========================================================= */
-
-const SUPABASE_URL =
-"https://viyqzrruxundtsgtfjsj.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_v0eLyw6i703J8p2gPeBUOA_iKepeDIY";
-
-const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
-
-
-/* =========================================================
-   ADMIN EMAIL
-========================================================= */
-
-const ADMIN_EMAIL =
-"hadirasouli125@gmail.com";
-
-
-/* =========================================================
-   STATE
-========================================================= */
-
-let brands=[];
-let models=[];
-let products=[];
-
-let selectedBrand=null;
-let selectedModel=null;
-let selectedCategory=null;
-
-let authMode="login";
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function escapeHTML(value){
-
-if(value===null || value===undefined)
-return "";
-
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-}
-
-
-function money(value){
-
-if(value===null || value===undefined || value==="")
-return "تماس بگیرید";
-
-return Number(value).toLocaleString("fa-IR")+" تومان";
-}
-
-
-/* =========================================================
-   LOAD DATABASE
-========================================================= */
-
-async function loadDatabase(){
-
-try{
-
-const [
-brandsResult,
-modelsResult,
-productsResult
-]=await Promise.all([
-
-supabaseClient
-.from("brands")
-.select("*")
-.order("id",{ascending:true}),
-
-supabaseClient
-.from("models")
-.select("*")
-.order("id",{ascending:true}),
-
-supabaseClient
-.from("products")
-.select("*")
-.order("id",{ascending:true})
-
-]);
-
-
-if(brandsResult.error)
-throw brandsResult.error;
-
-if(modelsResult.error)
-throw modelsResult.error;
-
-if(productsResult.error)
-throw productsResult.error;
-
-
-brands=brandsResult.data || [];
-models=modelsResult.data || [];
-products=productsResult.data || [];
-
-
-renderAll();
-
-}catch(error){
-
-console.error(error);
-
-document.getElementById("brandGrid").innerHTML=
-`
-<div class="loading">
-خطا در اتصال به پایگاه داده.<br>
-تنظیمات Supabase و نام جدول‌ها را بررسی کنید.
-</div>
-`;
-
-}
-
-}
-
-
-/* =========================================================
-   RENDER
-========================================================= */
-
-function renderAll(){
-
-renderBrands();
-renderModels();
-renderProducts();
-renderFilters();
-updateStats();
-}
-
-
-/* =========================================================
-   BRANDS
-========================================================= */
-
-function renderBrands(){
-
-const grid=
-document.getElementById("brandGrid");
-
-grid.innerHTML="";
-
-if(!brands.length){
-
-grid.innerHTML=
-`<div class="loading">هنوز برندی ثبت نشده است.</div>`;
-
-return;
-}
-
-
-brands.forEach(brand=>{
-
-const card=
-document.createElement("div");
-
-card.className="brand-card";
-
-let logoHTML="";
-
-if(brand.logo){
-
-logoHTML=
-`
-<img
-src="${escapeHTML(brand.logo)}"
-alt="${escapeHTML(brand.name)}"
-onerror="this.style.display='none'"
->
-`;
-
-}else{
-
-logoHTML=
-`
-<div class="brand-logo-text">
-${escapeHTML(
-String(brand.name).substring(0,6)
-)}
-</div>
-`;
-
-}
-
-
-card.innerHTML=
-`
-<div class="brand-logo">
-${logoHTML}
-</div>
-
-<h3>${escapeHTML(brand.name)}</h3>
-
-<small>
-${models.filter(
-m=>String(m.brand)===String(brand.id)
-).length}
- مدل خودرو
-</small>
-
-<div class="arrow">
-← مشاهده مدل‌ها
-</div>
-`;
-
-
-card.onclick=()=>{
-
-selectedBrand=brand.id;
-selectedModel=null;
-
-renderAll();
-
-document
-.getElementById("models")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-};
-
-grid.appendChild(card);
-
-});
-
-}
-
-
-/* =========================================================
-   MODELS
-========================================================= */
-
-function renderModels(){
-
-const grid=
-document.getElementById("modelGrid");
-
-const title=
-document.getElementById("modelTitle");
-
-grid.innerHTML="";
-
-
-let list=models;
-
-if(selectedBrand){
-
-list=models.filter(
-m=>String(m.brand)===String(selectedBrand)
-);
-
-const brand=
-brands.find(
-b=>String(b.id)===String(selectedBrand)
-);
-
-title.innerText=
-brand
-? "مدل‌های "+brand.name
-: "مدل‌های خودرو";
-
-}else{
-
-title.innerText="مدل‌های خودرو";
-
-}
-
-
-if(!list.length){
-
-grid.innerHTML=
-`<div class="loading">مدلی برای نمایش وجود ندارد.</div>`;
-
-return;
-}
-
-
-list.forEach(model=>{
-
-const brand=
-brands.find(
-b=>String(b.id)===String(model.brand)
-);
-
-const card=
-document.createElement("div");
-
-card.className="model-card";
-
-card.innerHTML=
-`
-<div class="model-image">🚘</div>
-
-<div>
-<strong>
-${escapeHTML(brand ? brand.name : "")}
-${escapeHTML(model.name)}
-</strong>
-
-<br>
-
-<span>
-مشاهده قطعات →
-</span>
-</div>
-`;
-
-card.onclick=()=>{
-
-selectedModel=model.id;
-
-const brand=
-brands.find(
-b=>String(b.id)===String(model.brand)
-);
-
-selectedBrand=
-brand ? brand.id : null;
-
-renderProducts();
-renderFilters();
-
-document
-.getElementById("parts")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-};
-
-grid.appendChild(card);
-
-});
-
-}
-
-
-/* =========================================================
-   PRODUCTS
-========================================================= */
-
-function renderProducts(){
-
-const grid=
-document.getElementById("partsGrid");
-
-grid.innerHTML="";
-
-
-let list=[...products];
-
-
-if(selectedBrand){
-
-list=list.filter(
-p=>String(p.brand_id)===String(selectedBrand)
-);
-
-}
-
-
-if(selectedModel){
-
-list=list.filter(
-p=>String(p.model_id)===String(selectedModel)
-);
-
-}
-
-
-if(selectedCategory){
-
-list=list.filter(
-p=>String(p.category||"")===String(selectedCategory)
-);
-
-}
-
-
-const query=
-document
-.getElementById("searchInput")
-.value
-.trim()
-.toLowerCase();
-
-
-if(query){
-
-list=list.filter(p=>{
-
-const brand=
-brands.find(
-b=>String(b.id)===String(p.brand_id)
-);
-
-const model=
-models.find(
-m=>String(m.id)===String(p.model_id)
-);
-
-const text=
-[
-p.name,
-p.description,
-p.category,
-brand?.name,
-model?.name
-]
-.filter(Boolean)
-.join(" ")
-.toLowerCase();
-
-return text.includes(query);
-
-});
-
-}
-
-
-if(!list.length){
-
-grid.innerHTML=
-`<div class="loading">قطعه‌ای پیدا نشد.</div>`;
-
-return;
-}
-
-
-list.slice(0,100).forEach(product=>{
-
-const brand=
-brands.find(
-b=>String(b.id)===String(product.brand_id)
-);
-
-const model=
-models.find(
-m=>String(m.id)===String(product.model_id)
-);
-
-
-const card=
-document.createElement("div");
-
-card.className="part-card";
-
-
-let imageHTML=
-`
-<div class="part-image">
-<div class="part-image-placeholder">🔧</div>
-</div>
-`;
-
-if(product.image){
-
-imageHTML=
-`
-<div class="part-image">
-<img
-src="${escapeHTML(product.image)}"
-alt="${escapeHTML(product.name)}"
-onerror="this.parentElement.innerHTML='<div class=&quot;part-image-placeholder&quot;>🔧</div>'"
->
-</div>
-`;
-
-}
-
-
-card.innerHTML=
-`
-${imageHTML}
-
-<span class="part-tag">
-${escapeHTML(brand?.name||"")}
-${model ? " "+escapeHTML(model.name):""}
-</span>
-
-<h3>
-${escapeHTML(product.name)}
-</h3>
-
-<p>
-${escapeHTML(product.description||"")}
-</p>
-
-<div class="price">
-${money(product.price)}
-</div>
-
-<div class="stock">
-موجودی:
-${product.stock ?? 0}
-</div>
-`;
-
-grid.appendChild(card);
-
-});
-
-}
-
-
-/* =========================================================
-   FILTERS
-========================================================= */
-
-function renderFilters(){
-
-const container=
-document.getElementById("filters");
-
-container.innerHTML="";
-
-
-const all=
-document.createElement("button");
-
-all.className=
-"filter "+(!selectedCategory?"active":"");
-
-all.innerText="همه";
-
-all.onclick=()=>{
-
-selectedCategory=null;
-renderProducts();
-renderFilters();
-
-};
-
-container.appendChild(all);
-
-
-const categories=
-[
-...new Set(
-products
-.map(p=>p.category)
-.filter(Boolean)
-)
-];
-
-
-categories.forEach(category=>{
-
-const button=
-document.createElement("button");
-
-button.className=
-"filter "+
-(
-selectedCategory===category
-?"active"
-:""
-);
-
-button.innerText=category;
-
-button.onclick=()=>{
-
-selectedCategory=category;
-
-renderProducts();
-renderFilters();
-
-};
-
-container.appendChild(button);
-
-});
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-function searchParts(){
-
-selectedModel=null;
-
-renderProducts();
-
-}
-
-
-function goParts(){
-
-document
-.getElementById("parts")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-searchParts();
-
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-function updateStats(){
-
-document.getElementById("brandCount").innerText=
-brands.length;
-
-document.getElementById("modelCount").innerText=
-models.length;
-
-document.getElementById("partCount").innerText=
-products.length;
-
-}
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-function openLogin(){
-
-document
-.getElementById("loginModal")
-.classList.add("show");
-
-}
-
-function closeLogin(){
-
-document
-.getElementById("loginModal")
-.classList.remove("show");
-
-}
-
-
-function toggleAuthMode(){
-
-authMode=
-authMode==="login"
-?"signup"
-:"login";
-
-
-const title=
-document.getElementById("authTitle");
-
-const desc=
-document.getElementById("authDescription");
-
-const button=
-document.getElementById("authButton");
-
-const switchText=
-document.getElementById("switchText");
-
-const switchButton=
-document.getElementById("switchButton");
-
-
-if(authMode==="signup"){
-
-title.innerText="ساخت حساب مدیریت";
-
-desc.innerText=
-"برای ساخت حساب ایمیل و رمز عبور انتخاب کنید.";
-
-button.innerText="ثبت‌نام";
-
-switchText.innerText="حساب دارید؟";
-
-switchButton.innerText="ورود";
-
-}else{
-
-title.innerText="ورود به پنل مدیریت";
-
-desc.innerText=
-"ایمیل و رمز عبور مدیر را وارد کنید.";
-
-button.innerText="ورود";
-
-switchText.innerText="حساب ندارید؟";
-
-switchButton.innerText="ثبت‌نام";
-
-}
-
-clearAuthMessage();
-
-}
-
-
-function showAuthMessage(text,type){
-
-const box=
-document.getElementById("authMessage");
-
-box.innerText=text;
-
-box.className=
-"login-message show "+type;
-
-}
-
-
-function clearAuthMessage(){
-
-const box=
-document.getElementById("authMessage");
-
-box.innerText="";
-
-box.className="login-message";
-
-}
-
-
-/* =========================================================
-   AUTH
-========================================================= */
-
-async function handleAuth(event){
-
-event.preventDefault();
-
-clearAuthMessage();
-
-
-const email=
-document
-.getElementById("authEmail")
-.value
-.trim();
-
-const password=
-document
-.getElementById("authPassword")
-.value;
-
-
-if(authMode==="signup"){
-
-const {data,error}=
-await supabaseClient.auth.signUp({
-
-email:email,
-password:password
-
-});
-
-
-if(error){
-
-showAuthMessage(
-error.message,
-"error"
-);
-
-return;
-}
-
-
-/*
-Supabase ممکن است بر اساس تنظیمات پروژه
-تأیید ایمیل بخواهد.
-*/
-
-if(data.user){
-
-showAuthMessage(
-"حساب ساخته شد. اگر تأیید ایمیل فعال باشد، ایمیل تأیید را بررسی کنید.",
-"success"
-);
-
-}
-
-return;
-
-}
-
-
-/* LOGIN */
-
-const {data,error}=
-await supabaseClient.auth.signInWithPassword({
-
-email:email,
-password:password
-
-});
-
-
-if(error){
-
-showAuthMessage(
-"ایمیل یا رمز عبور اشتباه است.",
-"error"
-);
-
-return;
-}
-
-
-if(!data.user){
-
-showAuthMessage(
-"ورود انجام نشد.",
-"error"
-);
-
-return;
-}
-
-
-/*
-فقط ایمیل مدیر اجازه ورود به پنل دارد.
-*/
-
-if(
-data.user.email.toLowerCase() !==
-ADMIN_EMAIL.toLowerCase()
-){
-
-await supabaseClient.auth.signOut();
-
-showAuthMessage(
-"این حساب اجازه ورود به پنل مدیریت را ندارد.",
-"error"
-);
-
-return;
-}
-
-
-closeLogin();
-
-openAdmin();
-
-}
-
-
-/* =========================================================
-   ADMIN
-========================================================= */
-
-async function openAdmin(){
-
-const {data}=
-await supabaseClient.auth.getUser();
-
-if(
-!data.user ||
-data.user.email.toLowerCase() !==
-ADMIN_EMAIL.toLowerCase()
-){
-
-openLogin();
-return;
-}
-
-
-document
-.getElementById("adminPanel")
-.classList.add("show");
-
-
-document.getElementById("adminUser").innerText=
-data.user.email;
-
-
-await loadAdmin();
-
-}
-
-
-function closeAdmin(){
-
-document
-.getElementById("adminPanel")
-.classList.remove("show");
-
-}
-
-
-async function logout(){
-
-await supabaseClient.auth.signOut();
-
-closeAdmin();
-
-}
-
-
-/* =========================================================
-   ADMIN LOAD
-========================================================= */
-
-async function loadAdmin(){
-
-await loadDatabase();
-
-renderAdminBrands();
-renderAdminModels();
-renderAdminProducts();
-
-loadBrandSelects();
-
-}
-
-
-/* =========================================================
-   TABS
-========================================================= */
-
-function showTab(tabId,button){
-
-document
-.querySelectorAll(".tab-content")
-.forEach(tab=>{
-tab.classList.remove("active");
-});
-
-
-document
-.querySelectorAll(".admin-tab")
-.forEach(tab=>{
-tab.classList.remove("active");
-});
-
-
-document
-.getElementById(tabId)
-.classList.add("active");
-
-button.classList.add("active");
-
-}
-
-
-/* =========================================================
-   BRAND SELECTS
-========================================================= */
-
-function loadBrandSelects(){
-
-const selects=[
-document.getElementById("modelBrand"),
-document.getElementById("productBrand")
-];
-
-
-selects.forEach(select=>{
-
-if(!select)
-return;
-
-select.innerHTML=
-`<option value="">انتخاب برند</option>`;
-
-brands.forEach(brand=>{
-
-const option=
-document.createElement("option");
-
-option.value=brand.id;
-
-option.textContent=brand.name;
-
-select.appendChild(option);
-
-});
-
-});
-
-}
-
-
-/* =========================================================
-   PRODUCT MODELS
-========================================================= */
-
-function loadProductModels(){
-
-const brandId=
-document.getElementById("productBrand").value;
-
-const select=
-document.getElementById("productModel");
-
-select.innerHTML=
-`<option value="">انتخاب مدل</option>`;
-
-
-models
-.filter(
-m=>String(m.brand)===String(brandId)
-)
-.forEach(model=>{
-
-const option=
-document.createElement("option");
-
-option.value=model.id;
-
-option.textContent=model.name;
-
-select.appendChild(option);
-
-});
-
-}
-
-
-/* =========================================================
-   ADD BRAND
-========================================================= */
-
-async function addBrand(event){
-
-event.preventDefault();
-
-
-const name=
-document.getElementById("brandName")
-.value
-.trim();
-
-const logo=
-document.getElementById("brandLogo")
-.value
-.trim();
-
-
-if(!name)
-return;
-
-
-const {error}=
-await supabaseClient
-.from("brands")
-.insert([{
-name:name,
-logo:logo || null
-}]);
-
-
-if(error){
-
-alert("خطا: "+error.message);
-return;
-
-}
-
-
-document.getElementById("brandName").value="";
-document.getElementById("brandLogo").value="";
-
-
-await loadAdmin();
-
-alert("برند با موفقیت اضافه شد.");
-
-}
-
-
-/* =========================================================
-   DELETE BRAND
-========================================================= */
-
-async function deleteBrand(id){
-
-const relatedModels=
-models.filter(
-m=>String(m.brand)===String(id)
-);
-
-
-if(
-!confirm(
-"با حذف برند، مدل‌ها و قطعات مرتبط ممکن است حذف شوند. ادامه می‌دهید؟"
-)
-)
-return;
-
-
-/*
-اول قطعات مرتبط
-*/
-
-for(const model of relatedModels){
-
-await supabaseClient
-.from("products")
-.delete()
-.eq("model_id",model.id);
-
-}
-
-
-/*
-سپس مدل‌ها
-*/
-
-await supabaseClient
-.from("models")
-.delete()
-.eq("brand",id);
-
-
-/*
-سپس برند
-*/
-
-const {error}=
-await supabaseClient
-.from("brands")
-.delete()
-.eq("id",id);
-
-
-if(error){
-
-alert("خطا: "+error.message);
-return;
-
-}
-
-
-selectedBrand=null;
-selectedModel=null;
-
-await loadAdmin();
-
-}
-
-
-/* =========================================================
-   RENDER ADMIN BRANDS
-========================================================= */
-
-function renderAdminBrands(){
-
-const box=
-document.getElementById("adminBrands");
-
-box.innerHTML="";
-
-
-brands.forEach(brand=>{
-
-const item=
-document.createElement("div");
-
-item.className="management-item";
-
-item.innerHTML=
-`
-<div>
-<strong>${escapeHTML(brand.name)}</strong>
-<br>
-<small style="color:#8996a9">
-${models.filter(
-m=>String(m.brand)===String(brand.id)
-).length}
- مدل
-</small>
-</div>
-
-<button
-class="delete"
-onclick="deleteBrand('${brand.id}')">
-حذف
-</button>
-`;
-
-box.appendChild(item);
-
-});
-
-}
-
-
-/* =========================================================
-   ADD MODEL
-========================================================= */
-
-async function addModel(event){
-
-event.preventDefault();
-
-
-const brand=
-document.getElementById("modelBrand")
-.value;
-
-const name=
-document
-.getElementById("modelName")
-.value
-.trim();
-
-
-if(!brand || !name)
-return;
-
-
-const {error}=
-await supabaseClient
-.from("models")
-.insert([{
-brand:brand,
-name:name
-}]);
-
-
-if(error){
-
-alert("خطا: "+error.message);
-return;
-
-}
-
-
-document.getElementById("modelName").value="";
-
-await loadAdmin();
-
-alert("مدل با موفقیت اضافه شد.");
-
-}
-
-
-/* =========================================================
-   DELETE MODEL
-========================================================= */
-
-async function deleteModel(id){
-
-if(
-!confirm(
-"مدل و قطعات مرتبط با آن حذف شوند؟"
-)
-)
-return;
-
-
-await supabaseClient
-.from("products")
-.delete()
-.eq("model_id",id);
-
-
-const {error}=
-await supabaseClient
-.from("models")
-.delete()
-.eq("id",id);
-
-
-if(error){
-
-alert("خطا: "+error.message);
-return;
-
-}
-
-
-await loadAdmin();
-
-}
-
-
-/* =========================================================
-   RENDER ADMIN MODELS
-========================================================= */
-
-function renderAdminModels(){
-
-const box=
-document.getElementById("adminModels");
-
-box.innerHTML="";
-
-
-models.forEach(model=>{
-
-const brand=
-brands.find(
-b=>String(b.id)===String(model.brand)
-);
-
-
-const item=
-document.createElement("div");
-
-item.className="management-item";
-
-item.innerHTML=
-`
-<div>
-<strong>
-${escapeHTML(brand?.name||"")}
- ${escapeHTML(model.name)}
-</strong>
-</div>
-
-<button
-class="delete"
-onclick="deleteModel('${model.id}')">
-حذف
-</button>
-`;
-
-box.appendChild(item);
-
-});
-
-}
-
-
-/* =========================================================
-   ADD PRODUCT
-========================================================= */
-
-async function addProduct(event){
-
-event.preventDefault();
-
-
-const brandId=
-document.getElementById("productBrand").value;
-
-const modelId=
-document.getElementById("productModel").value;
-
-const name=
-document.getElementById("productName")
-.value.trim();
-
-const price=
-document.getElementById("productPrice")
-.value;
-
-const image=
-document.getElementById("productImage")
-.value.trim();
-
-const category=
-document.getElementById("productCategory")
-.value.trim();
-
-const stock=
-document.getElementById("productStock")
-.value || 0;
-
-const description=
-document.getElementById("productDescription")
-.value.trim();
-
-
-if(!brandId || !modelId || !name){
-
-alert("برند، مدل و نام قطعه الزامی است.");
-
-return;
-
-}
-
-
-const {error}=
-await supabaseClient
-.from("products")
-.insert([{
-
-name:name,
-
-price:
-price
-? Number(price)
-:null,
-
-image:image || null,
-
-description:
-description || null,
-
-category:
-category || null,
-
-stock:Number(stock),
-
-brand_id:brandId,
-
-model_id:modelId
-
-}]);
-
-
-if(error){
-
-alert("خطا: "+error.message);
-
-console.error(error);
-
-return;
-
-}
-
-
-/*
-پاک کردن فرم
-*/
-
-document.getElementById("productName").value="";
-document.getElementById("productPrice").value="";
-document.getElementById("productImage").value="";
-document.getElementById("productCategory").value="";
-document.getElementById("productStock").value="0";
-document.getElementById("productDescription").value="";
-
-
-await loadAdmin();
-
-alert("قطعه با موفقیت اضافه شد.");
-
-}
-
-
-/* =========================================================
-   DELETE PRODUCT
-========================================================= */
-
-async function deleteProduct(id){
-
-if(!confirm("این قطعه حذف شود؟"))
-return;
-
-
-const {error}=
-await supabaseClient
-.from("products")
-.delete()
-.eq("id",id);
-
-
-if(error){
-
-alert("خطا: "+error.message);
-return;
-
-}
-
-
-await loadAdmin();
-
-}
-
-
-/* =========================================================
-   ADMIN PRODUCTS
-========================================================= */
-
-function renderAdminProducts(){
-
-const box=
-document.getElementById("adminProducts");
-
-box.innerHTML="";
-
-
-if(!products.length){
-
-box.innerHTML=
-`<div class="loading">هنوز قطعه‌ای ثبت نشده است.</div>`;
-
-return;
-
-}
-
-
-products.forEach(product=>{
-
-const brand=
-brands.find(
-b=>String(b.id)===String(product.brand_id)
-);
-
-const model=
-models.find(
-m=>String(m.id)===String(product.model_id)
-);
-
-
-const item=
-document.createElement("div");
-
-item.className="management-item";
-
-item.innerHTML=
-`
-<div>
-
-<strong>
-${escapeHTML(product.name)}
-</strong>
-
-<br>
-
-<small style="color:#8996a9">
-
-${escapeHTML(brand?.name||"")}
-${model ? " "+escapeHTML(model.name):""}
-
- |
-
-${money(product.price)}
-
-</small>
 
 </div>
 
 <button
-class="delete"
-onclick="deleteProduct('${product.id}')">
-حذف
+class="close-admin"
+onclick="closeLogin()">
+
+✕
+
 </button>
-`;
 
-box.appendChild(item);
-
-});
-
-}
+</div>
 
 
-/* =========================================================
-   AUTH STATE
-========================================================= */
+<div class="form">
 
-supabaseClient.auth.onAuthStateChange(
-async(event,session)=>{
+<input
+id="loginEmail"
+type="email"
+placeholder="ایمیل"
+autocomplete="username"
+>
 
-if(
-event==="SIGNED_OUT" ||
-!session
-){
+<input
+id="loginPassword"
+type="password"
+placeholder="رمز عبور"
+autocomplete="current-password"
+>
 
-return;
+<button
+class="primary"
+onclick="loginAdmin()">
 
-}
+ورود به پنل
 
-if(
-session.user.email.toLowerCase()===
-ADMIN_EMAIL.toLowerCase()
-){
+</button>
 
-}
-
-});
+</div>
 
 
-/* =========================================================
-   START
-========================================================= */
+<div
+id="loginMessage"
+class="message">
+</div>
 
-loadDatabase();
+</div>
 
-</script>
+</div>
 
-</body>
-</html>
+
+<!-- =====================================================
+     ADMIN PANEL
+===================================================== -->
+
+<div
+class="admin-panel"
+id="adminPanel">
+
+<div class="
