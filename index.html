@@ -2,45 +2,149 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ChinoTech | قطعات خودروهای چینی</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
 body{
 font-family:Tahoma,Arial,sans-serif;
-background:#070b12;color:#fff;line-height:1.8
+background:#070b12;
+color:#fff;
+line-height:1.8
 }
-a{text-decoration:none;color:inherit}
-button,input,select{font-family:inherit}
-button{cursor:pointer}
-.container{width:92%;max-width:1250px;margin:auto}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+button,input,select,textarea{
+font-family:inherit
+}
+
+button{
+cursor:pointer
+}
+
+.container{
+width:92%;
+max-width:1250px;
+margin:auto
+}
+
+/* =========================
+HEADER
+========================= */
 
 header{
-position:sticky;top:0;z-index:1000;
-background:rgba(7,11,18,.94);
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(7,11,18,.96);
 backdrop-filter:blur(15px);
 border-bottom:1px solid rgba(255,255,255,.08)
 }
+
 .navbar{
-height:75px;display:flex;align-items:center;
-justify-content:space-between
+min-height:78px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px
 }
-.logo{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:bold}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:21px;
+font-weight:bold
+}
+
 .logo-icon{
-width:44px;height:44px;border-radius:14px;
-display:flex;align-items:center;justify-content:center;
+width:48px;
+height:48px;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
 background:linear-gradient(135deg,#20d3a5,#319cff);
-color:#061016;font-weight:900
+color:#061016;
+font-weight:1000;
+box-shadow:
+0 8px 30px rgba(32,211,165,.25),
+inset 0 0 0 1px rgba(255,255,255,.2)
 }
-.logo span{color:#20d3a5}
-.nav-links{display:flex;gap:25px;color:#aeb9c9;font-size:14px}
+
+.logo-icon:before{
+content:"";
+position:absolute;
+width:28px;
+height:28px;
+border:3px solid rgba(255,255,255,.7);
+border-radius:8px;
+transform:rotate(45deg)
+}
+
+.logo-icon span{
+position:relative;
+z-index:2;
+font-size:17px;
+font-weight:1000
+}
+
+.logo-text{
+letter-spacing:.5px
+}
+
+.logo-text span{
+color:#20d3a5
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+color:#aeb9c9;
+font-size:14px
+}
+
+.nav-links a{
+transition:.2s
+}
+
+.nav-links a:hover{
+color:#20d3a5
+}
+
 .admin-button{
-padding:10px 18px;border-radius:12px;
-border:1px solid #243247;background:#111a28;color:#fff
+padding:10px 18px;
+border-radius:12px;
+border:1px solid #243247;
+background:#111a28;
+color:white;
+transition:.2s
 }
+
+.admin-button:hover{
+border-color:#20d3a5;
+color:#20d3a5;
+box-shadow:0 0 20px rgba(32,211,165,.12)
+}
+
+/* =========================
+HERO
+========================= */
 
 .hero{
 padding:90px 0 70px;
@@ -48,241 +152,845 @@ background:
 radial-gradient(circle at 15% 10%,rgba(32,211,165,.15),transparent 30%),
 radial-gradient(circle at 85% 10%,rgba(49,156,255,.15),transparent 30%)
 }
+
 .hero-grid{
-display:grid;grid-template-columns:1.2fr .8fr;
-gap:50px;align-items:center
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:50px;
+align-items:center
 }
+
 .badge{
-display:inline-block;color:#20d3a5;
+display:inline-block;
+color:#20d3a5;
 background:rgba(32,211,165,.08);
 border:1px solid rgba(32,211,165,.2);
-padding:7px 13px;border-radius:30px;font-size:13px;margin-bottom:18px
+padding:7px 13px;
+border-radius:30px;
+font-size:13px;
+margin-bottom:18px
 }
-.hero h1{font-size:clamp(35px,5vw,65px);line-height:1.15;margin-bottom:20px}
-.hero h1 span{color:#20d3a5}
-.hero p{color:#9aa7ba;font-size:17px;max-width:700px;margin-bottom:28px}
+
+.hero h1{
+font-size:clamp(35px,5vw,65px);
+line-height:1.15;
+margin-bottom:20px
+}
+
+.hero h1 span{
+color:#20d3a5
+}
+
+.hero p{
+color:#9aa7ba;
+font-size:17px;
+max-width:700px;
+margin-bottom:28px
+}
 
 .search-box{
-display:flex;background:#0d1522;border:1px solid #27364b;
-border-radius:18px;padding:7px;max-width:700px
+display:flex;
+background:#0d1522;
+border:1px solid #27364b;
+border-radius:18px;
+padding:7px;
+max-width:700px
 }
+
 .search-box input{
-flex:1;background:transparent;border:0;outline:0;color:#fff;
-padding:14px;font-size:15px
+flex:1;
+background:transparent;
+border:none;
+outline:none;
+color:white;
+padding:14px;
+font-size:15px
 }
+
 .search-box button{
 background:linear-gradient(135deg,#20d3a5,#319cff);
-color:#061016;border:0;border-radius:12px;padding:0 22px;font-weight:bold
+color:#061016;
+border:none;
+border-radius:12px;
+padding:0 22px;
+font-weight:bold
 }
 
 .hero-card{
 background:linear-gradient(145deg,#122238,#0c121c);
-border:1px solid #26364b;border-radius:28px;padding:30px
+border:1px solid #26364b;
+border-radius:28px;
+padding:30px;
+box-shadow:0 20px 60px rgba(0,0,0,.2)
 }
-.car-emoji{text-align:center;font-size:90px;margin-bottom:25px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.hero-logo{
+height:150px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:25px
+}
+
+.hero-logo-mark{
+width:110px;
+height:110px;
+border-radius:32px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+font-weight:1000;
+color:#061016;
+background:linear-gradient(135deg,#20d3a5,#319cff);
+box-shadow:
+0 20px 60px rgba(32,211,165,.2),
+inset 0 0 0 3px rgba(255,255,255,.18)
+}
+
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
 .stat{
 background:rgba(255,255,255,.04);
 border:1px solid rgba(255,255,255,.07);
-border-radius:16px;padding:16px
+border-radius:16px;
+padding:16px
 }
-.stat strong{display:block;font-size:25px}
-.stat small{color:#9aa7ba}
 
-section{padding:70px 0}
-.section-title{margin-bottom:30px}
-.section-title h2{font-size:32px;margin-bottom:5px}
-.section-title p{color:#8f9caf}
+.stat strong{
+display:block;
+font-size:25px
+}
+
+.stat small{
+color:#9aa7ba
+}
+
+/* =========================
+SECTIONS
+========================= */
+
+section{
+padding:70px 0
+}
+
+.section-title{
+margin-bottom:30px
+}
+
+.section-title h2{
+font-size:32px;
+margin-bottom:5px
+}
+
+.section-title p{
+color:#8f9caf
+}
+
+/* =========================
+BRANDS
+========================= */
 
 .brand-grid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:18px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px
 }
+
 .brand-card{
-position:relative;min-height:190px;padding:22px;border-radius:22px;
+position:relative;
+min-height:210px;
+padding:22px;
+border-radius:22px;
 background:linear-gradient(145deg,#101a2a,#0c121d);
-border:1px solid #243247;cursor:pointer;transition:.25s;overflow:hidden
+border:1px solid #243247;
+cursor:pointer;
+transition:.25s;
+overflow:hidden
 }
-.brand-card:hover{transform:translateY(-5px);border-color:#20d3a5}
+
+.brand-card:hover{
+transform:translateY(-5px);
+border-color:#20d3a5;
+box-shadow:0 15px 35px rgba(0,0,0,.2)
+}
+
 .brand-logo{
-width:65px;height:65px;border-radius:18px;background:#fff;color:#111827;
-display:flex;justify-content:center;align-items:center;font-weight:bold;
-margin-bottom:20px;overflow:hidden
+width:70px;
+height:70px;
+border-radius:18px;
+background:#fff;
+color:#111827;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+margin-bottom:18px;
+overflow:hidden
 }
-.brand-logo img{width:100%;height:100%;object-fit:contain}
-.brand-card small{color:#8d99ab}
-.arrow{position:absolute;left:20px;bottom:18px;color:#20d3a5}
+
+.brand-logo img{
+width:100%;
+height:100%;
+object-fit:contain
+}
+
+.brand-card small{
+color:#8d99ab
+}
+
+.arrow{
+position:absolute;
+left:20px;
+bottom:18px;
+color:#20d3a5
+}
+
+/* =========================
+MODELS
+========================= */
 
 .model-grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
 }
+
 .model-card{
-background:#0d1522;border:1px solid #243247;border-radius:20px;
-padding:20px;display:flex;align-items:center;gap:15px;cursor:pointer
+background:#0d1522;
+border:1px solid #243247;
+border-radius:20px;
+padding:20px;
+display:flex;
+align-items:center;
+gap:15px;
+cursor:pointer;
+transition:.2s
 }
-.model-card:hover{border-color:#20d3a5;transform:translateY(-3px)}
+
+.model-card:hover{
+border-color:#20d3a5;
+transform:translateY(-3px)
+}
+
 .model-image{
-width:75px;height:60px;border-radius:16px;
-display:flex;align-items:center;justify-content:center;
+width:100px;
+height:70px;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
 background:linear-gradient(135deg,#1a3047,#111c2b);
-font-size:28px;overflow:hidden
+font-size:28px;
+overflow:hidden;
+flex-shrink:0
 }
-.model-image img{width:100%;height:100%;object-fit:cover}
-.model-card span{color:#8d99ab;font-size:12px}
+
+.model-image img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.model-card span{
+color:#8d99ab;
+font-size:12px
+}
+
+/* =========================
+FILTERS
+========================= */
 
 .filters{
-display:flex;gap:10px;overflow:auto;padding-bottom:15px
-}
-.filter{
-white-space:nowrap;background:#101925;border:1px solid #26364b;
-color:#cbd5e1;padding:9px 16px;border-radius:30px
-}
-.filter.active,.filter:hover{
-background:rgba(32,211,165,.1);
-border-color:#20d3a5;color:#20d3a5
+display:flex;
+gap:10px;
+overflow:auto;
+padding-bottom:15px
 }
 
+.filter{
+white-space:nowrap;
+background:#101925;
+border:1px solid #26364b;
+color:#cbd5e1;
+padding:9px 16px;
+border-radius:30px
+}
+
+.filter.active,
+.filter:hover{
+background:rgba(32,211,165,.1);
+border-color:#20d3a5;
+color:#20d3a5
+}
+
+/* =========================
+PARTS
+========================= */
+
 .parts-grid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:18px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px
 }
+
 .part-card{
-background:#0d1522;border:1px solid #243247;
-border-radius:18px;padding:20px
+background:#0d1522;
+border:1px solid #243247;
+border-radius:18px;
+padding:20px;
+transition:.2s
 }
-.part-card:hover{border-color:#20d3a5}
+
+.part-card:hover{
+transform:translateY(-3px);
+border-color:#20d3a5
+}
+
+.part-image{
+width:100%;
+height:170px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:12px;
+background:#101925
+}
+
+.part-placeholder{
+width:100%;
+height:170px;
+border-radius:12px;
+margin-bottom:12px;
+background:
+radial-gradient(circle at center,#1b3045,#0c1420);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:55px
+}
+
 .part-tag{
-display:inline-block;background:rgba(32,211,165,.08);
-color:#20d3a5;padding:5px 9px;border-radius:20px;font-size:11px;margin-bottom:12px
+display:inline-block;
+background:rgba(32,211,165,.08);
+color:#20d3a5;
+padding:5px 9px;
+border-radius:20px;
+font-size:11px;
+margin-bottom:12px
 }
-.part-card h3{font-size:15px;margin-bottom:8px}
-.part-card p{color:#8996a9;font-size:12px}
-.price{color:#20d3a5;font-size:18px;font-weight:bold;margin-top:12px}
-.stock{color:#9aa7ba;font-size:12px;margin-top:5px}
+
+.part-card h3{
+font-size:15px;
+margin-bottom:8px
+}
+
+.part-card p{
+color:#8996a9;
+font-size:12px
+}
+
 .part-number{
-display:inline-block;margin-top:9px;padding:5px 9px;
-border-radius:8px;background:#111b29;color:#d7e0eb;
-font-size:11px;direction:ltr
+color:#aeb9c9;
+font-size:11px;
+margin-top:8px;
+direction:ltr;
+text-align:right
 }
+
+.price{
+color:#20d3a5;
+font-size:18px;
+font-weight:bold;
+margin-top:12px
+}
+
+.stock{
+color:#9aa7ba;
+font-size:12px;
+margin-top:5px
+}
+
+/* =========================
+CONTACT
+========================= */
 
 .contact-box{
 background:linear-gradient(145deg,#101b2b,#0b121c);
-border:1px solid #26364b;border-radius:28px;padding:35px;
-display:grid;grid-template-columns:1fr 1fr;gap:30px
+border:1px solid #26364b;
+border-radius:28px;
+padding:35px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px
 }
-.contact-box h2{margin-bottom:15px}
-.contact-box p{color:#929fb1;margin-bottom:20px}
-.contact-list{display:grid;gap:10px}
+
+.contact-box h2{
+margin-bottom:15px
+}
+
+.contact-box p{
+color:#929fb1;
+margin-bottom:20px
+}
+
+.contact-list{
+display:grid;
+gap:10px
+}
+
 .contact-item{
-padding:13px 16px;background:rgba(255,255,255,.035);
-border:1px solid rgba(255,255,255,.06);border-radius:13px
+padding:13px 16px;
+background:rgba(255,255,255,.035);
+border:1px solid rgba(255,255,255,.06);
+border-radius:13px
 }
 
 footer{
 border-top:1px solid rgba(255,255,255,.08);
-padding:30px 0;color:#7f8b9c;font-size:12px
+padding:30px 0;
+color:#7f8b9c;
+font-size:12px
 }
 
-.login-panel,.admin-panel{
-position:fixed;inset:0;background:rgba(0,0,0,.84);
-backdrop-filter:blur(12px);padding:20px
+/* =========================
+LOGIN
+========================= */
+
+.login-panel,
+.admin-panel{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.84);
+backdrop-filter:blur(12px);
+padding:20px
 }
-.login-panel{z-index:6000;display:none}
-.login-panel.show{display:block}
+
+.login-panel{
+z-index:6000;
+display:none
+}
+
+.login-panel.show{
+display:block
+}
+
 .login-container{
-width:100%;max-width:450px;margin:80px auto;background:#0b121e;
-border:1px solid #26364b;border-radius:25px;padding:25px
+width:100%;
+max-width:450px;
+margin:80px auto;
+background:#0b121e;
+border:1px solid #26364b;
+border-radius:25px;
+padding:25px
 }
-.login-header,.admin-header{
-display:flex;justify-content:space-between;align-items:center;margin-bottom:25px
+
+.login-header,
+.admin-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px
 }
-.form{display:grid;gap:12px}
-.form input,.form select{
-width:100%;background:#080e17;border:1px solid #29384d;
-color:#fff;padding:13px;border-radius:10px;outline:0
+
+.form{
+display:grid;
+gap:12px
 }
+
+.form input,
+.form select,
+.form textarea{
+width:100%;
+background:#080e17;
+border:1px solid #29384d;
+color:white;
+padding:13px;
+border-radius:10px;
+outline:none
+}
+
+.form textarea{
+min-height:80px;
+resize:vertical
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus{
+border-color:#20d3a5
+}
+
 .form button{
 background:linear-gradient(135deg,#20d3a5,#319cff);
-border:0;padding:13px;border-radius:10px;font-weight:bold
+border:none;
+padding:13px;
+border-radius:10px;
+font-weight:bold
 }
-.close-login,.close-admin{
-background:#182334;color:#fff;border:1px solid #26364b;
-padding:10px 15px;border-radius:10px
-}
-.login-message{margin-top:12px;text-align:center;font-size:13px}
-.login-message.error{color:#ff7183}
-.login-message.success{color:#20d3a5}
 
-.admin-panel{z-index:5000;display:none}
-.admin-panel.show{display:block}
+.close-login,
+.close-admin{
+background:#182334;
+color:white;
+border:1px solid #26364b;
+padding:10px 15px;
+border-radius:10px
+}
+
+.login-message{
+margin-top:12px;
+text-align:center;
+font-size:13px
+}
+
+.login-message.error{
+color:#ff7183
+}
+
+.login-message.success{
+color:#20d3a5
+}
+
+/* =========================
+ADMIN
+========================= */
+
+.admin-panel{
+z-index:5000;
+display:none
+}
+
+.admin-panel.show{
+display:block
+}
+
 .admin-container{
-width:100%;max-width:1200px;height:100%;margin:auto;overflow:auto;
-background:#0b121e;border:1px solid #26364b;border-radius:25px;padding:25px
+width:100%;
+max-width:1200px;
+height:100%;
+margin:auto;
+overflow:auto;
+background:#0b121e;
+border:1px solid #26364b;
+border-radius:25px;
+padding:25px
 }
+
 .admin-grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:15px
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px
 }
+
 .admin-card{
-background:#101925;border:1px solid #26364b;border-radius:18px;padding:20px
+background:#101925;
+border:1px solid #26364b;
+border-radius:18px;
+padding:20px
 }
-.admin-card h3{margin-bottom:15px}
-.management{margin-top:20px}
+
+.admin-card h3{
+margin-bottom:15px
+}
+
+.management{
+margin-top:20px
+}
+
+.management-section{
+margin-bottom:20px;
+padding:15px;
+background:#0b121e;
+border:1px solid #26364b;
+border-radius:15px
+}
+
+.management-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px
+}
+
 .management-item{
-display:flex;justify-content:space-between;align-items:center;
-background:#111b29;border:1px solid #25354a;
-padding:14px;border-radius:10px;margin-bottom:8px;gap:10px
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+background:#111b29;
+border:1px solid #25354a;
+padding:12px;
+border-radius:10px;
+margin-bottom:8px
 }
-.management-actions{display:flex;gap:6px;flex-wrap:wrap}
-.delete,.edit{
-padding:6px 10px;border-radius:8px;cursor:pointer
+
+.management-info{
+min-width:0
 }
-.delete{
-background:rgba(255,80,100,.1);
-border:1px solid rgba(255,80,100,.3);color:#ff7b8d
+
+.management-info small{
+color:#8996a9
 }
+
+.management-actions{
+display:flex;
+gap:7px;
+flex-shrink:0;
+flex-wrap:wrap
+}
+
 .edit{
 background:rgba(49,156,255,.1);
-border:1px solid rgba(49,156,255,.3);color:#65b4ff
+border:1px solid rgba(49,156,255,.3);
+color:#67b5ff;
+padding:6px 10px;
+border-radius:8px
 }
+
+.delete{
+background:rgba(255,80,100,.1);
+border:1px solid rgba(255,80,100,.3);
+color:#ff7b8d;
+padding:6px 10px;
+border-radius:8px
+}
+
+.edit:hover{
+background:rgba(49,156,255,.2)
+}
+
+.delete:hover{
+background:rgba(255,80,100,.18)
+}
+
 .admin-status{
-margin-bottom:20px;padding:12px;border-radius:10px;
-background:#101925;border:1px solid #26364b;color:#9aa7ba;font-size:13px
+margin-bottom:20px;
+padding:12px;
+border-radius:10px;
+background:#101925;
+border:1px solid #26364b;
+color:#9aa7ba;
+font-size:13px
 }
-.admin-tabs{
-display:flex;gap:8px;overflow:auto;margin-bottom:20px
+
+.empty-admin{
+color:#8996a9;
+text-align:center;
+padding:20px
 }
-.admin-tab{
-background:#111b29;color:#cbd5e1;border:1px solid #26364b;
-padding:9px 15px;border-radius:10px;white-space:nowrap
+
+.image-preview{
+width:100%;
+height:100px;
+object-fit:contain;
+border-radius:10px;
+background:#080e17;
+display:none;
+margin-top:5px
 }
-.admin-tab.active{border-color:#20d3a5;color:#20d3a5}
+
+.admin-note{
+color:#8f9caf;
+font-size:11px;
+margin-top:8px
+}
+
+/* =========================
+EDIT MODAL
+========================= */
+
+.edit-modal{
+position:fixed;
+inset:0;
+z-index:9000;
+background:rgba(0,0,0,.82);
+backdrop-filter:blur(10px);
+display:none;
+padding:20px;
+overflow:auto
+}
+
+.edit-modal.show{
+display:block
+}
+
+.edit-box{
+width:100%;
+max-width:600px;
+margin:40px auto;
+background:#0b121e;
+border:1px solid #26364b;
+border-radius:22px;
+padding:25px
+}
+
+.edit-box-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px
+}
+
+.edit-actions{
+display:flex;
+gap:10px;
+margin-top:15px
+}
+
+.cancel-btn{
+flex:1;
+background:#182334;
+color:#fff;
+border:1px solid #26364b;
+padding:12px;
+border-radius:10px
+}
+
+.save-btn{
+flex:1;
+background:linear-gradient(135deg,#20d3a5,#319cff);
+border:0;
+padding:12px;
+border-radius:10px;
+font-weight:bold
+}
+
+/* =========================
+RESPONSIVE
+========================= */
 
 @media(max-width:1000px){
-.brand-grid{grid-template-columns:repeat(2,1fr)}
-.parts-grid{grid-template-columns:repeat(2,1fr)}
-.model-grid{grid-template-columns:repeat(2,1fr)}
-.hero-grid{grid-template-columns:1fr}
-.contact-box{grid-template-columns:1fr}
-.admin-grid{grid-template-columns:1fr}
+
+.brand-grid{
+grid-template-columns:repeat(2,1fr)
 }
+
+.parts-grid{
+grid-template-columns:repeat(2,1fr)
+}
+
+.model-grid{
+grid-template-columns:repeat(2,1fr)
+}
+
+.hero-grid{
+grid-template-columns:1fr
+}
+
+.contact-box{
+grid-template-columns:1fr
+}
+
+.admin-grid{
+grid-template-columns:1fr
+}
+
+}
+
 @media(max-width:600px){
-.nav-links{display:none}
-.brand-grid,.model-grid,.parts-grid{grid-template-columns:1fr}
-.hero{padding-top:50px}
-.hero-card{display:none}
-.search-box{flex-direction:column;gap:8px}
-.search-box button{height:48px}
-.contact-box{padding:22px}
+
+.nav-links{
+display:none
+}
+
+.brand-grid,
+.model-grid,
+.parts-grid{
+grid-template-columns:1fr
+}
+
+.hero{
+padding-top:50px
+}
+
+.hero-card{
+display:none
+}
+
+.search-box{
+flex-direction:column;
+gap:8px
+}
+
+.search-box button{
+height:48px
+}
+
+.contact-box{
+padding:22px
+}
+
+.management-item{
+align-items:flex-start;
+flex-direction:column
+}
+
+.management-actions{
+width:100%
+}
+
+.management-actions button{
+flex:1
+}
+
+}
+
+/* =========================
+TOAST
+========================= */
+
+.toast{
+position:fixed;
+left:20px;
+bottom:20px;
+z-index:10000;
+background:#101925;
+border:1px solid #26364b;
+color:white;
+padding:13px 18px;
+border-radius:12px;
+display:none;
+box-shadow:0 10px 40px rgba(0,0,0,.3)
+}
+
+.toast.show{
+display:block
+}
+
+.toast.success{
+border-color:#20d3a5
+}
+
+.toast.error{
+border-color:#ff7183
 }
 </style>
 </head>
 
 <body>
 
+<!-- =========================
+HEADER
+========================= -->
+
 <header>
+
 <div class="container navbar">
 
 <a href="#" class="logo">
-<div class="logo-icon">CT</div>
-<div>CHINO<span>TECH</span></div>
+
+<div class="logo-icon">
+<span>CT</span>
+</div>
+
+<div class="logo-text">
+CHINO<span>TECH</span>
+</div>
+
 </a>
 
 <nav class="nav-links">
@@ -292,16 +1000,28 @@ padding:9px 15px;border-radius:10px;white-space:nowrap
 <a href="#contact">تماس با ما</a>
 </nav>
 
-<button class="admin-button" onclick="openLogin()">پنل مدیریت</button>
+<button class="admin-button" onclick="openLogin()">
+⚙ پنل مدیریت
+</button>
 
 </div>
+
 </header>
 
+
+<!-- =========================
+HERO
+========================= -->
+
 <section class="hero">
+
 <div class="container hero-grid">
 
 <div>
-<div class="badge">مرجع تخصصی قطعات خودروهای چینی</div>
+
+<div class="badge">
+مرجع تخصصی قطعات خودروهای چینی
+</div>
 
 <h1>
 قطعه‌ی ماشینت رو
@@ -310,25 +1030,39 @@ padding:9px 15px;border-radius:10px;white-space:nowrap
 </h1>
 
 <p>
-برند، مدل خودرو، نام قطعه یا حتی کد فنی را جستجو کن.
+برند، مدل خودرو، نام قطعه یا حتی کد فنی قطعه را جستجو کن.
 </p>
 
 <div class="search-box">
+
 <input
-id="searchInput"
 type="text"
-placeholder="مثلاً S5، چراغ جلو، لنت، کد فنی..."
+id="searchInput"
+placeholder="نام قطعه، کد فنی، برند یا مدل..."
 oninput="searchParts()"
 >
-<button onclick="scrollToParts()">جستجو</button>
+
+<button onclick="scrollToParts()">
+🔍 جستجو
+</button>
+
 </div>
 
 </div>
+
 
 <div class="hero-card">
-<div class="car-emoji">🚘</div>
+
+<div class="hero-logo">
+
+<div class="hero-logo-mark">
+CT
+</div>
+
+</div>
 
 <div class="stats">
+
 <div class="stat">
 <strong id="brandCount">0</strong>
 <small>برند خودرو</small>
@@ -348,44 +1082,88 @@ oninput="searchParts()"
 <strong>24/7</strong>
 <small>پشتیبانی</small>
 </div>
-</div>
+
 </div>
 
 </div>
+
+</div>
+
 </section>
 
+
+<!-- =========================
+BRANDS
+========================= -->
+
 <section id="brands">
+
 <div class="container">
 
 <div class="section-title">
-<h2>برندهای خودرو</h2>
-<p>برند خودرو را انتخاب کنید.</p>
+
+<h2>
+برندهای خودرو
+</h2>
+
+<p>
+برند خودرو را انتخاب کنید.
+</p>
+
 </div>
 
 <div class="brand-grid" id="brandGrid"></div>
 
 </div>
+
 </section>
 
+
+<!-- =========================
+MODELS
+========================= -->
+
 <section id="models">
+
 <div class="container">
 
 <div class="section-title">
-<h2 id="modelTitle">مدل‌های خودرو</h2>
-<p>مدل خودرو را انتخاب کنید.</p>
+
+<h2 id="modelTitle">
+مدل‌های خودرو
+</h2>
+
+<p>
+مدل خودرو را انتخاب کنید.
+</p>
+
 </div>
 
 <div class="model-grid" id="modelGrid"></div>
 
 </div>
+
 </section>
 
+
+<!-- =========================
+PARTS
+========================= -->
+
 <section id="parts">
+
 <div class="container">
 
 <div class="section-title">
-<h2>قطعات</h2>
-<p>نام قطعه، مدل خودرو یا کد فنی را جستجو کنید.</p>
+
+<h2>
+قطعات
+</h2>
+
+<p>
+نام قطعه یا کد فنی را جستجو کنید.
+</p>
+
 </div>
 
 <div class="filters" id="filters"></div>
@@ -393,17 +1171,29 @@ oninput="searchParts()"
 <div class="parts-grid" id="partsGrid"></div>
 
 </div>
+
 </section>
 
+
+<!-- =========================
+CONTACT
+========================= -->
+
 <section id="contact">
+
 <div class="container">
 
 <div class="contact-box">
 
 <div>
-<div class="badge">CHINOTECH</div>
 
-<h2>برای استعلام قطعه با ما در تماس باشید</h2>
+<div class="badge">
+CHINOTECH
+</div>
+
+<h2>
+برای استعلام قطعه با ما در تماس باشید
+</h2>
 
 <p>
 اگر قطعه موردنظر خود را پیدا نکردید، مدل خودرو یا عکس قطعه را برای ما ارسال کنید.
@@ -416,34 +1206,67 @@ style="display:inline-flex;padding:13px 20px;color:white;width:auto"
 >
 📞 تماس سریع
 </a>
+
 </div>
+
 
 <div class="contact-list">
 
-<div class="contact-item">📞 09102284286</div>
-<div class="contact-item">📞 09359886163</div>
-<div class="contact-item">📞 09389886161</div>
-<div class="contact-item">📞 09219886163</div>
-<div class="contact-item">📸 Instagram: @Chinotech.tehran</div>
-<div class="contact-item">✈️ Telegram: @chinotech1</div>
-<div class="contact-item">🟢 WhatsApp: 09389886161</div>
+<div class="contact-item">
+📞 09102284286
+</div>
+
+<div class="contact-item">
+📞 09359886163
+</div>
+
+<div class="contact-item">
+📞 09389886161
+</div>
+
+<div class="contact-item">
+📞 09219886163
+</div>
+
+<div class="contact-item">
+📸 Instagram: @Chinotech.tehran
+</div>
+
+<div class="contact-item">
+✈️ Telegram: @chinotech1
+</div>
+
+<div class="contact-item">
+🟢 WhatsApp: 09389886161
+</div>
+
 <div class="contact-item">
 📍 بلوار فردوس، خیابان ابراهیمی شمالی، کوچه ششم، پلاک 5
 </div>
 
 </div>
+
 </div>
+
 </div>
+
 </section>
 
+
 <footer>
+
 <div class="container">
+
 © 2026 ChinoTech — قطعات خودروهای چینی
+
 </div>
+
 </footer>
 
 
-<!-- LOGIN -->
+<!-- =========================
+LOGIN
+========================= -->
 
 <div class="login-panel" id="loginPanel">
 
@@ -452,13 +1275,26 @@ style="display:inline-flex;padding:13px 20px;color:white;width:auto"
 <div class="login-header">
 
 <div>
-<div class="badge">ADMIN LOGIN</div>
-<h2>ورود به پنل مدیریت</h2>
+
+<div class="badge">
+ADMIN LOGIN
 </div>
 
-<button class="close-login" onclick="closeLogin()">✕</button>
+<h2>
+ورود به پنل مدیریت
+</h2>
 
 </div>
+
+<button
+class="close-login"
+onclick="closeLogin()"
+>
+✕
+</button>
+
+</div>
+
 
 <div class="form">
 
@@ -476,17 +1312,25 @@ placeholder="رمز عبور"
 autocomplete="current-password"
 >
 
-<button onclick="loginAdmin()">ورود به پنل</button>
+<button onclick="loginAdmin()">
+ورود به پنل
+</button>
 
 </div>
 
-<div id="loginMessage" class="login-message"></div>
+<div
+id="loginMessage"
+class="login-message"
+></div>
 
 </div>
+
 </div>
 
 
-<!-- ADMIN -->
+<!-- =========================
+ADMIN PANEL
+========================= -->
 
 <div class="admin-panel" id="adminPanel">
 
@@ -495,53 +1339,58 @@ autocomplete="current-password"
 <div class="admin-header">
 
 <div>
-<div class="badge">MANAGEMENT</div>
-<h2>پنل مدیریت چینوتک</h2>
+
+<div class="badge">
+MANAGEMENT
 </div>
 
-<button class="close-admin" onclick="closeAdmin()">
+<h2>
+پنل مدیریت چینوتک
+</h2>
+
+</div>
+
+<button
+class="close-admin"
+onclick="closeAdmin()"
+>
 ✕ بستن
 </button>
 
 </div>
 
-<div id="adminStatus" class="admin-status">
+
+<div
+id="adminStatus"
+class="admin-status"
+>
 در حال اتصال به Supabase...
 </div>
 
 
-<div class="admin-tabs">
-
-<button class="admin-tab active" onclick="showAdminSection('brandsAdmin',this)">
-برندها
-</button>
-
-<button class="admin-tab" onclick="showAdminSection('modelsAdmin',this)">
-مدل‌ها
-</button>
-
-<button class="admin-tab" onclick="showAdminSection('partsAdmin',this)">
-قطعات
-</button>
-
-</div>
-
-
-<!-- BRAND ADMIN -->
-
-<div id="brandsAdmin">
-
 <div class="admin-grid">
+
+
+<!-- =========================
+ADD BRAND
+========================= -->
 
 <div class="admin-card">
 
-<h3>➕ افزودن برند</h3>
+<h3>
+➕ افزودن برند
+</h3>
 
 <div class="form">
 
 <input
 id="newBrand"
-placeholder="مثلاً BYD"
+placeholder="مثلاً JAC"
+>
+
+<input
+id="newBrandImage"
+placeholder="لینک عکس / لوگوی برند"
 >
 
 <input
@@ -554,38 +1403,40 @@ placeholder="مدل‌ها با , جدا شوند"
 </button>
 
 </div>
-</div>
 
-</div>
-
-<div class="admin-card management">
-
-<h3>🗂 مدیریت برندها</h3>
-
-<div id="brandManagementList"></div>
-
+<div class="admin-note">
+می‌توانی بعداً عکس و اطلاعات برند را ویرایش کنی.
 </div>
 
 </div>
 
 
-<!-- MODEL ADMIN -->
-
-<div id="modelsAdmin" style="display:none">
-
-<div class="admin-grid">
+<!-- =========================
+ADD MODEL
+========================= -->
 
 <div class="admin-card">
 
-<h3>🚘 افزودن مدل</h3>
+<h3>
+🚘 افزودن مدل
+</h3>
 
 <div class="form">
 
-<select id="brandSelect"></select>
+<select id="brandSelect">
+<option value="">
+انتخاب برند
+</option>
+</select>
 
 <input
 id="newModel"
 placeholder="مثلاً S5"
+>
+
+<input
+id="newModelImage"
+placeholder="لینک عکس خودرو"
 >
 
 <button onclick="addModel()">
@@ -596,37 +1447,29 @@ placeholder="مثلاً S5"
 
 </div>
 
-</div>
 
-<div class="admin-card management">
-
-<h3>🚘 مدیریت مدل‌ها</h3>
-
-<div id="modelManagementList"></div>
-
-</div>
-
-</div>
-
-
-<!-- PART ADMIN -->
-
-<div id="partsAdmin" style="display:none">
-
-<div class="admin-grid">
+<!-- =========================
+ADD PART
+========================= -->
 
 <div class="admin-card">
 
-<h3>🔧 افزودن قطعه</h3>
+<h3>
+🔧 افزودن قطعه
+</h3>
 
 <div class="form">
 
 <select id="partBrand">
-<option value="">انتخاب برند</option>
+<option value="">
+انتخاب برند
+</option>
 </select>
 
 <select id="partModel">
-<option value="">انتخاب مدل</option>
+<option value="">
+انتخاب مدل
+</option>
 </select>
 
 <input
@@ -636,12 +1479,8 @@ placeholder="نام قطعه"
 
 <input
 id="newPartNumber"
-placeholder="کد فنی / Part Number (اختیاری)"
+placeholder="کد فنی / Part Number"
 >
-
-<select id="newCategory">
-<option value="">انتخاب دسته‌بندی</option>
-</select>
 
 <input
 id="newPrice"
@@ -654,9 +1493,14 @@ id="newImage"
 placeholder="لینک عکس قطعه"
 >
 
-<input
+<textarea
 id="newDescription"
 placeholder="توضیحات قطعه"
+></textarea>
+
+<input
+id="newCategory"
+placeholder="دسته‌بندی؛ مثلاً موتور"
 >
 
 <input
@@ -676,25 +1520,73 @@ value="1"
 
 </div>
 
+
+<!-- =========================
+MANAGEMENT
+========================= -->
+
 <div class="admin-card management">
 
-<h3>🔧 مدیریت قطعات</h3>
+<h3>
+🗂 مدیریت برندها، مدل‌ها و قطعات
+</h3>
 
-<div id="partManagementList"></div>
+<div id="managementList"></div>
+
+</div>
 
 </div>
 
 </div>
 
+
+<!-- =========================
+EDIT MODAL
+========================= -->
+
+<div
+class="edit-modal"
+id="editModal"
+>
+
+<div class="edit-box">
+
+<div class="edit-box-header">
+
+<h2 id="editModalTitle">
+ویرایش
+</h2>
+
+<button
+class="close-admin"
+onclick="closeEditModal()"
+>
+✕
+</button>
+
 </div>
+
+<div
+id="editModalContent"
+>
 </div>
+
+</div>
+
+</div>
+
+
+<div
+class="toast"
+id="toast"
+></div>
 
 
 <script>
 
-/* =====================================================
+/* =========================================================
 SUPABASE
-===================================================== */
+========================================================= */
 
 const SUPABASE_URL =
 "https://viyqzrruxundtsgtfjsj.supabase.co";
@@ -709,9 +1601,9 @@ SUPABASE_KEY
 );
 
 
-/* =====================================================
+/* =========================================================
 ADMIN
-===================================================== */
+========================================================= */
 
 const ADMIN_USERNAME =
 "hadirasouli125@gmail.com";
@@ -720,291 +1612,138 @@ const ADMIN_PASSWORD =
 "Hadi@1396";
 
 
-/* =====================================================
+/* =========================================================
 DATA
-===================================================== */
+========================================================= */
 
-let database=[];
-let products=[];
+let database = [];
+let products = [];
 
-let selectedBrand=null;
-let selectedFilter=null;
-
-
-/* =====================================================
-PART CATEGORIES
-===================================================== */
-
-const PART_CATEGORIES = {
-
-"موتور و متعلقات":[
-"موتور کامل",
-"پیستون",
-"رینگ پیستون",
-"شاتون",
-"میل‌لنگ",
-"میل‌سوپاپ",
-"سرسیلندر",
-"سوپاپ",
-"واشر سرسیلندر",
-"واشر کامل موتور",
-"کارتل",
-"اویل پمپ",
-"واتر پمپ",
-"ترموستات",
-"تسمه تایم",
-"سفت‌کن تایم",
-"تسمه دینام",
-"کویل",
-"شمع",
-"انژکتور"
-],
-
-"گیربکس":[
-"گیربکس کامل",
-"پوسته گیربکس",
-"دیسک و صفحه",
-"کیت کلاچ",
-"فلایویل",
-"ماهک",
-"سلکتور",
-"شفت",
-"دنده گیربکس",
-"فیلتر گیربکس",
-"شیر برقی",
-"کاسه نمد",
-"کارتل گیربکس",
-"خنک‌کن گیربکس",
-"روغن گیربکس"
-],
-
-"جلوبندی و تعلیق":[
-"کمک فنر",
-"فنر",
-"طبق",
-"سیبک",
-"میل موج‌گیر",
-"میل تعادل",
-"بوش طبق",
-"بوش رام",
-"سگدست",
-"توپی چرخ",
-"بلبرینگ چرخ",
-"پلوس",
-"سرپلوس",
-"گردگیر پلوس"
-],
-
-"ترمز":[
-"لنت جلو",
-"لنت عقب",
-"دیسک ترمز",
-"کالیپر",
-"بوستر ترمز",
-"پمپ ترمز",
-"مخزن روغن ترمز",
-"شلنگ ترمز",
-"سنسور ABS",
-"یونیت ABS",
-"ترمز دستی"
-],
-
-"برق و الکترونیک":[
-"باتری",
-"دینام",
-"استارت",
-"ECU",
-"یونیت ABS",
-"یونیت ایربگ",
-"کویل",
-"شمع",
-"سنسور اکسیژن",
-"سنسور میل‌لنگ",
-"سنسور میل‌سوپاپ",
-"سنسور دمای آب",
-"فیوز",
-"رله",
-"موتور شیشه‌بالابر",
-"قفل برقی"
-],
-
-"بدنه":[
-"سپر جلو",
-"سپر عقب",
-"گلگیر",
-"کاپوت",
-"درب جلو",
-"درب عقب",
-"درب صندوق",
-"جلوپنجره",
-"آینه",
-"دستگیره",
-"قفل درب",
-"شلگیر",
-"دیاق سپر",
-"قاب آینه",
-"زه بدنه"
-],
-
-"چراغ و روشنایی":[
-"چراغ جلو",
-"چراغ عقب",
-"مه‌شکن",
-"راهنما",
-"چراغ پلاک",
-"لامپ",
-"هدلایت",
-"طلق چراغ",
-"قاب چراغ",
-"یونیت چراغ"
-],
-
-"خنک‌کننده":[
-"رادیاتور آب",
-"رادیاتور کولر",
-"کندانسور",
-"کمپرسور کولر",
-"اواپراتور",
-"فن رادیاتور",
-"مقاومت فن",
-"واترپمپ",
-"ترموستات",
-"منبع انبساط",
-"شلنگ رادیاتور"
-],
-
-"کولر و تهویه":[
-"کمپرسور کولر",
-"کندانسور",
-"اواپراتور",
-"فن بخاری",
-"مقاومت فن",
-"فیلتر کابین",
-"پنل تهویه",
-"شیلنگ کولر"
-],
-
-"سوخت‌رسانی":[
-"پمپ بنزین",
-"انژکتور",
-"ریل سوخت",
-"فیلتر بنزین",
-"دریچه گاز",
-"باک بنزین",
-"سنسور فشار سوخت"
-],
-
-"اگزوز":[
-"منیفولد دود",
-"کاتالیزور",
-"لوله اگزوز",
-"منبع اگزوز",
-"سنسور اکسیژن"
-],
-
-"داخل کابین":[
-"داشبورد",
-"رودری",
-"کنسول",
-"صندلی",
-"فرمان",
-"دسته دنده",
-"صفحه کیلومتر",
-"مانیتور",
-"ضبط",
-"کلیدهای فرمان",
-"کفپوش",
-"موکت"
-],
-
-"شیشه و آینه":[
-"شیشه جلو",
-"شیشه عقب",
-"شیشه درب",
-"شیشه لچکی",
-"مکانیزم شیشه بالابر",
-"موتور شیشه بالابر",
-"آینه جانبی",
-"نوار دور شیشه"
-],
-
-"مصرفی و سرویس":[
-"روغن موتور",
-"روغن گیربکس",
-"فیلتر روغن",
-"فیلتر هوا",
-"فیلتر کابین",
-"فیلتر بنزین",
-"شمع",
-"تسمه دینام",
-"تسمه تایم",
-"لنت",
-"ضدیخ"
-]
-
-};
+let selectedBrand = null;
+let selectedFilter = null;
 
 
-/* =====================================================
+/* =========================================================
 HELPERS
-===================================================== */
+========================================================= */
 
 function escapeHTML(text){
+
 return String(text ?? "")
 .replaceAll("&","&amp;")
 .replaceAll("<","&lt;")
 .replaceAll(">","&gt;")
 .replaceAll('"',"&quot;")
 .replaceAll("'","&#039;");
+
 }
+
+
+function normalize(value){
+
+return String(value ?? "")
+.trim()
+.toLowerCase();
+
+}
+
 
 function formatPrice(price){
-if(price===null || price===undefined || price==="")
+
+if(
+price === null ||
+price === undefined ||
+price === ""
+){
+
 return "تماس بگیرید";
 
-return Number(price).toLocaleString("fa-IR")+" تومان";
 }
 
-function findModel(modelId){
-return database.flatMap(x=>x.models)
-.find(x=>String(x.id)===String(modelId));
+return Number(price).toLocaleString("fa-IR")
++
+" تومان";
+
 }
 
-function findBrandByModel(modelId){
-return database.find(x=>
-x.models.some(m=>String(m.id)===String(modelId))
-);
+
+function showToast(message,type="success"){
+
+const toast =
+document.getElementById("toast");
+
+toast.textContent =
+message;
+
+toast.className =
+"toast show "
++
+type;
+
+setTimeout(()=>{
+
+toast.className =
+"toast";
+
+},3000);
+
+}
 
 
-/* =====================================================
+/* =========================================================
 LOGIN
-===================================================== */
+========================================================= */
 
 function openLogin(){
-document.getElementById("loginPanel").classList.add("show");
-document.getElementById("loginUsername").focus();
+
+document
+.getElementById("loginPanel")
+.classList.add("show");
+
+document
+.getElementById("loginUsername")
+.focus();
+
 }
 
+
 function closeLogin(){
-document.getElementById("loginPanel").classList.remove("show");
+
+document
+.getElementById("loginPanel")
+.classList.remove("show");
+
 }
+
 
 function loginAdmin(){
 
-const username=
-document.getElementById("loginUsername").value.trim();
+const username =
+document
+.getElementById("loginUsername")
+.value
+.trim();
 
-const password=
-document.getElementById("loginPassword").value;
+const password =
+document
+.getElementById("loginPassword")
+.value;
 
-const message=
-document.getElementById("loginMessage");
+const message =
+document
+.getElementById("loginMessage");
 
-if(username===ADMIN_USERNAME &&
-password===ADMIN_PASSWORD){
 
-message.textContent="ورود موفق بود.";
-message.className="login-message success";
+if(
+username === ADMIN_USERNAME &&
+password === ADMIN_PASSWORD
+){
+
+message.textContent =
+"ورود موفق بود.";
+
+message.className =
+"login-message success";
 
 setTimeout(()=>{
 
@@ -1020,118 +1759,185 @@ renderAdmin();
 
 }else{
 
-message.textContent=
+message.textContent =
 "نام کاربری یا رمز عبور اشتباه است.";
 
-message.className="login-message error";
+message.className =
+"login-message error";
 
 }
 
 }
+
 
 document
 .getElementById("loginPassword")
-.addEventListener("keydown",e=>{
-if(e.key==="Enter") loginAdmin();
-});
+.addEventListener(
+"keydown",
+function(e){
+
+if(e.key === "Enter"){
+loginAdmin();
+}
+
+}
+);
 
 
-/* =====================================================
+/* =========================================================
+STATUS
+========================================================= */
+
+function setAdminStatus(text){
+
+const element =
+document.getElementById("adminStatus");
+
+if(element){
+element.textContent = text;
+}
+
+}
+
+
+/* =========================================================
 LOAD DATABASE
-===================================================== */
+========================================================= */
 
 async function loadDatabase(){
 
-setAdminStatus("در حال دریافت اطلاعات از Supabase...");
+setAdminStatus(
+"در حال دریافت اطلاعات از Supabase..."
+);
 
 try{
 
-const {
-data:brands,
-error:brandError
-}=await supabaseClient
+const brandResult =
+await supabaseClient
 .from("brands")
 .select("*")
 .order("name");
 
-if(brandError)
+
+if(brandResult.error){
+
 throw new Error(
-"خطا در جدول brands: "+brandError.message
+"خطا در جدول brands: "
++
+brandResult.error.message
 );
 
+}
 
-const {
-data:models,
-error:modelError
-}=await supabaseClient
+
+const modelResult =
+await supabaseClient
 .from("models")
 .select("*")
 .order("name");
 
-if(modelError)
+
+if(modelResult.error){
+
 throw new Error(
-"خطا در جدول models: "+modelError.message
+"خطا در جدول models: "
++
+modelResult.error.message
 );
 
+}
 
-const {
-data:productData,
-error:productError
-}=await supabaseClient
+
+const productResult =
+await supabaseClient
 .from("products")
 .select("*")
 .order("name");
 
-if(productError)
+
+if(productResult.error){
+
 throw new Error(
-"خطا در جدول products: "+productError.message
+"خطا در جدول products: "
++
+productResult.error.message
 );
 
+}
 
-products=productData||[];
 
-database=(brands||[]).map(brand=>{
+const brands =
+brandResult.data || [];
 
-const brandModels=(models||[])
-.filter(model=>
-String(model.brand_id)===String(brand.id)
+const models =
+modelResult.data || [];
+
+products =
+productResult.data || [];
+
+
+database =
+brands.map(brand=>{
+
+const brandModels =
+models.filter(model=>
+String(model.brand_id)
+===
+String(brand.id)
 );
 
-return{
+return {
+
 id:brand.id,
+
 brand:brand.name,
+
 image:
 brand.image_url ||
 brand.image ||
 "",
-models:brandModels.map(model=>({
+
+models:
+brandModels.map(model=>({
+
 id:model.id,
+
 name:model.name,
+
 image:
 model.image_url ||
 model.image ||
 ""
+
 }))
+
 };
 
 });
 
 
 render();
+
 renderAdmin();
 
 setAdminStatus(
 "✅ اتصال به Supabase برقرار است."
 );
 
+
 }catch(error){
 
 console.error(error);
 
-setAdminStatus("❌ "+error.message);
+setAdminStatus(
+"❌ "
++
+error.message
+);
 
 alert(
-"اتصال به Supabase انجام نشد.\n\n"+
+"اتصال به Supabase انجام نشد.\n\n"
++
 error.message
 );
 
@@ -1140,69 +1946,81 @@ error.message
 }
 
 
-/* =====================================================
-STATUS
-===================================================== */
-
-function setAdminStatus(text){
-
-const el=
-document.getElementById("adminStatus");
-
-if(el) el.textContent=text;
-
-}
-
-
-/* =====================================================
-RENDER
-===================================================== */
+/* =========================================================
+MAIN RENDER
+========================================================= */
 
 function render(){
 
 renderBrands();
+
 renderModels();
+
 renderParts();
+
 renderFilters();
+
 updateStats();
 
 }
 
 
-/* =====================================================
+/* =========================================================
 BRANDS
-===================================================== */
+========================================================= */
 
 function renderBrands(){
 
-const grid=
+const grid =
 document.getElementById("brandGrid");
 
-grid.innerHTML="";
+grid.innerHTML = "";
+
 
 database.forEach(item=>{
 
-const card=document.createElement("div");
+const card =
+document.createElement("div");
 
-card.className="brand-card";
+card.className =
+"brand-card";
 
-const logo=item.image
-?
-`<img src="${escapeHTML(item.image)}"
-onerror="this.style.display='none'">`
-:
-escapeHTML(item.brand.substring(0,5));
 
-card.innerHTML=`
+let logo = "";
+
+if(item.image){
+
+logo = `
+<img
+src="${escapeHTML(item.image)}"
+alt="${escapeHTML(item.brand)}"
+onerror="this.style.display='none'"
+>
+`;
+
+}else{
+
+logo =
+escapeHTML(
+item.brand.substring(0,5)
+);
+
+}
+
+
+card.innerHTML = `
 
 <div class="brand-logo">
 ${logo}
 </div>
 
-<h3>${escapeHTML(item.brand)}</h3>
+<h3>
+${escapeHTML(item.brand)}
+</h3>
 
 <small>
-${item.models.length} مدل خودرو
+${item.models.length}
+مدل خودرو
 </small>
 
 <div class="arrow">
@@ -1211,9 +2029,11 @@ ${item.models.length} مدل خودرو
 
 `;
 
-card.onclick=()=>{
 
-selectedBrand=item.brand;
+card.onclick = ()=>{
+
+selectedBrand =
+item.brand;
 
 render();
 
@@ -1225,6 +2045,7 @@ behavior:"smooth"
 
 };
 
+
 grid.appendChild(card);
 
 });
@@ -1232,34 +2053,44 @@ grid.appendChild(card);
 }
 
 
-/* =====================================================
+/* =========================================================
 MODELS
-===================================================== */
+========================================================= */
 
 function renderModels(){
 
-const grid=
+const grid =
 document.getElementById("modelGrid");
 
-const title=
+const title =
 document.getElementById("modelTitle");
 
-grid.innerHTML="";
+grid.innerHTML = "";
 
-let models=[];
+let models = [];
+
 
 database.forEach(item=>{
 
-if(!selectedBrand ||
-item.brand===selectedBrand){
+if(
+!selectedBrand ||
+normalize(item.brand)
+===
+normalize(selectedBrand)
+){
 
 item.models.forEach(model=>{
 
 models.push({
+
 brand:item.brand,
+
 model:model.name,
+
 id:model.id,
+
 image:model.image
+
 });
 
 });
@@ -1268,29 +2099,41 @@ image:model.image
 
 });
 
-title.innerText=
+
+title.innerText =
 selectedBrand
 ?
-"مدل‌های "+selectedBrand
+"مدل‌های "
++
+selectedBrand
 :
 "مدل‌های خودرو";
 
 
 models.forEach(item=>{
 
-const card=
+const card =
 document.createElement("div");
 
-card.className="model-card";
+card.className =
+"model-card";
 
-const image=item.image
+
+const image =
+item.image
 ?
-`<img src="${escapeHTML(item.image)}"
-onerror="this.style.display='none'">`
+`
+<img
+src="${escapeHTML(item.image)}"
+alt="${escapeHTML(item.model)}"
+onerror="this.style.display='none'"
+>
+`
 :
 "🚘";
 
-card.innerHTML=`
+
+card.innerHTML = `
 
 <div class="model-image">
 ${image}
@@ -1300,7 +2143,7 @@ ${image}
 
 <strong>
 ${escapeHTML(item.brand)}
-${escapeHTML(item.model)}
+ ${escapeHTML(item.model)}
 </strong>
 
 <br>
@@ -1310,19 +2153,27 @@ ${escapeHTML(item.model)}
 </span>
 
 </div>
+
 `;
 
-card.onclick=()=>{
+
+card.onclick = ()=>{
 
 document
 .getElementById("searchInput")
-.value=
-item.brand+" "+item.model;
+.value =
+item.brand
++
+" "
++
+item.model;
 
 searchParts();
+
 scrollToParts();
 
 };
+
 
 grid.appendChild(card);
 
@@ -1331,50 +2182,178 @@ grid.appendChild(card);
 }
 
 
-/* =====================================================
+/* =========================================================
 PARTS
-===================================================== */
+========================================================= */
+
+function renderParts(){
+
+const grid =
+document.getElementById("partsGrid");
+
+grid.innerHTML = "";
+
+let list =
+[...products];
+
+
+if(selectedBrand){
+
+const brand =
+database.find(x=>
+normalize(x.brand)
+===
+normalize(selectedBrand)
+);
+
+if(brand){
+
+const modelIds =
+brand.models.map(x=>
+String(x.id)
+);
+
+list =
+list.filter(product=>
+modelIds.includes(
+String(product.model_id)
+)
+);
+
+}
+
+}
+
+
+if(selectedFilter){
+
+list =
+list.filter(product=>
+normalize(product.category)
+===
+normalize(selectedFilter)
+);
+
+}
+
+
+list
+.slice(0,100)
+.forEach(product=>{
+
+grid.appendChild(
+createPartCard(product)
+);
+
+});
+
+
+if(list.length === 0){
+
+grid.innerHTML = `
+
+<div
+style="
+grid-column:1/-1;
+text-align:center;
+padding:40px;
+color:#8996a9;
+"
+>
+هنوز قطعه‌ای ثبت نشده است.
+</div>
+
+`;
+
+}
+
+}
+
+
+/* =========================================================
+PART CARD
+========================================================= */
 
 function createPartCard(product){
 
-const model=findModel(product.model_id);
+const card =
+document.createElement("div");
 
-const brand=findBrandByModel(product.model_id);
+card.className =
+"part-card";
 
-const card=document.createElement("div");
 
-card.className="part-card";
+const model =
+database
+.flatMap(x=>x.models)
+.find(x=>
+String(x.id)
+===
+String(product.model_id)
+);
 
-card.innerHTML=`
+
+const brand =
+database.find(x=>
+x.models.some(m=>
+String(m.id)
+===
+String(product.model_id)
+)
+);
+
+
+const image =
+product.image_url ||
+product.image ||
+"";
+
+
+card.innerHTML = `
 
 <span class="part-tag">
-${escapeHTML(brand?.brand||"")}
-${escapeHTML(model?.name||product.car_model||"")}
+
+${escapeHTML(
+brand?.brand || ""
+)}
+
+${escapeHTML(
+model?.name ||
+product.car_model ||
+""
+)}
+
 </span>
 
 ${
-product.image_url||product.image
+image
 ?
 `
 <img
-src="${escapeHTML(product.image_url||product.image)}"
-style="
-width:100%;
-height:170px;
-object-fit:contain;
-border-radius:12px;
-margin-bottom:12px;
-background:#101925
-"
+class="part-image"
+src="${escapeHTML(image)}"
+alt="${escapeHTML(product.name)}"
 onerror="this.style.display='none'"
 >
 `
-:""
+:
+`
+<div class="part-placeholder">
+🔧
+</div>
+`
 }
 
 <h3>
 ${escapeHTML(product.name)}
 </h3>
+
+<p>
+${escapeHTML(
+product.description ||
+"برای استعلام قیمت و موجودی تماس بگیرید."
+)}
+</p>
 
 ${
 product.part_number
@@ -1385,119 +2364,77 @@ product.part_number
 ${escapeHTML(product.part_number)}
 </div>
 `
-:""
+:
+""
 }
 
-<p>
-${escapeHTML(
-product.description||
-"برای استعلام قیمت و موجودی تماس بگیرید."
-)}
-</p>
-
 <div class="price">
-${formatPrice(product.price)}
+
+${
+product.price !== null &&
+product.price !== undefined &&
+product.price !== ""
+?
+formatPrice(product.price)
+:
+"تماس بگیرید"
+}
+
 </div>
 
 <div class="stock">
+
 موجودی:
 ${product.stock ?? "نامشخص"}
+
 </div>
 
 `;
+
 
 return card;
 
 }
 
 
-function renderParts(){
-
-const grid=
-document.getElementById("partsGrid");
-
-grid.innerHTML="";
-
-let list=[...products];
-
-if(selectedBrand){
-
-const brand=
-database.find(x=>x.brand===selectedBrand);
-
-if(brand){
-
-const ids=
-brand.models.map(x=>String(x.id));
-
-list=list.filter(product=>
-ids.includes(String(product.model_id))
-);
-
-}
-
-}
-
-if(selectedFilter){
-
-list=list.filter(product=>
-product.category===selectedFilter ||
-product.name===selectedFilter
-);
-
-}
-
-list.slice(0,100)
-.forEach(product=>{
-grid.appendChild(createPartCard(product));
-});
-
-if(list.length===0){
-
-grid.innerHTML=`
-<div style="
-grid-column:1/-1;
-text-align:center;
-padding:40px;
-color:#8996a9;
-">
-هنوز قطعه‌ای ثبت نشده است.
-</div>
-`;
-
-}
-
-}
-
-
-/* =====================================================
+/* =========================================================
 FILTERS
-===================================================== */
+========================================================= */
 
 function renderFilters(){
 
-const container=
+const container =
 document.getElementById("filters");
 
-container.innerHTML="";
+container.innerHTML = "";
 
-const all=
+
+const all =
 document.createElement("button");
 
-all.className=
-"filter "+(!selectedFilter?"active":"");
+all.className =
+"filter "
++
+(!selectedFilter ? "active" : "");
 
-all.innerText="همه قطعات";
+all.innerText =
+"همه قطعات";
 
-all.onclick=()=>{
-selectedFilter=null;
+
+all.onclick = ()=>{
+
+selectedFilter = null;
+
 render();
+
 };
+
 
 container.appendChild(all);
 
 
-const categories=[
+const categories =
+[
 ...new Set(
 products
 .map(x=>x.category)
@@ -1505,21 +2442,40 @@ products
 )
 ];
 
-categories.forEach(category=>{
 
-const button=
+categories
+.slice(0,100)
+.forEach(category=>{
+
+const button =
 document.createElement("button");
 
-button.className=
-"filter "+
-(selectedFilter===category?"active":"");
+button.className =
+"filter "
++
+(
+normalize(selectedFilter)
+===
+normalize(category)
+?
+"active"
+:
+""
+);
 
-button.innerText=category;
+button.innerText =
+category;
 
-button.onclick=()=>{
-selectedFilter=category;
+
+button.onclick = ()=>{
+
+selectedFilter =
+category;
+
 render();
+
 };
+
 
 container.appendChild(button);
 
@@ -1528,81 +2484,121 @@ container.appendChild(button);
 }
 
 
-/* =====================================================
+/* =========================================================
 SEARCH
-===================================================== */
+========================================================= */
 
 function searchParts(){
 
-const query=
+const query =
+normalize(
 document
 .getElementById("searchInput")
 .value
-.trim()
-.toLowerCase();
+);
+
 
 if(!query){
 
 renderParts();
+
 return;
 
 }
 
-const grid=
+
+const grid =
 document.getElementById("partsGrid");
 
-grid.innerHTML="";
+grid.innerHTML = "";
 
 
-const results=
+const results =
 products.filter(product=>{
 
-const model=findModel(product.model_id);
-const brand=findBrandByModel(product.model_id);
+const model =
+database
+.flatMap(x=>x.models)
+.find(x=>
+String(x.id)
+===
+String(product.model_id)
+);
 
-const text=[
+
+const brand =
+database.find(x=>
+x.models.some(m=>
+String(m.id)
+===
+String(product.model_id)
+)
+);
+
+
+const text = [
 
 product.name,
-product.category,
-product.car_model,
-product.description,
+
 product.part_number,
+
+product.category,
+
+product.car_model,
+
+product.description,
+
 brand?.brand,
+
 model?.name
 
 ]
 .filter(Boolean)
-.join(" ")
-.toLowerCase();
+.join(" ");
 
-return text.includes(query);
+
+return normalize(text)
+.includes(query);
 
 });
 
 
-results.slice(0,100)
+results
+.slice(0,100)
 .forEach(product=>{
-grid.appendChild(createPartCard(product));
+
+grid.appendChild(
+createPartCard(product)
+);
+
 });
 
 
-if(results.length===0){
+if(results.length === 0){
 
-grid.innerHTML=`
-<div style="
+grid.innerHTML = `
+
+<div
+style="
 grid-column:1/-1;
 text-align:center;
 padding:40px;
 color:#8996a9;
-">
+"
+>
 قطعه‌ای با این مشخصات پیدا نشد.
 </div>
+
 `;
 
 }
 
 }
 
+
+/* =========================================================
+SCROLL
+========================================================= */
 
 function scrollToParts(){
 
@@ -1615,489 +2611,153 @@ behavior:"smooth"
 }
 
 
-/* =====================================================
-ADMIN TABS
-===================================================== */
-
-function showAdminSection(id,button){
-
-["brandsAdmin","modelsAdmin","partsAdmin"]
-.forEach(x=>{
-document.getElementById(x).style.display="none";
-});
-
-document.getElementById(id).style.display="block";
-
-document
-.querySelectorAll(".admin-tab")
-.forEach(x=>x.classList.remove("active"));
-
-button.classList.add("active");
-
-}
-
-
-/* =====================================================
+/* =========================================================
 ADMIN RENDER
-===================================================== */
+========================================================= */
 
 function renderAdmin(){
 
-const brandSelect=
+const brandSelect =
 document.getElementById("brandSelect");
 
-const partBrand=
+const partBrand =
 document.getElementById("partBrand");
 
-brandSelect.innerHTML=
+
+if(
+!brandSelect ||
+!partBrand
+){
+return;
+}
+
+
+brandSelect.innerHTML =
 '<option value="">انتخاب برند</option>';
 
-partBrand.innerHTML=
+partBrand.innerHTML =
 '<option value="">انتخاب برند</option>';
 
 
 database.forEach(item=>{
 
-const option1=
+const option1 =
 document.createElement("option");
 
-option1.value=item.id;
-option1.textContent=item.brand;
+option1.value =
+item.id;
+
+option1.textContent =
+item.brand;
 
 brandSelect.appendChild(option1);
 
 
-const option2=
+const option2 =
 document.createElement("option");
 
-option2.value=item.id;
-option2.textContent=item.brand;
+option2.value =
+item.id;
+
+option2.textContent =
+item.brand;
 
 partBrand.appendChild(option2);
 
 });
 
 
-renderCategories();
 updatePartModels();
-renderBrandManagement();
-renderModelManagement();
-renderPartManagement();
+
+renderManagement();
 
 }
 
 
-/* =====================================================
-CATEGORIES IN ADMIN
-===================================================== */
+/* =========================================================
+MANAGEMENT
+========================================================= */
 
-function renderCategories(){
+function renderManagement(){
 
-const select=
-document.getElementById("newCategory");
-
-select.innerHTML=
-'<option value="">انتخاب دسته‌بندی</option>';
-
-Object.keys(PART_CATEGORIES)
-.forEach(category=>{
-
-const option=
-document.createElement("option");
-
-option.value=category;
-option.textContent=category;
-
-select.appendChild(option);
-
-});
-
-}
-
-
-/* =====================================================
-PART MODEL SELECT
-===================================================== */
-
-document
-.getElementById("partBrand")
-.addEventListener(
-"change",
-updatePartModels
+const list =
+document.getElementById(
+"managementList"
 );
 
-
-function updatePartModels(){
-
-const brandId=
-document
-.getElementById("partBrand")
-.value;
-
-const select=
-document.getElementById("partModel");
-
-select.innerHTML=
-'<option value="">انتخاب مدل</option>';
-
-const brand=
-database.find(x=>
-String(x.id)===String(brandId)
-);
-
-if(!brand)return;
-
-brand.models.forEach(model=>{
-
-const option=
-document.createElement("option");
-
-option.value=model.id;
-option.textContent=model.name;
-
-select.appendChild(option);
-
-});
-
-}
+list.innerHTML = "";
 
 
-/* =====================================================
-ADD BRAND
-===================================================== */
+if(database.length === 0){
 
-async function addBrand(){
+list.innerHTML =
+`
+<div class="empty-admin">
+هنوز برندی ثبت نشده است.
+</div>
+`;
 
-const name=
-document
-.getElementById("newBrand")
-.value
-.trim();
-
-const modelsText=
-document
-.getElementById("newBrandModels")
-.value
-.trim();
-
-if(!name){
-
-alert("نام برند را وارد کنید.");
 return;
 
 }
 
-try{
 
-const {
-data:brand,
-error
-}=
-await supabaseClient
-.from("brands")
-.insert({
-name:name
-})
-.select()
-.single();
+database.forEach(brand=>{
 
-if(error)throw error;
-
-
-if(modelsText){
-
-const models=
-modelsText
-.split(",")
-.map(x=>x.trim())
-.filter(Boolean)
-.map(model=>({
-name:model,
-brand_id:brand.id
-}));
-
-if(models.length){
-
-const {error:modelError}=
-await supabaseClient
-.from("models")
-.insert(models);
-
-if(modelError)
-throw modelError;
-
-}
-
-}
-
-
-alert("✅ برند و مدل‌ها ذخیره شدند.");
-
-document.getElementById("newBrand").value="";
-document.getElementById("newBrandModels").value="";
-
-await loadDatabase();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"❌ ذخیره برند انجام نشد:\n\n"+
-error.message
-);
-
-}
-
-}
-
-
-/* =====================================================
-ADD MODEL
-===================================================== */
-
-async function addModel(){
-
-const brandId=
-document
-.getElementById("brandSelect")
-.value;
-
-const modelName=
-document
-.getElementById("newModel")
-.value
-.trim();
-
-if(!brandId){
-
-alert("اول برند را انتخاب کنید.");
-return;
-
-}
-
-if(!modelName){
-
-alert("نام مدل را وارد کنید.");
-return;
-
-}
-
-try{
-
-const {error}=
-await supabaseClient
-.from("models")
-.insert({
-name:modelName,
-brand_id:brandId
-});
-
-if(error)throw error;
-
-alert("✅ مدل ذخیره شد.");
-
-document.getElementById("newModel").value="";
-
-await loadDatabase();
-
-}catch(error){
-
-alert(
-"❌ ذخیره مدل انجام نشد:\n\n"+
-error.message
-);
-
-}
-
-}
-
-
-/* =====================================================
-ADD PART
-===================================================== */
-
-async function addPart(){
-
-const brandId=
-document
-.getElementById("partBrand")
-.value;
-
-const modelId=
-document
-.getElementById("partModel")
-.value;
-
-const name=
-document
-.getElementById("newPart")
-.value
-.trim();
-
-const partNumber=
-document
-.getElementById("newPartNumber")
-.value
-.trim();
-
-const category=
-document
-.getElementById("newCategory")
-.value;
-
-const priceValue=
-document
-.getElementById("newPrice")
-.value;
-
-const image=
-document
-.getElementById("newImage")
-.value
-.trim();
-
-const description=
-document
-.getElementById("newDescription")
-.value
-.trim();
-
-const stockValue=
-document
-.getElementById("newStock")
-.value;
-
-
-if(!brandId){
-alert("برند را انتخاب کنید.");
-return;
-}
-
-if(!modelId){
-alert("مدل را انتخاب کنید.");
-return;
-}
-
-if(!name){
-alert("نام قطعه را وارد کنید.");
-return;
-}
-
-
-try{
-
-const productData={
-
-name:name,
-
-part_number:
-partNumber||null,
-
-price:
-priceValue===""
-?
-null
-:
-Number(priceValue),
-
-image:
-image||null,
-
-image_url:
-image||null,
-
-description:
-description||null,
-
-category:
-category||null,
-
-car_model:null,
-
-stock:
-stockValue===""
-?
-0
-:
-Number(stockValue),
-
-brand_id:brandId,
-
-model_id:modelId
-
-};
-
-
-const {error}=
-await supabaseClient
-.from("products")
-.insert(productData);
-
-if(error)throw error;
-
-
-alert(
-"✅ قطعه با کد فنی و اطلاعات کامل ذخیره شد."
-);
-
-
-document.getElementById("newPart").value="";
-document.getElementById("newPartNumber").value="";
-document.getElementById("newPrice").value="";
-document.getElementById("newImage").value="";
-document.getElementById("newDescription").value="";
-document.getElementById("newStock").value="1";
-document.getElementById("newCategory").value="";
-
-
-await loadDatabase();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"❌ ذخیره قطعه انجام نشد:\n\n"+
-error.message
-);
-
-}
-
-}
-
-
-/* =====================================================
-BRAND MANAGEMENT
-===================================================== */
-
-function renderBrandManagement(){
-
-const list=
-document.getElementById("brandManagementList");
-
-list.innerHTML="";
-
-
-database.forEach(item=>{
-
-const div=
+const section =
 document.createElement("div");
 
-div.className="management-item";
+section.className =
+"management-section";
 
-div.innerHTML=`
+
+section.innerHTML = `
+
+<div class="management-title">
+
+<strong>
+🏷 ${escapeHTML(brand.brand)}
+</strong>
+
+<div class="management-actions">
+
+<button
+class="edit"
+onclick="editBrand('${brand.id}')"
+>
+ویرایش برند
+</button>
+
+<button
+class="delete"
+onclick="deleteBrand('${brand.id}')"
+>
+حذف برند
+</button>
+
+</div>
+
+</div>
 
 <div>
 
+${
+brand.models.length
+?
+brand.models.map(model=>`
+
+<div class="management-item">
+
+<div class="management-info">
+
 <strong>
-${escapeHTML(item.brand)}
+🚘 ${escapeHTML(model.name)}
 </strong>
 
 <br>
 
 <small>
-${item.models.length} مدل
+مدیریت مدل و قطعات این مدل
 </small>
 
 </div>
@@ -2106,284 +2766,92 @@ ${item.models.length} مدل
 
 <button
 class="edit"
-onclick="editBrand('${item.id}','${escapeHTML(item.brand)}')"
+onclick="editModel('${model.id}')"
 >
-ویرایش
-</button>
-
-<button
-class="delete"
-onclick="deleteBrand('${item.id}')"
->
-حذف
-</button>
-
-</div>
-
-`;
-
-list.appendChild(div);
-
-});
-
-}
-
-
-/* =====================================================
-EDIT BRAND
-===================================================== */
-
-async function editBrand(id,oldName){
-
-const newName=
-prompt(
-"نام جدید برند:",
-oldName
-);
-
-if(!newName)return;
-
-const name=newName.trim();
-
-if(!name)return;
-
-try{
-
-const {error}=
-await supabaseClient
-.from("brands")
-.update({
-name:name
-})
-.eq("id",id);
-
-if(error)throw error;
-
-alert("✅ برند ویرایش شد.");
-
-await loadDatabase();
-
-}catch(error){
-
-alert(
-"❌ ویرایش برند انجام نشد:\n\n"+
-error.message
-);
-
-}
-
-}
-
-
-/* =====================================================
-DELETE BRAND
-===================================================== */
-
-async function deleteBrand(id){
-
-if(!confirm(
-"برند حذف شود؟\n\nاگر برای این برند مدل یا قطعه وجود داشته باشد ممکن است حذف به دلیل محدودیت دیتابیس انجام نشود."
-))return;
-
-
-try{
-
-const {error}=
-await supabaseClient
-.from("brands")
-.delete()
-.eq("id",id);
-
-if(error)throw error;
-
-alert("✅ برند حذف شد.");
-
-await loadDatabase();
-
-}catch(error){
-
-alert(
-"❌ حذف برند انجام نشد:\n\n"+
-error.message
-);
-
-}
-
-}
-
-
-/* =====================================================
-MODEL MANAGEMENT
-===================================================== */
-
-function renderModelManagement(){
-
-const list=
-document.getElementById("modelManagementList");
-
-list.innerHTML="";
-
-
-database.forEach(brand=>{
-
-brand.models.forEach(model=>{
-
-const div=
-document.createElement("div");
-
-div.className="management-item";
-
-div.innerHTML=`
-
-<div>
-
-<strong>
-${escapeHTML(brand.brand)}
-—
-${escapeHTML(model.name)}
-</strong>
-
-</div>
-
-<div class="management-actions">
-
-<button
-class="edit"
-onclick="editModel('${model.id}','${escapeHTML(model.name)}')"
->
-ویرایش
+ویرایش مدل
 </button>
 
 <button
 class="delete"
 onclick="deleteModel('${model.id}')"
 >
-حذف
+حذف مدل
 </button>
+
+</div>
+
+</div>
+
+`).join("")
+:
+`
+<div class="empty-admin">
+این برند هنوز مدلی ندارد.
+</div>
+`
+}
 
 </div>
 
 `;
 
-list.appendChild(div);
+
+list.appendChild(section);
 
 });
 
-});
 
-}
+/* PRODUCTS */
 
-
-/* =====================================================
-EDIT MODEL
-===================================================== */
-
-async function editModel(id,oldName){
-
-const newName=
-prompt(
-"نام جدید مدل:",
-oldName
-);
-
-if(!newName)return;
-
-const name=newName.trim();
-
-if(!name)return;
-
-
-try{
-
-const {error}=
-await supabaseClient
-.from("models")
-.update({
-name:name
-})
-.eq("id",id);
-
-if(error)throw error;
-
-alert("✅ مدل ویرایش شد.");
-
-await loadDatabase();
-
-}catch(error){
-
-alert(
-"❌ ویرایش مدل انجام نشد:\n\n"+
-error.message
-);
-
-}
-
-}
-
-
-/* =====================================================
-DELETE MODEL
-===================================================== */
-
-async function deleteModel(id){
-
-if(!confirm(
-"این مدل حذف شود؟\n\nقطعات مربوط به این مدل ممکن است مانع حذف شوند."
-))return;
-
-
-try{
-
-const {error}=
-await supabaseClient
-.from("models")
-.delete()
-.eq("id",id);
-
-if(error)throw error;
-
-alert("✅ مدل حذف شد.");
-
-await loadDatabase();
-
-}catch(error){
-
-alert(
-"❌ حذف مدل انجام نشد:\n\n"+
-error.message
-);
-
-}
-
-}
-
-
-/* =====================================================
-PART MANAGEMENT
-===================================================== */
-
-function renderPartManagement(){
-
-const list=
-document.getElementById("partManagementList");
-
-list.innerHTML="";
-
-
-products.forEach(product=>{
-
-const model=findModel(product.model_id);
-const brand=findBrandByModel(product.model_id);
-
-
-const div=
+const productSection =
 document.createElement("div");
 
-div.className="management-item";
+productSection.className =
+"management-section";
 
-div.innerHTML=`
 
-<div style="max-width:70%">
+productSection.innerHTML = `
+
+<div class="management-title">
+
+<strong>
+🔧 مدیریت قطعات
+</strong>
+
+</div>
+
+<div>
+
+${
+products.length
+?
+products
+.slice(0,300)
+.map(product=>{
+
+const model =
+database
+.flatMap(x=>x.models)
+.find(x=>
+String(x.id)
+===
+String(product.model_id)
+);
+
+const brand =
+database.find(x=>
+x.models.some(m=>
+String(m.id)
+===
+String(product.model_id)
+)
+);
+
+return `
+
+<div class="management-item">
+
+<div class="management-info">
 
 <strong>
 ${escapeHTML(product.name)}
@@ -2393,30 +2861,32 @@ ${escapeHTML(product.name)}
 
 <small>
 
-${escapeHTML(brand?.brand||"")}
-—
-${escapeHTML(model?.name||"")}
+${escapeHTML(
+brand?.brand || ""
+)}
+
+${escapeHTML(
+model?.name || ""
+)}
 
 ${
 product.part_number
 ?
-`
-<br>
-کد فنی:
-${escapeHTML(product.part_number)}
-`
-:""
+" — کد: "
++
+escapeHTML(product.part_number)
+:
+""
 }
 
 ${
-product.category
+product.price
 ?
-`
-<br>
-دسته:
-${escapeHTML(product.category)}
-`
-:""
+" — "
++
+formatPrice(product.price)
+:
+""
 }
 
 </small>
@@ -2441,123 +2911,239 @@ onclick="deletePart('${product.id}')"
 
 </div>
 
+</div>
+
 `;
 
-list.appendChild(div);
+}).join("")
+:
+`
+<div class="empty-admin">
+هنوز قطعه‌ای ثبت نشده است.
+</div>
+`
+}
+
+</div>
+
+`;
+
+
+list.appendChild(productSection);
+
+}
+
+
+/* =========================================================
+MODEL SELECT
+========================================================= */
+
+document
+.getElementById("partBrand")
+.addEventListener(
+"change",
+updatePartModels
+);
+
+
+function updatePartModels(){
+
+const brandId =
+document
+.getElementById("partBrand")
+.value;
+
+
+const select =
+document
+.getElementById("partModel");
+
+
+select.innerHTML =
+'<option value="">انتخاب مدل</option>';
+
+
+const brand =
+database.find(x=>
+String(x.id)
+===
+String(brandId)
+);
+
+
+if(!brand){
+return;
+}
+
+
+brand.models.forEach(model=>{
+
+const option =
+document.createElement("option");
+
+option.value =
+model.id;
+
+option.textContent =
+model.name;
+
+select.appendChild(option);
 
 });
 
-if(products.length===0){
-
-list.innerHTML=
-"<p style='color:#8996a9'>هنوز قطعه‌ای ثبت نشده است.</p>";
-
-}
-
 }
 
 
-/* =====================================================
-EDIT PART
-===================================================== */
+/* =========================================================
+ADD BRAND
+========================================================= */
 
-async function editPart(id){
+async function addBrand(){
 
-const product=
-products.find(x=>
-String(x.id)===String(id)
+const name =
+document
+.getElementById("newBrand")
+.value
+.trim();
+
+
+const image =
+document
+.getElementById("newBrandImage")
+.value
+.trim();
+
+
+const modelsText =
+document
+.getElementById("newBrandModels")
+.value
+.trim();
+
+
+if(!name){
+
+alert(
+"نام برند را وارد کنید."
 );
 
-if(!product)return;
+return;
 
-
-const name=
-prompt(
-"نام قطعه:",
-product.name||""
-);
-
-if(name===null)return;
-
-
-const partNumber=
-prompt(
-"کد فنی / Part Number:",
-product.part_number||""
-);
-
-if(partNumber===null)return;
-
-
-const price=
-prompt(
-"قیمت به تومان:",
-product.price??""
-);
-
-if(price===null)return;
-
-
-const stock=
-prompt(
-"موجودی:",
-product.stock??""
-);
-
-if(stock===null)return;
-
-
-const description=
-prompt(
-"توضیحات:",
-product.description||""
-);
-
-if(description===null)return;
+}
 
 
 try{
 
-const {error}=
+const brandData = {
+
+name:name,
+
+image:image || null,
+
+image_url:image || null
+
+};
+
+
+let result =
 await supabaseClient
-.from("products")
-.update({
+.from("brands")
+.insert(brandData)
+.select()
+.single();
 
-name:name.trim(),
 
-part_number:
-partNumber.trim()||null,
+if(result.error){
 
-price:
-price===""
-?
-null
-:
-Number(price),
-
-stock:
-stock===""
-?
-0
-:
-Number(stock),
-
-description:
-description.trim()||null
-
+result =
+await supabaseClient
+.from("brands")
+.insert({
+name:name
 })
-.eq("id",id);
+.select()
+.single();
 
-if(error)throw error;
+}
 
-alert("✅ قطعه ویرایش شد.");
+
+if(result.error){
+
+throw result.error;
+
+}
+
+
+const brand =
+result.data;
+
+
+if(modelsText){
+
+const models =
+modelsText
+.split(",")
+.map(x=>x.trim())
+.filter(Boolean)
+.map(model=>({
+
+name:model,
+
+brand_id:brand.id
+
+}));
+
+
+if(models.length){
+
+const {
+error:modelError
+}
+=
+await supabaseClient
+.from("models")
+.insert(models);
+
+
+if(modelError){
+
+throw modelError;
+
+}
+
+}
+
+}
+
+
+showToast(
+"✅ برند و مدل‌ها ذخیره شدند."
+);
+
+
+document
+.getElementById("newBrand")
+.value = "";
+
+document
+.getElementById("newBrandImage")
+.value = "";
+
+document
+.getElementById("newBrandModels")
+.value = "";
+
 
 await loadDatabase();
 
+
 }catch(error){
 
+console.error(error);
+
 alert(
-"❌ ویرایش قطعه انجام نشد:\n\n"+
+"❌ ذخیره برند انجام نشد:\n\n"
++
 error.message
 );
 
@@ -2566,35 +3152,1391 @@ error.message
 }
 
 
-/* =====================================================
-DELETE PART
-===================================================== */
+/* =========================================================
+ADD MODEL
+========================================================= */
 
-async function deletePart(id){
+async function addModel(){
 
-if(!confirm(
-"این قطعه حذف شود؟"
-))return;
+const brandId =
+document
+.getElementById("brandSelect")
+.value;
+
+
+const modelName =
+document
+.getElementById("newModel")
+.value
+.trim();
+
+
+const image =
+document
+.getElementById("newModelImage")
+.value
+.trim();
+
+
+if(!brandId){
+
+alert(
+"اول برند را انتخاب کنید."
+);
+
+return;
+
+}
+
+
+if(!modelName){
+
+alert(
+"نام مدل را وارد کنید."
+);
+
+return;
+
+}
 
 
 try{
 
-const {error}=
+let result =
+await supabaseClient
+.from("models")
+.insert({
+
+name:modelName,
+
+brand_id:brandId,
+
+image:image || null,
+
+image_url:image || null
+
+});
+
+
+if(result.error){
+
+result =
+await supabaseClient
+.from("models")
+.insert({
+
+name:modelName,
+
+brand_id:brandId
+
+});
+
+}
+
+
+if(result.error){
+
+throw result.error;
+
+}
+
+
+showToast(
+"✅ مدل ذخیره شد."
+);
+
+
+document
+.getElementById("newModel")
+.value = "";
+
+document
+.getElementById("newModelImage")
+.value = "";
+
+
+await loadDatabase();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"❌ ذخیره مدل انجام نشد:\n\n"
++
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================================
+ADD PART
+========================================================= */
+
+async function addPart(){
+
+const brandId =
+document
+.getElementById("partBrand")
+.value;
+
+
+const modelId =
+document
+.getElementById("partModel")
+.value;
+
+
+const name =
+document
+.getElementById("newPart")
+.value
+.trim();
+
+
+const partNumber =
+document
+.getElementById("newPartNumber")
+.value
+.trim();
+
+
+const priceValue =
+document
+.getElementById("newPrice")
+.value;
+
+
+const image =
+document
+.getElementById("newImage")
+.value
+.trim();
+
+
+const description =
+document
+.getElementById("newDescription")
+.value
+.trim();
+
+
+const category =
+document
+.getElementById("newCategory")
+.value
+.trim();
+
+
+const stockValue =
+document
+.getElementById("newStock")
+.value;
+
+
+if(!brandId){
+
+alert(
+"برند را انتخاب کنید."
+);
+
+return;
+
+}
+
+
+if(!modelId){
+
+alert(
+"مدل را انتخاب کنید."
+);
+
+return;
+
+}
+
+
+if(!name){
+
+alert(
+"نام قطعه را وارد کنید."
+);
+
+return;
+
+}
+
+
+try{
+
+const productData = {
+
+name:name,
+
+part_number:
+partNumber || null,
+
+price:
+priceValue === ""
+?
+null
+:
+Number(priceValue),
+
+image:
+image || null,
+
+image_url:
+image || null,
+
+description:
+description || null,
+
+category:
+category || null,
+
+car_model:null,
+
+stock:
+stockValue === ""
+?
+0
+:
+Number(stockValue),
+
+brand_id:brandId,
+
+model_id:modelId
+
+};
+
+
+let result =
+await supabaseClient
+.from("products")
+.insert(productData);
+
+
+if(result.error){
+
+const fallbackData = {
+
+name:name,
+
+part_number:
+partNumber || null,
+
+price:
+priceValue === ""
+?
+null
+:
+Number(priceValue),
+
+image:
+image || null,
+
+description:
+description || null,
+
+category:
+category || null,
+
+car_model:null,
+
+stock:
+stockValue === ""
+?
+0
+:
+Number(stockValue),
+
+brand_id:brandId,
+
+model_id:modelId
+
+};
+
+
+result =
+await supabaseClient
+.from("products")
+.insert(fallbackData);
+
+}
+
+
+if(result.error){
+
+throw result.error;
+
+}
+
+
+showToast(
+"✅ قطعه و کد فنی ذخیره شدند."
+);
+
+
+document
+.getElementById("newPart")
+.value = "";
+
+document
+.getElementById("newPartNumber")
+.value = "";
+
+document
+.getElementById("newPrice")
+.value = "";
+
+document
+.getElementById("newImage")
+.value = "";
+
+document
+.getElementById("newDescription")
+.value = "";
+
+document
+.getElementById("newCategory")
+.value = "";
+
+document
+.getElementById("newStock")
+.value = "1";
+
+
+await loadDatabase();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"❌ ذخیره قطعه انجام نشد:\n\n"
++
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================================
+EDIT BRAND
+========================================================= */
+
+async function editBrand(id){
+
+const brand =
+database.find(x=>
+String(x.id)
+===
+String(id)
+);
+
+
+if(!brand){
+return;
+}
+
+
+document
+.getElementById("editModalTitle")
+.textContent =
+"ویرایش برند";
+
+
+document
+.getElementById("editModalContent")
+.innerHTML = `
+
+<div class="form">
+
+<label>
+نام برند
+</label>
+
+<input
+id="editBrandName"
+value="${escapeHTML(brand.brand)}"
+>
+
+<label>
+لینک عکس / لوگوی برند
+</label>
+
+<input
+id="editBrandImage"
+value="${escapeHTML(brand.image || "")}"
+>
+
+</div>
+
+<div class="edit-actions">
+
+<button
+class="cancel-btn"
+onclick="closeEditModal()"
+>
+انصراف
+</button>
+
+<button
+class="save-btn"
+onclick="saveBrand('${id}')"
+>
+ذخیره تغییرات
+</button>
+
+</div>
+
+`;
+
+
+openEditModal();
+
+}
+
+
+/* =========================================================
+SAVE BRAND
+========================================================= */
+
+async function saveBrand(id){
+
+const name =
+document
+.getElementById("editBrandName")
+.value
+.trim();
+
+
+const image =
+document
+.getElementById("editBrandImage")
+.value
+.trim();
+
+
+if(!name){
+
+alert(
+"نام برند خالی است."
+);
+
+return;
+
+}
+
+
+try{
+
+let result =
+await supabaseClient
+.from("brands")
+.update({
+
+name:name,
+
+image:image || null,
+
+image_url:image || null
+
+})
+.eq("id",id);
+
+
+if(result.error){
+
+result =
+await supabaseClient
+.from("brands")
+.update({
+
+name:name
+
+})
+.eq("id",id);
+
+}
+
+
+if(result.error){
+
+throw result.error;
+
+}
+
+
+closeEditModal();
+
+showToast(
+"✅ برند ویرایش شد."
+);
+
+await loadDatabase();
+
+
+}catch(error){
+
+alert(
+"❌ ویرایش برند انجام نشد:\n\n"
++
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================================
+EDIT MODEL
+========================================================= */
+
+async function editModel(id){
+
+const model =
+database
+.flatMap(x=>x.models)
+.find(x=>
+String(x.id)
+===
+String(id)
+);
+
+
+if(!model){
+return;
+}
+
+
+document
+.getElementById("editModalTitle")
+.textContent =
+"ویرایش مدل";
+
+
+document
+.getElementById("editModalContent")
+.innerHTML = `
+
+<div class="form">
+
+<label>
+نام مدل
+</label>
+
+<input
+id="editModelName"
+value="${escapeHTML(model.name)}"
+>
+
+<label>
+لینک عکس خودرو
+</label>
+
+<input
+id="editModelImage"
+value="${escapeHTML(model.image || "")}"
+>
+
+</div>
+
+<div class="edit-actions">
+
+<button
+class="cancel-btn"
+onclick="closeEditModal()"
+>
+انصراف
+</button>
+
+<button
+class="save-btn"
+onclick="saveModel('${id}')"
+>
+ذخیره تغییرات
+</button>
+
+</div>
+
+`;
+
+
+openEditModal();
+
+}
+
+
+/* =========================================================
+SAVE MODEL
+========================================================= */
+
+async function saveModel(id){
+
+const name =
+document
+.getElementById("editModelName")
+.value
+.trim();
+
+
+const image =
+document
+.getElementById("editModelImage")
+.value
+.trim();
+
+
+if(!name){
+
+alert(
+"نام مدل خالی است."
+);
+
+return;
+
+}
+
+
+try{
+
+let result =
+await supabaseClient
+.from("models")
+.update({
+
+name:name,
+
+image:image || null,
+
+image_url:image || null
+
+})
+.eq("id",id);
+
+
+if(result.error){
+
+result =
+await supabaseClient
+.from("models")
+.update({
+
+name:name
+
+})
+.eq("id",id);
+
+}
+
+
+if(result.error){
+
+throw result.error;
+
+}
+
+
+closeEditModal();
+
+showToast(
+"✅ مدل ویرایش شد."
+);
+
+await loadDatabase();
+
+
+}catch(error){
+
+alert(
+"❌ ویرایش مدل انجام نشد:\n\n"
++
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================================
+EDIT PART
+========================================================= */
+
+async function editPart(id){
+
+const product =
+products.find(x=>
+String(x.id)
+===
+String(id)
+);
+
+
+if(!product){
+return;
+}
+
+
+document
+.getElementById("editModalTitle")
+.textContent =
+"ویرایش قطعه";
+
+
+const brand =
+database.find(x=>
+x.models.some(m=>
+String(m.id)
+===
+String(product.model_id)
+)
+);
+
+
+const model =
+database
+.flatMap(x=>x.models)
+.find(x=>
+String(x.id)
+===
+String(product.model_id)
+);
+
+
+let brandOptions =
+database.map(item=>`
+
+<option
+value="${escapeHTML(item.id)}"
+${brand && String(brand.id) === String(item.id) ? "selected" : ""}
+>
+${escapeHTML(item.brand)}
+</option>
+
+`).join("");
+
+
+let modelOptions =
+brand
+?
+brand.models.map(item=>`
+
+<option
+value="${escapeHTML(item.id)}"
+${String(item.id) === String(product.model_id) ? "selected" : ""}
+>
+${escapeHTML(item.name)}
+</option>
+
+`).join("")
+:
+"";
+
+
+document
+.getElementById("editModalContent")
+.innerHTML = `
+
+<div class="form">
+
+<label>
+برند
+</label>
+
+<select id="editPartBrand">
+${brandOptions}
+</select>
+
+<label>
+مدل
+</label>
+
+<select id="editPartModel">
+${modelOptions}
+</select>
+
+<label>
+نام قطعه
+</label>
+
+<input
+id="editPartName"
+value="${escapeHTML(product.name || "")}"
+>
+
+<label>
+کد فنی / Part Number
+</label>
+
+<input
+id="editPartNumber"
+value="${escapeHTML(product.part_number || "")}"
+>
+
+<label>
+قیمت
+</label>
+
+<input
+id="editPartPrice"
+type="number"
+value="${product.price ?? ""}"
+>
+
+<label>
+لینک عکس قطعه
+</label>
+
+<input
+id="editPartImage"
+value="${escapeHTML(
+product.image_url ||
+product.image ||
+""
+)}"
+>
+
+<label>
+توضیحات
+</label>
+
+<textarea
+id="editPartDescription"
+>${escapeHTML(product.description || "")}</textarea>
+
+<label>
+دسته‌بندی
+</label>
+
+<input
+id="editPartCategory"
+value="${escapeHTML(product.category || "")}"
+>
+
+<label>
+موجودی
+</label>
+
+<input
+id="editPartStock"
+type="number"
+value="${product.stock ?? 0}"
+>
+
+</div>
+
+<div class="edit-actions">
+
+<button
+class="cancel-btn"
+onclick="closeEditModal()"
+>
+انصراف
+</button>
+
+<button
+class="save-btn"
+onclick="savePart('${id}')"
+>
+ذخیره تغییرات
+</button>
+
+</div>
+
+`;
+
+
+document
+.getElementById("editPartBrand")
+.addEventListener(
+"change",
+function(){
+
+const selected =
+this.value;
+
+const modelSelect =
+document
+.getElementById("editPartModel");
+
+const selectedBrand =
+database.find(x=>
+String(x.id)
+===
+String(selected)
+);
+
+modelSelect.innerHTML =
+selectedBrand
+?
+selectedBrand.models.map(m=>`
+
+<option value="${m.id}">
+${escapeHTML(m.name)}
+</option>
+
+`).join("")
+:
+"";
+
+});
+
+
+openEditModal();
+
+}
+
+
+/* =========================================================
+SAVE PART
+========================================================= */
+
+async function savePart(id){
+
+const brandId =
+document
+.getElementById("editPartBrand")
+.value;
+
+
+const modelId =
+document
+.getElementById("editPartModel")
+.value;
+
+
+const name =
+document
+.getElementById("editPartName")
+.value
+.trim();
+
+
+const partNumber =
+document
+.getElementById("editPartNumber")
+.value
+.trim();
+
+
+const priceValue =
+document
+.getElementById("editPartPrice")
+.value;
+
+
+const image =
+document
+.getElementById("editPartImage")
+.value
+.trim();
+
+
+const description =
+document
+.getElementById("editPartDescription")
+.value
+.trim();
+
+
+const category =
+document
+.getElementById("editPartCategory")
+.value
+.trim();
+
+
+const stockValue =
+document
+.getElementById("editPartStock")
+.value;
+
+
+if(!name){
+
+alert(
+"نام قطعه خالی است."
+);
+
+return;
+
+}
+
+
+try{
+
+const data = {
+
+name:name,
+
+part_number:
+partNumber || null,
+
+brand_id:
+brandId,
+
+model_id:
+modelId,
+
+price:
+priceValue === ""
+?
+null
+:
+Number(priceValue),
+
+image:
+image || null,
+
+image_url:
+image || null,
+
+description:
+description || null,
+
+category:
+category || null,
+
+stock:
+stockValue === ""
+?
+0
+:
+Number(stockValue)
+
+};
+
+
+let result =
+await supabaseClient
+.from("products")
+.update(data)
+.eq("id",id);
+
+
+if(result.error){
+
+const fallback = {
+
+name:name,
+
+part_number:
+partNumber || null,
+
+brand_id:
+brandId,
+
+model_id:
+modelId,
+
+price:
+priceValue === ""
+?
+null
+:
+Number(priceValue),
+
+image:
+image || null,
+
+description:
+description || null,
+
+category:
+category || null,
+
+stock:
+stockValue === ""
+?
+0
+:
+Number(stockValue)
+
+};
+
+
+result =
+await supabaseClient
+.from("products")
+.update(fallback)
+.eq("id",id);
+
+}
+
+
+if(result.error){
+
+throw result.error;
+
+}
+
+
+closeEditModal();
+
+showToast(
+"✅ قطعه ویرایش شد."
+);
+
+await loadDatabase();
+
+
+}catch(error){
+
+alert(
+"❌ ویرایش قطعه انجام نشد:\n\n"
++
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================================
+MODAL
+========================================================= */
+
+function openEditModal(){
+
+document
+.getElementById("editModal")
+.classList.add("show");
+
+}
+
+
+function closeEditModal(){
+
+document
+.getElementById("editModal")
+.classList.remove("show");
+
+}
+
+
+/* =========================================================
+DELETE BRAND
+========================================================= */
+
+async function deleteBrand(id){
+
+if(
+!confirm(
+"⚠️ این برند، مدل‌های مربوط به آن و قطعات مرتبط حذف شوند؟"
+)
+){
+
+return;
+
+}
+
+
+try{
+
+const brand =
+database.find(x=>
+String(x.id)
+===
+String(id)
+);
+
+
+if(brand){
+
+const modelIds =
+brand.models.map(x=>x.id);
+
+
+for(const modelId of modelIds){
+
+await supabaseClient
+.from("products")
+.delete()
+.eq("model_id",modelId);
+
+}
+
+
+await supabaseClient
+.from("models")
+.delete()
+.eq("brand_id",id);
+
+}
+
+
+const {
+error
+}
+=
+await supabaseClient
+.from("brands")
+.delete()
+.eq("id",id);
+
+
+if(error){
+
+throw error;
+
+}
+
+
+selectedBrand = null;
+
+showToast(
+"✅ برند حذف شد."
+);
+
+await loadDatabase();
+
+
+}catch(error){
+
+alert(
+"❌ حذف برند انجام نشد:\n\n"
++
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================================
+DELETE MODEL
+========================================================= */
+
+async function deleteModel(id){
+
+if(
+!confirm(
+"⚠️ این مدل و تمام قطعات مربوط به آن حذف شوند؟"
+)
+){
+
+return;
+
+}
+
+
+try{
+
+const {
+error:productError
+}
+=
+await supabaseClient
+.from("products")
+.delete()
+.eq("model_id",id);
+
+
+if(productError){
+
+throw productError;
+
+}
+
+
+const {
+error:modelError
+}
+=
+await supabaseClient
+.from("models")
+.delete()
+.eq("id",id);
+
+
+if(modelError){
+
+throw modelError;
+
+}
+
+
+showToast(
+"✅ مدل حذف شد."
+);
+
+await loadDatabase();
+
+
+}catch(error){
+
+alert(
+"❌ حذف مدل انجام نشد:\n\n"
++
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================================
+DELETE PART
+========================================================= */
+
+async function deletePart(id){
+
+if(
+!confirm(
+"⚠️ این قطعه حذف شود؟"
+)
+){
+
+return;
+
+}
+
+
+try{
+
+const {
+error
+}
+=
 await supabaseClient
 .from("products")
 .delete()
 .eq("id",id);
 
-if(error)throw error;
 
-alert("✅ قطعه حذف شد.");
+if(error){
+
+throw error;
+
+}
+
+
+showToast(
+"✅ قطعه حذف شد."
+);
 
 await loadDatabase();
+
 
 }catch(error){
 
 alert(
-"❌ حذف قطعه انجام نشد:\n\n"+
+"❌ حذف قطعه انجام نشد:\n\n"
++
 error.message
 );
 
@@ -2603,35 +4545,39 @@ error.message
 }
 
 
-/* =====================================================
+/* =========================================================
 STATS
-===================================================== */
+========================================================= */
 
 function updateStats(){
 
-document.getElementById("brandCount")
-.textContent=database.length;
+document
+.getElementById("brandCount")
+.textContent =
+database.length;
 
 
-document.getElementById("modelCount")
-.textContent=
+document
+.getElementById("modelCount")
+.textContent =
 database.reduce(
 (total,item)=>
-total+item.models.length,
+total + item.models.length,
 0
 );
 
 
-document.getElementById("partCount")
-.textContent=
+document
+.getElementById("partCount")
+.textContent =
 products.length;
 
 }
 
 
-/* =====================================================
+/* =========================================================
 CLOSE ADMIN
-===================================================== */
+========================================================= */
 
 function closeAdmin(){
 
@@ -2642,9 +4588,9 @@ document
 }
 
 
-/* =====================================================
+/* =========================================================
 START
-===================================================== */
+========================================================= */
 
 loadDatabase();
 
